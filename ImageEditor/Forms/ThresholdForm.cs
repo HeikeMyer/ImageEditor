@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Configuration;
 using System.Drawing;
+using System.Resources;
 using System.Windows.Forms;
 using ImageEditor.Constants;
 using ImageProcessing;
@@ -47,8 +49,8 @@ namespace ImageEditor.Forms
         {
             InitializeComponent();
 
-            thresholdTrackBar.Minimum = ControlValueConstants.MinThresholdLevel;
-            thresholdTrackBar.Maximum = ControlValueConstants.MaxThresholdLevel;
+            thresholdTrackBar.Minimum = ControlConstants.MinThresholdLevel;
+            thresholdTrackBar.Maximum = ControlConstants.MaxThresholdLevel;
         }
 
         private void okButton_Click(object sender, EventArgs e)
@@ -86,8 +88,17 @@ namespace ImageEditor.Forms
         {
             threshold = new Adjustments();
 
-            thresholdTrackBar.Value = ControlValueConstants.DefaultThresholdLevel;
-            thresholdValue.Text = ControlValueConstants.DefaultThresholdLevel.ToString();
+            thresholdTrackBar.Value = ControlConstants.DefaultThresholdLevel;
+            thresholdValue.Text = ControlConstants.DefaultThresholdLevel.ToString();
+
+            var cultureCode = ConfigurationManager.AppSettings[ConfigurationConstants.CultureCodeKey];
+            FormExtensions.UpdateLanguage(this, GetType(), ReloadControlText, cultureCode);
+        }
+
+        public void ReloadControlText(ResourceManager resourceManager)
+        {
+            labelThresholdLevel.Text = resourceManager.GetString(nameof(labelThresholdLevel) + ControlConstants.TextPropertyName);
+            cancelButton.Text = resourceManager.GetString(nameof(cancelButton) + ControlConstants.TextPropertyName);
         }
     }
 }

@@ -3,6 +3,8 @@ using System.Drawing;
 using System.Windows.Forms;
 using ImageProcessing;
 using ImageEditor.Constants;
+using System.Configuration;
+using System.Resources;
 
 namespace ImageEditor.Forms
 {
@@ -48,11 +50,11 @@ namespace ImageEditor.Forms
         {
             InitializeComponent();
 
-            brightnessTrackBar.Minimum = ControlValueConstants.MinBrightness;
-            brightnessTrackBar.Maximum = ControlValueConstants.MaxBrightness;
+            brightnessTrackBar.Minimum = ControlConstants.MinBrightness;
+            brightnessTrackBar.Maximum = ControlConstants.MaxBrightness;
 
-            contrastTrackBar.Minimum = ControlValueConstants.MinBrightness;
-            contrastTrackBar.Maximum = ControlValueConstants.MaxBrightness;
+            contrastTrackBar.Minimum = ControlConstants.MinBrightness;
+            contrastTrackBar.Maximum = ControlConstants.MaxBrightness;
 
         }
 
@@ -72,11 +74,14 @@ namespace ImageEditor.Forms
         {
             brightnessContrast = new Adjustments();
 
-            brightnessTrackBar.Value = ControlValueConstants.DefaultBrightness;
-            brightnessValue.Text = ControlValueConstants.DefaultBrightness.ToString();
+            brightnessTrackBar.Value = ControlConstants.DefaultBrightness;
+            brightnessValue.Text = ControlConstants.DefaultBrightness.ToString();
 
-            contrastTrackBar.Value = ControlValueConstants.DefaultContrast;
-            contrastValue.Text = ControlValueConstants.DefaultContrast.ToString();
+            contrastTrackBar.Value = ControlConstants.DefaultContrast;
+            contrastValue.Text = ControlConstants.DefaultContrast.ToString();
+
+            var cultureCode = ConfigurationManager.AppSettings[ConfigurationConstants.CultureCodeKey];
+            FormExtensions.UpdateLanguage(this, GetType(), ReloadControlText, cultureCode);
         }
 
         private void brightnessTrackbar_Scroll(object sender, EventArgs e)
@@ -123,6 +128,13 @@ namespace ImageEditor.Forms
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        public void ReloadControlText(ResourceManager resourceManager)
+        {
+            brightnessLabel.Text = resourceManager.GetString(nameof(brightnessLabel) + ControlConstants.TextPropertyName);
+            contrastLabel.Text = resourceManager.GetString(nameof(contrastLabel) + ControlConstants.TextPropertyName);
+            cancelButton.Text = resourceManager.GetString(nameof(cancelButton) + ControlConstants.TextPropertyName);
         }
     }
 }

@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Configuration;
 using System.Drawing;
+using System.Resources;
 using System.Windows.Forms;
+using ImageEditor.Constants;
 using ImageProcessing;
 
 namespace ImageEditor.Forms
@@ -48,7 +51,10 @@ namespace ImageEditor.Forms
             maximalIntensity = 2 * Synchronization.GetLessValue(input.Height, input.Width) + 1;
         }
 
-
+        public void ReloadControlText(ResourceManager resourceManager)
+        {
+            intensityLabel.Text = resourceManager.GetString(nameof(intensityLabel) + ControlConstants.TextPropertyName);
+        }
 
         public CustomFilterForm()
         {
@@ -70,6 +76,8 @@ namespace ImageEditor.Forms
         private void CustomFilterForm_Load(object sender, EventArgs e)
         {
             intensityValue.Text = "1";
+            var cultureCode = ConfigurationManager.AppSettings[ConfigurationConstants.CultureCodeKey];
+            FormExtensions.UpdateLanguage(this, GetType(), ReloadControlText, cultureCode);
         }
 
         private void intensityValue_TextChanged(object sender, EventArgs e)

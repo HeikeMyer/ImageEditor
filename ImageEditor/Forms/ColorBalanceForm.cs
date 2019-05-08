@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Configuration;
 using System.Drawing;
+using System.Resources;
 using System.Windows.Forms;
 using ImageEditor.Constants;
 using ImageProcessing;
@@ -49,8 +51,8 @@ namespace ImageEditor.Forms
         {
             InitializeComponent();
 
-            redTrackBar.Minimum = greenTrackBar.Minimum = blueTrackBar.Minimum = ControlValueConstants.MinColorBalance;
-            redTrackBar.Maximum = greenTrackBar.Maximum = blueTrackBar.Maximum = ControlValueConstants.MaxColorBalance;
+            redTrackBar.Minimum = greenTrackBar.Minimum = blueTrackBar.Minimum = ControlConstants.MinColorBalance;
+            redTrackBar.Maximum = greenTrackBar.Maximum = blueTrackBar.Maximum = ControlConstants.MaxColorBalance;
         }
 
         private void okButton_Click(object sender, EventArgs e)
@@ -122,8 +124,11 @@ namespace ImageEditor.Forms
         {
             colorBalance = new Adjustments();
 
-            redTrackBar.Value = greenTrackBar.Value = blueTrackBar.Value = ControlValueConstants.DefaultColorBalance;
-            redValue.Text = greenValue.Text = blueValue.Text = ControlValueConstants.DefaultColorBalance.ToString();
+            redTrackBar.Value = greenTrackBar.Value = blueTrackBar.Value = ControlConstants.DefaultColorBalance;
+            redValue.Text = greenValue.Text = blueValue.Text = ControlConstants.DefaultColorBalance.ToString();
+
+            var cultureCode = ConfigurationManager.AppSettings[ConfigurationConstants.CultureCodeKey];
+            FormExtensions.UpdateLanguage(this, GetType(), ReloadControlText, cultureCode);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -134,6 +139,17 @@ namespace ImageEditor.Forms
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void ReloadControlText(ResourceManager resourceManager)
+        {
+            cyanLabel.Text = resourceManager.GetString(nameof(cyanLabel) + ControlConstants.TextPropertyName);
+            magentaLabel.Text = resourceManager.GetString(nameof(magentaLabel) + ControlConstants.TextPropertyName);
+            yellowLabel.Text = resourceManager.GetString(nameof(yellowLabel) + ControlConstants.TextPropertyName);
+            redLabel.Text = resourceManager.GetString(nameof(redLabel) + ControlConstants.TextPropertyName);
+            greenLabel.Text = resourceManager.GetString(nameof(greenLabel) + ControlConstants.TextPropertyName);
+            blueLabel.Text = resourceManager.GetString(nameof(blueLabel) + ControlConstants.TextPropertyName);
+            cancelButton.Text = resourceManager.GetString(nameof(cancelButton) + ControlConstants.TextPropertyName);
         }
     }
 }

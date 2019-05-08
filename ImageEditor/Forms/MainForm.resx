@@ -131,9 +131,6 @@
   <data name="exposureToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>230, 26</value>
   </data>
-  <data name="&gt;&gt;photoFilterToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="&gt;&gt;danishToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
@@ -230,6 +227,9 @@
   </data>
   <data name="topToolStrip.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
+  </data>
+  <data name="&gt;&gt;closeToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="imageToolStripDropDownButton.ImageTransparentColor" type="System.Drawing.Color, System.Drawing">
     <value>Magenta</value>
@@ -796,7 +796,7 @@
   <data name="&gt;&gt;blurToolStripMenuItem.Name" xml:space="preserve">
     <value>blurToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;invertToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;edgeDetectionToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="colorBalanceToolStripMenuItem.Text" xml:space="preserve">
@@ -838,9 +838,6 @@
   <data name="&gt;&gt;thresholdToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;edgeDetectionToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
   <data name="exitToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>216, 26</value>
   </data>
@@ -858,6 +855,9 @@
   </data>
   <data name="gaussianBlurToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>230, 26</value>
+  </data>
+  <data name="adjustmentsStripDropDownButton.Text" xml:space="preserve">
+    <value>Adjustments</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>MainForm</value>
@@ -973,8 +973,8 @@
   <data name="thresholdToolStripMenuItem.Text" xml:space="preserve">
     <value>threshold</value>
   </data>
-  <data name="photoFilterToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>222, 26</value>
+  <data name="closeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Закрыть</value>
   </data>
   <data name="&gt;&gt;toolStripButton1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -1024,8 +1024,8 @@
   <data name="sharpenMoreToolStripMenuItem.Text" xml:space="preserve">
     <value>sharpenMore</value>
   </data>
-  <data name="closeToolStripMenuItem.Text" xml:space="preserve">
-    <value>Закрыть</value>
+  <data name="&gt;&gt;invertToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="fileToolStripDropDownButton.ToolTipText" xml:space="preserve">
     <value>File</value>
@@ -1072,8 +1072,8 @@
   <data name="&gt;&gt;filterToolStripDropDownButton.Name" xml:space="preserve">
     <value>filterToolStripDropDownButton</value>
   </data>
-  <data name="&gt;&gt;closeToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="photoFilterToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>222, 26</value>
   </data>
   <data name="blurToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>216, 26</value>
@@ -1219,8 +1219,8 @@
   <data name="colorBalanceToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>256, 26</value>
   </data>
-  <data name="adjustmentsStripDropDownButton.Text" xml:space="preserve">
-    <value>Adjustments</value>
+  <data name="&gt;&gt;photoFilterToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;languageToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

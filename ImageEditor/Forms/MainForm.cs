@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ImageProcessing;
 using ImageEditor.Operations;
+using System.Resources;
+using ImageEditor.Constants;
 
 namespace ImageEditor.Forms
 {
@@ -70,11 +72,8 @@ namespace ImageEditor.Forms
         {
             InitializeComponent();
 
-            var lang = ConfigurationManager.AppSettings["Language"];
-            //ConfigurationManager.AppSettings["Language"] = "Russian";
-            
-            var lan2g = ConfigurationManager.AppSettings["Language"];
-            
+            var cultureCode = ConfigurationManager.AppSettings[ConfigurationConstants.CultureCodeKey];
+            FormExtensions.UpdateLanguage(this, GetType(), ReloadControlText, cultureCode);
 
             fileOperations = new FileOperation();
 
@@ -418,5 +417,53 @@ namespace ImageEditor.Forms
         {
 
         }
+
+        private void englishToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormExtensions.UpdateLanguage(this, GetType(), ReloadControlText, ConfigurationConstants.EnglishCultureCode);
+        }
+
+        private void russianToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormExtensions.UpdateLanguage(this, GetType(), ReloadControlText, ConfigurationConstants.RussianCultureCode);
+        }
+
+        public void ReloadControlText(ResourceManager resourceManager)
+        {         
+            fileToolStripDropDownButton.Text = resourceManager.GetString(nameof(fileToolStripDropDownButton) + ControlConstants.TextPropertyName);
+            openToolStripMenuItem.Text = resourceManager.GetString(nameof(openToolStripMenuItem) + ControlConstants.TextPropertyName);
+            closeToolStripMenuItem.Text = resourceManager.GetString(nameof(closeToolStripMenuItem) + ControlConstants.TextPropertyName);
+            saveAsToolStripMenuItem.Text = resourceManager.GetString(nameof(saveAsToolStripMenuItem) + ControlConstants.TextPropertyName);
+            exitToolStripMenuItem.Text = resourceManager.GetString(nameof(exitToolStripMenuItem) + ControlConstants.TextPropertyName);
+            imageToolStripDropDownButton.Text = resourceManager.GetString(nameof(imageToolStripDropDownButton) + ControlConstants.TextPropertyName);
+            filterToolStripDropDownButton.Text = resourceManager.GetString(nameof(filterToolStripDropDownButton) + ControlConstants.TextPropertyName);
+            undoToolStripMenuItem.Text = resourceManager.GetString(nameof(undoToolStripMenuItem) + ControlConstants.TextPropertyName);
+            adjustmentsToolStripMenuItem.Text = resourceManager.GetString(nameof(adjustmentsToolStripMenuItem) + ControlConstants.TextPropertyName);
+            colorBalanceToolStripMenuItem.Text = resourceManager.GetString(nameof(colorBalanceToolStripMenuItem) + ControlConstants.TextPropertyName);
+            brightnessContrastToolStripMenuItem.Text = resourceManager.GetString(nameof(brightnessContrastToolStripMenuItem) + ControlConstants.TextPropertyName);
+            exposureToolStripMenuItem.Text = resourceManager.GetString(nameof(exposureToolStripMenuItem) + ControlConstants.TextPropertyName);
+            thresholdToolStripMenuItem.Text = resourceManager.GetString(nameof(thresholdToolStripMenuItem) + ControlConstants.TextPropertyName);
+            blackAndWhiteToolStripMenuItem.Text = resourceManager.GetString(nameof(blackAndWhiteToolStripMenuItem) + ControlConstants.TextPropertyName);
+            invertToolStripMenuItem.Text = resourceManager.GetString(nameof(invertToolStripMenuItem) + ControlConstants.TextPropertyName);
+            photoFilterToolStripMenuItem.Text = resourceManager.GetString(nameof(photoFilterToolStripMenuItem) + ControlConstants.TextPropertyName);
+            settingsToolStripDropDownButton.Text = resourceManager.GetString(nameof(settingsToolStripDropDownButton) + ControlConstants.TextPropertyName);
+            languageToolStripMenuItem.Text = resourceManager.GetString(nameof(languageToolStripMenuItem) + ControlConstants.TextPropertyName);
+            englishToolStripMenuItem.Text = resourceManager.GetString(nameof(englishToolStripMenuItem) + ControlConstants.TextPropertyName);
+            russianToolStripMenuItem.Text = resourceManager.GetString(nameof(russianToolStripMenuItem) + ControlConstants.TextPropertyName);
+            blurToolStripMenuItem.Text = resourceManager.GetString(nameof(blurToolStripMenuItem) + ControlConstants.TextPropertyName);
+            boxBlurToolStripMenuItem.Text = resourceManager.GetString(nameof(boxBlurToolStripMenuItem) + ControlConstants.TextPropertyName);
+            gaussianBlurToolStripMenuItem.Text = resourceManager.GetString(nameof(gaussianBlurToolStripMenuItem) + ControlConstants.TextPropertyName);
+            sharpenToolStripMenuItem.Text = resourceManager.GetString(nameof(sharpenToolStripMenuItem) + ControlConstants.TextPropertyName);
+            sharpenToolStripMenuItem1.Text = resourceManager.GetString(nameof(sharpenToolStripMenuItem1) + ControlConstants.TextPropertyName);
+            sharpenMoreToolStripMenuItem.Text = resourceManager.GetString(nameof(sharpenMoreToolStripMenuItem) + ControlConstants.TextPropertyName);
+            sepiaToolStripMenuItem.Text = resourceManager.GetString(nameof(sepiaToolStripMenuItem) + ControlConstants.TextPropertyName);
+            unsharpMaskToolStripMenuItem.Text = resourceManager.GetString(nameof(unsharpMaskToolStripMenuItem) + ControlConstants.TextPropertyName);
+            stylizeToolStripMenuItem.Text = resourceManager.GetString(nameof(edgeDetectionToolStripMenuItem) + ControlConstants.TextPropertyName);
+            edgeDetectionToolStripMenuItem.Text = resourceManager.GetString(nameof(openToolStripMenuItem) + ControlConstants.TextPropertyName);
+            dilutionToolStripMenuItem.Text = resourceManager.GetString(nameof(dilutionToolStripMenuItem) + ControlConstants.TextPropertyName);
+            erosionToolStripMenuItem.Text = resourceManager.GetString(nameof(erosionToolStripMenuItem) + ControlConstants.TextPropertyName);
+        }
+
+        
     }
 }

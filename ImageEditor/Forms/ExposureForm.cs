@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Configuration;
 using System.Drawing;
+using System.Resources;
 using System.Windows.Forms;
 using ImageEditor.Constants;
 using ImageProcessing;
@@ -44,11 +46,11 @@ namespace ImageEditor.Forms
         {
             InitializeComponent();
 
-            exposureTrackBar.Minimum = ControlValueConstants.MinExposure;
-            exposureTrackBar.Maximum = ControlValueConstants.MaxExposure;
+            exposureTrackBar.Minimum = ControlConstants.MinExposure;
+            exposureTrackBar.Maximum = ControlConstants.MaxExposure;
 
-            gammaTrackBar.Minimum = ControlValueConstants.MinGamma;
-            gammaTrackBar.Maximum = ControlValueConstants.MaxGamma;
+            gammaTrackBar.Minimum = ControlConstants.MinGamma;
+            gammaTrackBar.Maximum = ControlConstants.MaxGamma;
         }
 
         private void exposureTrackBar_Scroll(object sender, EventArgs e)
@@ -117,11 +119,14 @@ namespace ImageEditor.Forms
         {
             exposure = new Adjustments();
 
-            exposureTrackBar.Value = ControlValueConstants.DefaultExposure;
-            exposureValue.Text = ControlValueConstants.DefaultExposure.ToString();
+            exposureTrackBar.Value = ControlConstants.DefaultExposure;
+            exposureValue.Text = ControlConstants.DefaultExposure.ToString();
 
-            gammaTrackBar.Value = ControlValueConstants.DefaultGamma;
-            gammaValue.Text = ControlValueConstants.DefaultGamma.ToString();
+            gammaTrackBar.Value = ControlConstants.DefaultGamma;
+            gammaValue.Text = ControlConstants.DefaultGamma.ToString();
+
+            var cultureCode = ConfigurationManager.AppSettings[ConfigurationConstants.CultureCodeKey];
+            FormExtensions.UpdateLanguage(this, GetType(), ReloadControlText, cultureCode);
         }
 
         public void SetInputImage(object sender, ImageProcessingEventArgs e)
@@ -141,5 +146,11 @@ namespace ImageEditor.Forms
             return exposureTrackBar.Value / 100.0;
         }
 
+        public void ReloadControlText(ResourceManager resourceManager)
+        {
+            exposureLabel.Text = resourceManager.GetString(nameof(exposureLabel) + ControlConstants.TextPropertyName);
+            gammaLabel.Text = resourceManager.GetString(nameof(gammaLabel) + ControlConstants.TextPropertyName);
+            cancelButton.Text = resourceManager.GetString(nameof(cancelButton) + ControlConstants.TextPropertyName);
+        }
     }
 }

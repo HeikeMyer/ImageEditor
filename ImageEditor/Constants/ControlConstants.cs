@@ -1,7 +1,10 @@
 ﻿namespace ImageEditor.Constants
 {
-    public static class ControlValueConstants
+    public static class ControlConstants
     {
+        public const string TextPropertyName = ".Text";
+        public const string FormTextResourceString = "$this.Text";
+
         #region [Brightness/Contrast]
 
         public const int MinBrightness = -100;
