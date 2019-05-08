@@ -74,6 +74,7 @@
     <Compile Include="Forms\ExposureForm.Designer.cs">
       <DependentUpon>ExposureForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Operations\ConfigurationOperation.cs" />
     <Compile Include="Operations\FileOperation.cs" />
     <Compile Include="Forms\MainForm.cs">
       <SubType>Form</SubType>

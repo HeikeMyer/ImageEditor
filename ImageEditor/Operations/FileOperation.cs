@@ -50,7 +50,6 @@ namespace ImageEditor.Operations
                 {
                     input = new Bitmap(Image.FromFile(openFileDialog.FileName));
                 }
-
                 catch (Exception exception)
                 {
                     MessageBox.Show(CouldNotReadFileErrorMessage + exception.Message);

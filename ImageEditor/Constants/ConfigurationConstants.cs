@@ -8,6 +8,7 @@ namespace ImageEditor.Constants
 {
     public static class ConfigurationConstants
     {
+        public const string AppSettingsSection = "appSettings";
         public const string LanguageKey = "Language";
         public const string RootSearchPathKey = "RootSearchPath";
     }

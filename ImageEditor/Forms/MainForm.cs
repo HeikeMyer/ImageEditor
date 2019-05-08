@@ -72,11 +72,7 @@ namespace ImageEditor.Forms
 
             var lang = ConfigurationManager.AppSettings["Language"];
             //ConfigurationManager.AppSettings["Language"] = "Russian";
-            var e = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
-            e.AppSettings.Settings["Language"].Value = "French";
-            e.Save(ConfigurationSaveMode.Modified);
-            ConfigurationManager.RefreshSection("appSettings");
-
+            
             var lan2g = ConfigurationManager.AppSettings["Language"];
             
 
