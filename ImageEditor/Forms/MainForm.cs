@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Drawing;
 using System.Threading;
 using System.Threading.Tasks;
@@ -67,6 +68,16 @@ namespace ImageEditor.Forms
         public MainForm()
         {
             InitializeComponent();
+
+            var lang = ConfigurationManager.AppSettings["Language"];
+            //ConfigurationManager.AppSettings["Language"] = "Russian";
+            var e = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            e.AppSettings.Settings["Language"].Value = "French";
+            e.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
+
+            var lan2g = ConfigurationManager.AppSettings["Language"];
+            
 
             fileOperations = new FileOperations();
 
@@ -148,20 +159,20 @@ namespace ImageEditor.Forms
 
         private void EnableButtons()
         {
-            this.adjustmentsStripDropDownButton.Enabled = true;
+            this.adjustmentsToolStripMenuItem.Enabled = true;
             this.imageToolStripDropDownButton.Enabled = true;
             this.filterToolStripDropDownButton.Enabled = true;
-            this.photoFilterToolStripDropDownButton.Enabled = true;
+            this.photoFilterToolStripMenuItem.Enabled = true;
             this.saveAsToolStripMenuItem.Enabled = true;
             this.closeToolStripMenuItem.Enabled = true;
         }
 
         private void DisableButtons()
         {
-            this.adjustmentsStripDropDownButton.Enabled = false;
+            this.adjustmentsToolStripMenuItem.Enabled = false;
             this.imageToolStripDropDownButton.Enabled = false;
             this.filterToolStripDropDownButton.Enabled = false;
-            this.photoFilterToolStripDropDownButton.Enabled = false;
+            this.photoFilterToolStripMenuItem.Enabled = false;
             this.saveAsToolStripMenuItem.Enabled = false;
             this.closeToolStripMenuItem.Enabled = false;
         }
@@ -402,6 +413,11 @@ namespace ImageEditor.Forms
         }
 
         private void topToolStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
         {
 
         }

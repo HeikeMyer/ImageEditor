@@ -4,14 +4,12 @@ using System.Drawing;
 
 namespace ImageProcessing
 {
-
     enum Argb : byte
     {
         blue, green, red, alfa
     }
 
-
-    public  class Adjustments
+    public class Adjustments
     {           
         private unsafe delegate void ApplyToPixel(byte* blue, double factor);
 
@@ -32,7 +30,6 @@ namespace ImageProcessing
             lockedBitmap.Unlock(bitmap);
         }
 
-
         struct Adjustment
         {
             public ApplyToPixel adjustment;
@@ -45,7 +42,6 @@ namespace ImageProcessing
             }
         }
 
-    
         private unsafe void Adjust(Bitmap bitmap, List<Adjustment> adjustmentsPack)
         {
             LockedBitmap lockedBitmap = new LockedBitmap(bitmap);
@@ -64,8 +60,7 @@ namespace ImageProcessing
 
             lockedBitmap.Unlock(bitmap);
         }
-
-      
+     
         public unsafe void AdjustBrightnessAndContrast(Bitmap source, int brightnessFactor, int contrastFactor)
         {
             List<Adjustment> AdjustmentsPack = new List<Adjustment>();
@@ -80,7 +75,6 @@ namespace ImageProcessing
                 Adjust(source, AdjustmentsPack);
         }
 
-
         public unsafe void AdjustExposure(Bitmap source, double exposure, double gamma)
         {
             List<Adjustment> AdjustmentsPack = new List<Adjustment>();
@@ -94,7 +88,6 @@ namespace ImageProcessing
             if (AdjustmentsPack.Count != 0)
                 Adjust(source, AdjustmentsPack);
         }
-
 
         public unsafe void AdjustColorBalance(Bitmap source, int redFactor, int greenFactor, int blueFactor)
         {
@@ -114,7 +107,6 @@ namespace ImageProcessing
                 Adjust(source, adjustmentsPack);
         }
 
-
         private unsafe void ApplyContrastToPixel(byte* blue, double factor)
         {
            for (Argb i = Argb.blue; i <= Argb.red; ++i)
@@ -124,13 +116,11 @@ namespace ImageProcessing
            }           
         }
 
-
         public unsafe void Sepia(Bitmap source, int factor)
         {
             ApplyToPixel adjustment = new ApplyToPixel(ApplySepiaToPixel);
             Adjust(source, factor, adjustment);
         }
-
 
         public unsafe void Invert(Bitmap source, int factor)
         {
@@ -138,20 +128,17 @@ namespace ImageProcessing
             Adjust(source, factor, adjustment);
         }
 
-
         public unsafe void BlackAndWhite(Bitmap source, int factor)
         {
             ApplyToPixel adjustment = new ApplyToPixel(ApplyBlackAndWhiteToPixel);
             Adjust(source, factor, adjustment);
         }
 
-
         public unsafe void Threshold(Bitmap source, int factor)
         {
             ApplyToPixel adjustment = new ApplyToPixel(ApplyThresholdToPixel);
             Adjust(source, factor, adjustment);
         }
-
 
         private unsafe void ApplyBrightnessToPixel(byte* blue, double factor)
         {         
@@ -162,21 +149,17 @@ namespace ImageProcessing
             }
         }
 
-
         private unsafe void ApplyThresholdToPixel(byte* blue, double factor)
         {
             *blue = *(blue + (byte)Argb.green) = *(blue + (byte)Argb.red) =
             RgbComponentOperations.Threshold(*blue, *(blue + (byte)Argb.green), *(blue + (byte)Argb.red), (byte)factor);
         }
-
-
       
         private unsafe void ApplyBlackAndWhiteToPixel(byte* blue, double factor)
         {
             *blue = *(blue + (byte)Argb.green) = *(blue + (byte)Argb.red) =
             RgbComponentOperations.BlackAndWhite(*blue, *(blue + (byte)Argb.green), *(blue + (byte)Argb.red));
         }
-
 
         private unsafe void ApplyExposureCompensationToPixel(byte* blue, double factor)
         {
@@ -187,7 +170,6 @@ namespace ImageProcessing
             }
         }
 
-
         private unsafe void ApplyGammaCorrectionToPixel(byte* blue, double factor)
         {
             for (Argb i = Argb.blue; i <= Argb.red; ++i)
@@ -197,13 +179,11 @@ namespace ImageProcessing
             }
         }
 
-
         private unsafe void ApplyBrightnessToPixelRed(byte* blue, double factor)
         {
             byte componentValue = *(blue + (byte)Argb.red);
             *(blue + (byte)Argb.red) = RgbComponentOperations.ChangeBrightness(componentValue, factor);
         }
-
 
         private unsafe void ApplyBrightnessToPixelGreen(byte* blue, double factor)
         {
@@ -211,13 +191,11 @@ namespace ImageProcessing
             *(blue + (byte)Argb.green) = RgbComponentOperations.ChangeBrightness(componentValue, factor);
         }
 
-
         private unsafe void ApplyBrightnessToPixelBlue(byte* blue, double factor)
         {
             byte componentValue = *blue;
             *blue = RgbComponentOperations.ChangeBrightness(componentValue, factor);
         }
-
 
         private unsafe void ApplySepiaToPixel(byte* blue, double factor)
         {
@@ -226,7 +204,6 @@ namespace ImageProcessing
             *(blue + (byte)Argb.green) = RgbComponentOperations.ComputeSepiaGreen(tone);
             *(blue + (byte)Argb.red) = RgbComponentOperations.ComputeSepiaRed(tone);
         }
-
 
         private unsafe void ApplyInversionToPixel(byte* blue, double factor)
         {

@@ -13,14 +13,12 @@ namespace ImageProcessing
 
         ComputeRgbComponentValue computeRgbComponentValue;
 
-
         protected override byte ComputeNewRgbComponentValue(byte[] neighborhood)
         {
             return computeRgbComponentValue(neighborhood);
         }
 
-
-        private  byte ApplyDilution(byte[] neighborhood)
+        private byte ApplyDilution(byte[] neighborhood)
         {
             byte minimum = neighborhood[0];
 
@@ -30,7 +28,6 @@ namespace ImageProcessing
 
             return minimum;
         }
-
 
         private byte ApplyErosion(byte[] neighborhood)
         {
@@ -53,7 +50,6 @@ namespace ImageProcessing
             return RgbComponentOperations.ControlOverflow(sum/neighborhoodSize);
         }
 
-
         public Bitmap Erosion(Bitmap input)
         {
             computeRgbComponentValue = new ComputeRgbComponentValue(ApplyErosion);
@@ -61,7 +57,6 @@ namespace ImageProcessing
             Apply(input, output);
             return output;
         }
-
 
         public Bitmap Dilution(Bitmap input)
         {

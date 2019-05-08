@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ColorBalanceForm));
             this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.redValue = new System.Windows.Forms.TextBox();
@@ -49,156 +50,93 @@
             // 
             // okButton
             // 
-            this.okButton.Location = new System.Drawing.Point(625, 120);
-            this.okButton.Margin = new System.Windows.Forms.Padding(0);
+            resources.ApplyResources(this.okButton, "okButton");
             this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(75, 23);
-            this.okButton.TabIndex = 0;
-            this.okButton.Text = "OK";
             this.okButton.UseVisualStyleBackColor = true;
             this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
-            this.cancelButton.Location = new System.Drawing.Point(625, 170);
-            this.cancelButton.Margin = new System.Windows.Forms.Padding(0);
+            resources.ApplyResources(this.cancelButton, "cancelButton");
             this.cancelButton.Name = "cancelButton";
-            this.cancelButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelButton.TabIndex = 1;
-            this.cancelButton.Text = "Cancel";
             this.cancelButton.UseVisualStyleBackColor = true;
             this.cancelButton.Click += new System.EventHandler(this.cancelButton_Click);
             // 
             // redValue
             // 
-            this.redValue.Location = new System.Drawing.Point(125, 25);
-            this.redValue.Margin = new System.Windows.Forms.Padding(0);
+            resources.ApplyResources(this.redValue, "redValue");
             this.redValue.Name = "redValue";
-            this.redValue.Size = new System.Drawing.Size(100, 22);
-            this.redValue.TabIndex = 2;
             this.redValue.TextChanged += new System.EventHandler(this.redValue_TextChanged);
             // 
             // greenValue
             // 
-            this.greenValue.Location = new System.Drawing.Point(250, 25);
-            this.greenValue.Margin = new System.Windows.Forms.Padding(0);
+            resources.ApplyResources(this.greenValue, "greenValue");
             this.greenValue.Name = "greenValue";
-            this.greenValue.Size = new System.Drawing.Size(100, 22);
-            this.greenValue.TabIndex = 3;
             this.greenValue.TextChanged += new System.EventHandler(this.greenValue_TextChanged);
             // 
             // blueValue
             // 
-            this.blueValue.Location = new System.Drawing.Point(375, 25);
-            this.blueValue.Margin = new System.Windows.Forms.Padding(0);
+            resources.ApplyResources(this.blueValue, "blueValue");
             this.blueValue.Name = "blueValue";
-            this.blueValue.Size = new System.Drawing.Size(100, 22);
-            this.blueValue.TabIndex = 4;
             this.blueValue.TextChanged += new System.EventHandler(this.blueValue_TextChanged);
             // 
             // redTrackBar
             // 
-            this.redTrackBar.Location = new System.Drawing.Point(100, 72);
-            this.redTrackBar.Margin = new System.Windows.Forms.Padding(0);
+            resources.ApplyResources(this.redTrackBar, "redTrackBar");
             this.redTrackBar.Name = "redTrackBar";
-            this.redTrackBar.Size = new System.Drawing.Size(400, 56);
-            this.redTrackBar.TabIndex = 5;
             this.redTrackBar.Scroll += new System.EventHandler(this.redTrackBar_Scroll);
             this.redTrackBar.ValueChanged += new System.EventHandler(this.redTrackBar_ValueChanged);
             // 
             // greenTrackBar
             // 
-            this.greenTrackBar.Location = new System.Drawing.Point(100, 153);
-            this.greenTrackBar.Margin = new System.Windows.Forms.Padding(0);
+            resources.ApplyResources(this.greenTrackBar, "greenTrackBar");
             this.greenTrackBar.Name = "greenTrackBar";
-            this.greenTrackBar.Size = new System.Drawing.Size(400, 56);
-            this.greenTrackBar.TabIndex = 6;
             this.greenTrackBar.Scroll += new System.EventHandler(this.greenTrackBar_Scroll);
             this.greenTrackBar.ValueChanged += new System.EventHandler(this.greenTrackBar_ValueChanged);
             // 
             // blueTrackBar
             // 
-            this.blueTrackBar.Location = new System.Drawing.Point(100, 234);
-            this.blueTrackBar.Margin = new System.Windows.Forms.Padding(0);
+            resources.ApplyResources(this.blueTrackBar, "blueTrackBar");
             this.blueTrackBar.Name = "blueTrackBar";
-            this.blueTrackBar.Size = new System.Drawing.Size(400, 56);
-            this.blueTrackBar.TabIndex = 7;
             this.blueTrackBar.Scroll += new System.EventHandler(this.blueTrackBar_Scroll);
             this.blueTrackBar.ValueChanged += new System.EventHandler(this.blueTrackBar_ValueChanged);
             // 
             // cyanLabel
             // 
-            this.cyanLabel.AutoSize = true;
-            this.cyanLabel.Location = new System.Drawing.Point(25, 72);
-            this.cyanLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.cyanLabel.MinimumSize = new System.Drawing.Size(75, 20);
+            resources.ApplyResources(this.cyanLabel, "cyanLabel");
             this.cyanLabel.Name = "cyanLabel";
-            this.cyanLabel.Size = new System.Drawing.Size(75, 20);
-            this.cyanLabel.TabIndex = 8;
-            this.cyanLabel.Text = "Cyan";
             this.cyanLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // magentaLabel
             // 
-            this.magentaLabel.AutoSize = true;
-            this.magentaLabel.Location = new System.Drawing.Point(25, 153);
-            this.magentaLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.magentaLabel.MinimumSize = new System.Drawing.Size(75, 20);
+            resources.ApplyResources(this.magentaLabel, "magentaLabel");
             this.magentaLabel.Name = "magentaLabel";
-            this.magentaLabel.Size = new System.Drawing.Size(75, 20);
-            this.magentaLabel.TabIndex = 9;
-            this.magentaLabel.Text = "Magenta";
             // 
             // yellowLabel
             // 
-            this.yellowLabel.AutoSize = true;
-            this.yellowLabel.Location = new System.Drawing.Point(25, 234);
-            this.yellowLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.yellowLabel.MinimumSize = new System.Drawing.Size(75, 20);
+            resources.ApplyResources(this.yellowLabel, "yellowLabel");
             this.yellowLabel.Name = "yellowLabel";
-            this.yellowLabel.Size = new System.Drawing.Size(75, 20);
-            this.yellowLabel.TabIndex = 10;
-            this.yellowLabel.Text = "Yellow";
             // 
             // greenLabel
             // 
-            this.greenLabel.AutoSize = true;
-            this.greenLabel.Location = new System.Drawing.Point(525, 153);
-            this.greenLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.greenLabel.MinimumSize = new System.Drawing.Size(75, 20);
+            resources.ApplyResources(this.greenLabel, "greenLabel");
             this.greenLabel.Name = "greenLabel";
-            this.greenLabel.Size = new System.Drawing.Size(75, 20);
-            this.greenLabel.TabIndex = 11;
-            this.greenLabel.Text = "Green";
             this.greenLabel.Click += new System.EventHandler(this.label4_Click);
             // 
             // redLabel
             // 
-            this.redLabel.AutoSize = true;
-            this.redLabel.Location = new System.Drawing.Point(525, 72);
-            this.redLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.redLabel.MinimumSize = new System.Drawing.Size(75, 20);
+            resources.ApplyResources(this.redLabel, "redLabel");
             this.redLabel.Name = "redLabel";
-            this.redLabel.Size = new System.Drawing.Size(75, 20);
-            this.redLabel.TabIndex = 12;
-            this.redLabel.Text = "Red";
             // 
             // blueLabel
             // 
-            this.blueLabel.AutoSize = true;
-            this.blueLabel.Location = new System.Drawing.Point(525, 234);
-            this.blueLabel.Margin = new System.Windows.Forms.Padding(0);
-            this.blueLabel.MinimumSize = new System.Drawing.Size(75, 20);
+            resources.ApplyResources(this.blueLabel, "blueLabel");
             this.blueLabel.Name = "blueLabel";
-            this.blueLabel.Size = new System.Drawing.Size(75, 20);
-            this.blueLabel.TabIndex = 13;
-            this.blueLabel.Text = "Blue";
             // 
             // ColorBalanceForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 318);
             this.Controls.Add(this.blueLabel);
             this.Controls.Add(this.redLabel);
             this.Controls.Add(this.greenLabel);
@@ -215,7 +153,6 @@
             this.Controls.Add(this.okButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ColorBalanceForm";
-            this.Text = "Color Balance";
             this.Load += new System.EventHandler(this.ColorBalanceForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.redTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.greenTrackBar)).EndInit();

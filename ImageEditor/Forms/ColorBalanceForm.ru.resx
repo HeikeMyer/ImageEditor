@@ -118,153 +118,64 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="labelThresholdLevel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 25</value>
-  </data>
-  <data name="thresholdTrackBar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>25, 60</value>
-  </data>
-  <data name="&gt;&gt;okButton.Name" xml:space="preserve">
-    <value>okButton</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>8, 16</value>
-  </data>
-  <data name="&gt;&gt;okButton.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="okButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
-  </data>
-  <data name="&gt;&gt;thresholdTrackBar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TrackBar, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="labelThresholdLevel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="cancelButton.Size" type="System.Drawing.Size, System.Drawing">
-    <value>75, 25</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;thresholdTrackBar.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;cancelButton.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="cancelButton.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="thresholdTrackBar.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;labelThresholdLevel.Name" xml:space="preserve">
-    <value>labelThresholdLevel</value>
-  </data>
-  <data name="&gt;&gt;thresholdValue.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;thresholdValue.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="thresholdTrackBar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 56</value>
-  </data>
-  <data name="labelThresholdLevel.Text" xml:space="preserve">
-    <value>Threshold Level</value>
-  </data>
-  <data name="labelThresholdLevel.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>584, 121</value>
-  </data>
-  <data name="&gt;&gt;thresholdValue.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="labelThresholdLevel.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;labelThresholdLevel.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;thresholdValue.Name" xml:space="preserve">
-    <value>thresholdValue</value>
-  </data>
-  <data name="cancelButton.Text" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="&gt;&gt;cancelButton.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="labelThresholdLevel.MinimumSize" type="System.Drawing.Size, System.Drawing">
-    <value>75, 20</value>
-  </data>
-  <data name="&gt;&gt;thresholdTrackBar.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="okButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>475, 30</value>
-  </data>
-  <data name="thresholdValue.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+    <value>646, 118</value>
   </data>
   <data name="cancelButton.Location" type="System.Drawing.Point, System.Drawing">
-    <value>475, 70</value>
+    <value>646, 168</value>
   </data>
-  <data name="okButton.Text" xml:space="preserve">
-    <value>OK</value>
+  <data name="cancelButton.Text" xml:space="preserve">
+    <value>Отмена</value>
   </data>
-  <data name="&gt;&gt;cancelButton.Name" xml:space="preserve">
-    <value>cancelButton</value>
+  <data name="redValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>146, 23</value>
   </data>
-  <data name="&gt;&gt;okButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="greenValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>271, 23</value>
   </data>
-  <data name="thresholdValue.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 22</value>
+  <data name="blueValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>396, 23</value>
   </data>
-  <data name="okButton.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="redTrackBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 70</value>
   </data>
-  <data name="thresholdTrackBar.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
+  <data name="greenTrackBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 151</value>
   </data>
-  <data name="&gt;&gt;okButton.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="blueTrackBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>121, 232</value>
   </data>
-  <data name="labelThresholdLevel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>110, 20</value>
+  <data name="cyanLabel.Text" xml:space="preserve">
+    <value>Голубой</value>
   </data>
-  <data name="thresholdValue.Location" type="System.Drawing.Point, System.Drawing">
-    <value>325, 25</value>
+  <data name="magentaLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>82, 20</value>
   </data>
-  <data name="&gt;&gt;labelThresholdLevel.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="magentaLabel.Text" xml:space="preserve">
+    <value>Пурпурный</value>
   </data>
-  <data name="&gt;&gt;thresholdTrackBar.Name" xml:space="preserve">
-    <value>thresholdTrackBar</value>
+  <data name="yellowLabel.Text" xml:space="preserve">
+    <value>Желтый</value>
   </data>
-  <data name="&gt;&gt;cancelButton.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="greenLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>546, 151</value>
+  </data>
+  <data name="greenLabel.Text" xml:space="preserve">
+    <value>Зеленый</value>
+  </data>
+  <data name="redLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>546, 70</value>
+  </data>
+  <data name="redLabel.Text" xml:space="preserve">
+    <value>Красный</value>
+  </data>
+  <data name="blueLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>546, 232</value>
+  </data>
+  <data name="blueLabel.Text" xml:space="preserve">
+    <value>Синий</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Threshold Level</value>
+    <value>Цветовой баланс</value>
   </data>
-  <data name="&gt;&gt;labelThresholdLevel.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>ThresholdForm</value>
-  </data>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="$this.Language" type="System.Globalization.CultureInfo, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>ru</value>
-  </metadata>
 </root>

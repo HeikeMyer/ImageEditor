@@ -26,7 +26,7 @@ namespace ImageProcessing
             SetUpKernel(filterKernel);
         }
 
-        protected  override byte ComputeNewRgbComponentValue(byte[] neighborhood)
+        protected override byte ComputeNewRgbComponentValue(byte[] neighborhood)
         {
             double sum = 0;
 
