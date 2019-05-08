@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
 
-namespace ImageEditor
+namespace ImageProcessing
 {
     public struct ConvolutionMatrix
     {
@@ -14,7 +14,7 @@ namespace ImageEditor
         public int size;
     }
 
-    class Filter
+    public class Filter
     {
         public event ImageProcessingEventHandler ProcessingCompleted;
 
@@ -152,7 +152,7 @@ namespace ImageEditor
 
         public void ApplyFilter(object sender, FilterEventArgs e)
         {
-            KernelFilter kernel = new ImageEditor.KernelFilter(e.Filter);
+            KernelFilter kernel = new KernelFilter(e.Filter);
             OnProcessingCompleted(kernel.ApplyKernelFilter(e.Input));
         }   
     }

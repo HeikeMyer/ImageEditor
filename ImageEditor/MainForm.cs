@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ImageProcessing;
 
 namespace ImageEditor
 {
@@ -56,7 +57,7 @@ namespace ImageEditor
 
             fileOperations.FileOpened += ReceiveImage;
 
-            filter = new ImageEditor.Filter();
+            filter = new Filter();
             this.FilterCall += filter.ApplyFilter;
 
             filter.ProcessingCompleted += ViewProcessedImage;
@@ -184,7 +185,7 @@ namespace ImageEditor
         {
 
             BackUpWorkingCopy();
-            Adjustments adjustment = new ImageEditor.Adjustments();
+            Adjustments adjustment = new Adjustments();
             adjustment.Sepia(workingCopy, 0);
             ViewWorkingCopy();
         }
@@ -192,7 +193,7 @@ namespace ImageEditor
         private void blackAndWhiteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            Adjustments adjustment = new ImageEditor.Adjustments();
+            Adjustments adjustment = new Adjustments();
             adjustment.BlackAndWhite(workingCopy, 0);
             ViewWorkingCopy();
         }
@@ -276,7 +277,7 @@ namespace ImageEditor
         {
 
             BackUpWorkingCopy();
-            Adjustments adjustment = new ImageEditor.Adjustments();
+            Adjustments adjustment = new Adjustments();
             adjustment.Invert(workingCopy, 0);
             ViewWorkingCopy();
         }
@@ -359,6 +360,11 @@ namespace ImageEditor
         }
 
         private void filterToolStripDropDownButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox_Click(object sender, EventArgs e)
         {
 
         }

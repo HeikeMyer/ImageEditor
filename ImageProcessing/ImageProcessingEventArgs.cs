@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 
 
-namespace ImageEditor
+namespace ImageProcessing
 {
     public delegate void ImageProcessingEventHandler(object sender, ImageProcessingEventArgs e);
 

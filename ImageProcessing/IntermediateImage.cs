@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace ImageEditor
+namespace ImageProcessing
 {
     class IntermediateImage
     {
