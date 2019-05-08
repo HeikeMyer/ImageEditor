@@ -59,7 +59,7 @@
     <Compile Include="ColorBalanceForm.Designer.cs">
       <DependentUpon>ColorBalanceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Constants\TrackBarConstants.cs" />
+    <Compile Include="Constants\ControlValueConstants.cs" />
     <Compile Include="CustomFilterForm.cs">
       <SubType>Form</SubType>
     </Compile>
