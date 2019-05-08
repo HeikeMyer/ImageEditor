@@ -111,12 +111,12 @@ namespace ImageEditor
 
         private void BackUpWorkingCopy()
         {
-            backup = (Bitmap)workingCopy.Clone();
+            backup = (Bitmap)workingCopy?.Clone();
         }
 
         private void RestoreBackupWorkingCopy()
         {
-            workingCopy = (Bitmap)backup.Clone();
+            workingCopy = (Bitmap)backup?.Clone();
         }
 
         private void ReceiveImage(object sender, FileOperations.OpenEventArgs e)
@@ -142,12 +142,12 @@ namespace ImageEditor
 
         private void DisableButtons()
         {
-            this.adjustmentsStripDropDownButton.Enabled = false;
+           /* this.adjustmentsStripDropDownButton.Enabled = false;
             this.imageToolStripDropDownButton.Enabled = false;
             this.filterToolStripDropDownButton.Enabled = false;
             this.photoFilterToolStripDropDownButton.Enabled = false;
             this.saveAsToolStripMenuItem.Enabled = false;
-            this.closeToolStripMenuItem.Enabled = false;
+            this.closeToolStripMenuItem.Enabled = false;*/
         }
 
         private void ViewOriginalImage()

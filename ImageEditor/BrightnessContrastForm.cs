@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ImageProcessing;
+using ImageEditor.Constants;
 
 namespace ImageEditor
 {
@@ -40,7 +41,7 @@ namespace ImageEditor
         }
 
 
-        private Adjustments brightnessContast;
+        private Adjustments brightnessContrast;
         private Bitmap input;
 
         public void SetInputImage(object sender, ImageProcessingEventArgs e)
@@ -52,6 +53,13 @@ namespace ImageEditor
         public BrightnessContrastForm()
         {
             InitializeComponent();
+
+            brightnessTrackBar.Minimum = TrackBarConstants.MinBrightnessValue;
+            brightnessTrackBar.Maximum = TrackBarConstants.MaxBrightnessValue;
+
+            contrastTrackBar.Minimum = TrackBarConstants.MinBrightnessValue;
+            contrastTrackBar.Maximum = TrackBarConstants.MaxBrightnessValue;
+
         }
 
         private void okButton_Click(object sender, EventArgs e)
@@ -68,48 +76,58 @@ namespace ImageEditor
 
         private void BrightnessContrastForm_Load(object sender, EventArgs e)
         {
-            brightnessContast = new Adjustments();
+            brightnessContrast = new Adjustments();
 
-            brightnessTrackbar.Value = 0;
+            brightnessTrackBar.Value = 0;
             brightnessValue.Text = "0";
 
-            contrastTrackbar.Value = 0;
+            contrastTrackBar.Value = 0;
             contrastValue.Text = "0";
         }
 
         private void brightnessTrackbar_Scroll(object sender, EventArgs e)
         {
-            Synchronization.SynchronizeTextBox(brightnessValue, brightnessTrackbar);
+            Synchronization.SynchronizeTextBox(brightnessValue, brightnessTrackBar);
         }
 
         private void contrastTrackbar_Scroll(object sender, EventArgs e)
         {
-            Synchronization.SynchronizeTextBox(contrastValue, contrastTrackbar);
+            Synchronization.SynchronizeTextBox(contrastValue, contrastTrackBar);
         }
 
         private void brightnessTrackbar_ValueChanged(object sender, EventArgs e)
         {
             Bitmap preview = new Bitmap(input);
-            brightnessContast.AdjustBrightnessAndContrast(preview, brightnessTrackbar.Value, contrastTrackbar.Value);
+            brightnessContrast.AdjustBrightnessAndContrast(preview, brightnessTrackBar.Value, contrastTrackBar.Value);
             OnProcessingCompleted(preview);
         }
 
         private void contrastTrackbar_ValueChanged(object sender, EventArgs e)
         {
             Bitmap preview = new Bitmap(input);
-            brightnessContast.AdjustBrightnessAndContrast(preview, brightnessTrackbar.Value, contrastTrackbar.Value);
+            brightnessContrast.AdjustBrightnessAndContrast(preview, brightnessTrackBar.Value, contrastTrackBar.Value);
             OnProcessingCompleted(preview);
 
         }
 
         private void brightnessValue_TextChanged(object sender, EventArgs e)
         {
-            Synchronization.SynchronizeTrackBar(brightnessTrackbar, brightnessValue);
+            Synchronization.SynchronizeTrackBar(brightnessTrackBar, brightnessValue);
         }
 
         private void contrastValue_TextChanged(object sender, EventArgs e)
         {
-            Synchronization.SynchronizeTrackBar(contrastTrackbar, contrastValue);
+            Synchronization.SynchronizeTrackBar(contrastTrackBar, contrastValue);
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

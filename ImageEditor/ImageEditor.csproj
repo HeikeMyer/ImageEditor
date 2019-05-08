@@ -59,6 +59,9 @@
     <Compile Include="ColorBalanceForm.Designer.cs">
       <DependentUpon>ColorBalanceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Constants\LocationConstants.cs" />
+    <Compile Include="Constants\SizeConstants.cs" />
+    <Compile Include="Constants\TrackBarConstants.cs" />
     <Compile Include="CustomFilterForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +113,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="ThresholdForm.resx">
       <DependentUpon>ThresholdForm.cs</DependentUpon>
