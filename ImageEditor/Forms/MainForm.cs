@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ImageProcessing;
 
-namespace ImageEditor
+namespace ImageEditor.Forms
 {
     public partial class MainForm : Form
     {

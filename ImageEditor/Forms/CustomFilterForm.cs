@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using ImageProcessing;
 
-namespace ImageEditor
+namespace ImageEditor.Forms
 {
     public partial class CustomFilterForm : Form
     {

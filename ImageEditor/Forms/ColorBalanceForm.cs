@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using ImageEditor.Constants;
 using ImageProcessing;
 
-namespace ImageEditor
+namespace ImageEditor.Forms
 {
     public partial class ColorBalanceForm : Form
     {

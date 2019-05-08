@@ -1,4 +1,4 @@
-﻿namespace ImageEditor
+﻿namespace ImageEditor.Forms
 {
     partial class BrightnessContrastForm
     {

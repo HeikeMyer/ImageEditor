@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using ImageProcessing;
 using ImageEditor.Constants;
 
-namespace ImageEditor
+namespace ImageEditor.Forms
 {
     public partial class BrightnessContrastForm : Form
     {
