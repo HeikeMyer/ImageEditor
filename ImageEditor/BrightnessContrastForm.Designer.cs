@@ -147,7 +147,7 @@
             this.ClientSize = new System.Drawing.Size(601, 243);
             this.Controls.Add(this.panel);
             this.Name = "BrightnessContrastForm";
-            this.Text = "BrightnessContrastForm";
+            this.Text = "Brightness/Contrast";
             this.Load += new System.EventHandler(this.BrightnessContrastForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.brightnessTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contrastTrackBar)).EndInit();
