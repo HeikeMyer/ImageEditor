@@ -86,35 +86,36 @@
             this.fileToolStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("fileToolStripDropDownButton.Image")));
             this.fileToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.fileToolStripDropDownButton.Name = "fileToolStripDropDownButton";
-            this.fileToolStripDropDownButton.Size = new System.Drawing.Size(206, 24);
-            this.fileToolStripDropDownButton.Text = "toolStripDropDownButton1";
+            this.fileToolStripDropDownButton.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripDropDownButton.Text = "File";
+            this.fileToolStripDropDownButton.ToolTipText = "File";
             this.fileToolStripDropDownButton.Click += new System.EventHandler(this.toolStripDropDownButton1_Click);
             // 
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.openToolStripMenuItem.Text = "Open...";
             this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
             // 
             // closeToolStripMenuItem
             // 
             this.closeToolStripMenuItem.Name = "closeToolStripMenuItem";
-            this.closeToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
+            this.closeToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.closeToolStripMenuItem.Text = "Close";
             this.closeToolStripMenuItem.Click += new System.EventHandler(this.closeToolStripMenuItem_Click);
             // 
             // saveAsToolStripMenuItem
             // 
             this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.saveAsToolStripMenuItem.Text = "Save as...";
             this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(142, 26);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -126,14 +127,14 @@
             this.imageToolStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("imageToolStripDropDownButton.Image")));
             this.imageToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.imageToolStripDropDownButton.Name = "imageToolStripDropDownButton";
-            this.imageToolStripDropDownButton.Size = new System.Drawing.Size(206, 24);
-            this.imageToolStripDropDownButton.Text = "toolStripDropDownButton2";
+            this.imageToolStripDropDownButton.Size = new System.Drawing.Size(65, 24);
+            this.imageToolStripDropDownButton.Text = "Image";
             this.imageToolStripDropDownButton.Click += new System.EventHandler(this.imageToolStripDropDownButton_Click);
             // 
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(120, 26);
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.undoToolStripMenuItem.Text = "Undo";
             this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
@@ -146,21 +147,21 @@
             this.adjustmentsStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("adjustmentsStripDropDownButton.Image")));
             this.adjustmentsStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.adjustmentsStripDropDownButton.Name = "adjustmentsStripDropDownButton";
-            this.adjustmentsStripDropDownButton.Size = new System.Drawing.Size(206, 24);
-            this.adjustmentsStripDropDownButton.Text = "toolStripDropDownButton3";
+            this.adjustmentsStripDropDownButton.Size = new System.Drawing.Size(105, 24);
+            this.adjustmentsStripDropDownButton.Text = "Adjustments";
             this.adjustmentsStripDropDownButton.Click += new System.EventHandler(this.adjustmentsStripDropDownButton_Click);
             // 
             // brightnessContrastToolStripMenuItem
             // 
             this.brightnessContrastToolStripMenuItem.Name = "brightnessContrastToolStripMenuItem";
-            this.brightnessContrastToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            this.brightnessContrastToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.brightnessContrastToolStripMenuItem.Text = "brightnessContrast";
             this.brightnessContrastToolStripMenuItem.Click += new System.EventHandler(this.brightnessContrastToolStripMenuItem_Click);
             // 
             // colorBalanceToolStripMenuItem
             // 
             this.colorBalanceToolStripMenuItem.Name = "colorBalanceToolStripMenuItem";
-            this.colorBalanceToolStripMenuItem.Size = new System.Drawing.Size(207, 26);
+            this.colorBalanceToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.colorBalanceToolStripMenuItem.Text = "colorBalance";
             this.colorBalanceToolStripMenuItem.Click += new System.EventHandler(this.colorBalanceToolStripMenuItem_Click);
             // 
@@ -174,28 +175,28 @@
             this.photoFilterToolStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("photoFilterToolStripDropDownButton.Image")));
             this.photoFilterToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.photoFilterToolStripDropDownButton.Name = "photoFilterToolStripDropDownButton";
-            this.photoFilterToolStripDropDownButton.Size = new System.Drawing.Size(206, 24);
-            this.photoFilterToolStripDropDownButton.Text = "toolStripDropDownButton1";
+            this.photoFilterToolStripDropDownButton.Size = new System.Drawing.Size(99, 24);
+            this.photoFilterToolStripDropDownButton.Text = "Photo Filter";
             this.photoFilterToolStripDropDownButton.Click += new System.EventHandler(this.photoFilterToolStripDropDownButton_Click);
             // 
             // erosionToolStripMenuItem
             // 
             this.erosionToolStripMenuItem.Name = "erosionToolStripMenuItem";
-            this.erosionToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
+            this.erosionToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.erosionToolStripMenuItem.Text = "erosion";
             this.erosionToolStripMenuItem.Click += new System.EventHandler(this.erosionToolStripMenuItem_Click);
             // 
             // dilutionToolStripMenuItem
             // 
             this.dilutionToolStripMenuItem.Name = "dilutionToolStripMenuItem";
-            this.dilutionToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
+            this.dilutionToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.dilutionToolStripMenuItem.Text = "dilution";
             this.dilutionToolStripMenuItem.Click += new System.EventHandler(this.dilutionToolStripMenuItem_Click);
             // 
             // invertToolStripMenuItem
             // 
             this.invertToolStripMenuItem.Name = "invertToolStripMenuItem";
-            this.invertToolStripMenuItem.Size = new System.Drawing.Size(135, 26);
+            this.invertToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.invertToolStripMenuItem.Text = "invert";
             this.invertToolStripMenuItem.Click += new System.EventHandler(this.invertToolStripMenuItem_Click);
             // 
@@ -216,85 +217,87 @@
             this.filterToolStripDropDownButton.Image = ((System.Drawing.Image)(resources.GetObject("filterToolStripDropDownButton.Image")));
             this.filterToolStripDropDownButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.filterToolStripDropDownButton.Name = "filterToolStripDropDownButton";
-            this.filterToolStripDropDownButton.Size = new System.Drawing.Size(206, 24);
-            this.filterToolStripDropDownButton.Text = "toolStripDropDownButton2";
+            this.filterToolStripDropDownButton.Size = new System.Drawing.Size(56, 24);
+            this.filterToolStripDropDownButton.Text = "Filter";
             this.filterToolStripDropDownButton.Click += new System.EventHandler(this.filterToolStripDropDownButton_Click);
             // 
             // sepiaToolStripMenuItem
             // 
             this.sepiaToolStripMenuItem.Name = "sepiaToolStripMenuItem";
-            this.sepiaToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
+            this.sepiaToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.sepiaToolStripMenuItem.Text = "sepia";
             this.sepiaToolStripMenuItem.Click += new System.EventHandler(this.sepiaToolStripMenuItem_Click);
             // 
             // blackAndWhiteToolStripMenuItem
             // 
             this.blackAndWhiteToolStripMenuItem.Name = "blackAndWhiteToolStripMenuItem";
-            this.blackAndWhiteToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
+            this.blackAndWhiteToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.blackAndWhiteToolStripMenuItem.Text = "blackAndWhite";
             this.blackAndWhiteToolStripMenuItem.Click += new System.EventHandler(this.blackAndWhiteToolStripMenuItem_Click);
             // 
             // thresholdToolStripMenuItem
             // 
             this.thresholdToolStripMenuItem.Name = "thresholdToolStripMenuItem";
-            this.thresholdToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
+            this.thresholdToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.thresholdToolStripMenuItem.Text = "threshold";
             this.thresholdToolStripMenuItem.Click += new System.EventHandler(this.thresholdToolStripMenuItem_Click);
             // 
             // exposureToolStripMenuItem
             // 
             this.exposureToolStripMenuItem.Name = "exposureToolStripMenuItem";
-            this.exposureToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
+            this.exposureToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.exposureToolStripMenuItem.Text = "exposure";
             this.exposureToolStripMenuItem.Click += new System.EventHandler(this.exposureToolStripMenuItem_Click);
             // 
             // sharpenToolStripMenuItem
             // 
             this.sharpenToolStripMenuItem.Name = "sharpenToolStripMenuItem";
-            this.sharpenToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
+            this.sharpenToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.sharpenToolStripMenuItem.Text = "sharpen";
             this.sharpenToolStripMenuItem.Click += new System.EventHandler(this.sharpenToolStripMenuItem_Click);
             // 
             // sharpenMoreToolStripMenuItem
             // 
             this.sharpenMoreToolStripMenuItem.Name = "sharpenMoreToolStripMenuItem";
-            this.sharpenMoreToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
+            this.sharpenMoreToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.sharpenMoreToolStripMenuItem.Text = "sharpenMore";
             this.sharpenMoreToolStripMenuItem.Click += new System.EventHandler(this.sharpenMoreToolStripMenuItem_Click);
             // 
             // unsharpMaskToolStripMenuItem
             // 
             this.unsharpMaskToolStripMenuItem.Name = "unsharpMaskToolStripMenuItem";
-            this.unsharpMaskToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
+            this.unsharpMaskToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.unsharpMaskToolStripMenuItem.Text = "unsharpMask";
             this.unsharpMaskToolStripMenuItem.Click += new System.EventHandler(this.unsharpMaskToolStripMenuItem_Click);
             // 
             // boxBlurToolStripMenuItem
             // 
             this.boxBlurToolStripMenuItem.Name = "boxBlurToolStripMenuItem";
-            this.boxBlurToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
+            this.boxBlurToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.boxBlurToolStripMenuItem.Text = "boxBlur";
             this.boxBlurToolStripMenuItem.Click += new System.EventHandler(this.boxBlurToolStripMenuItem_Click);
             // 
             // gaussianBlurToolStripMenuItem
             // 
             this.gaussianBlurToolStripMenuItem.Name = "gaussianBlurToolStripMenuItem";
-            this.gaussianBlurToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
+            this.gaussianBlurToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.gaussianBlurToolStripMenuItem.Text = "gaussianBlur";
             this.gaussianBlurToolStripMenuItem.Click += new System.EventHandler(this.gaussianBlurToolStripMenuItem_Click);
             // 
             // edgeDetectionToolStripMenuItem
             // 
             this.edgeDetectionToolStripMenuItem.Name = "edgeDetectionToolStripMenuItem";
-            this.edgeDetectionToolStripMenuItem.Size = new System.Drawing.Size(185, 26);
+            this.edgeDetectionToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
             this.edgeDetectionToolStripMenuItem.Text = "edgeDetection";
             this.edgeDetectionToolStripMenuItem.Click += new System.EventHandler(this.edgeDetectionToolStripMenuItem_Click);
             // 
             // pictureBox
             // 
-            this.pictureBox.Location = new System.Drawing.Point(32, 40);
+            this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox.Location = new System.Drawing.Point(0, 27);
             this.pictureBox.Name = "pictureBox";
-            this.pictureBox.Size = new System.Drawing.Size(734, 387);
+            this.pictureBox.Size = new System.Drawing.Size(1183, 423);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox.TabIndex = 1;
             this.pictureBox.TabStop = false;
             this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
@@ -303,11 +306,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
+            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(1183, 450);
             this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.topToolStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "Image Editor";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.topToolStrip.ResumeLayout(false);
             this.topToolStrip.PerformLayout();

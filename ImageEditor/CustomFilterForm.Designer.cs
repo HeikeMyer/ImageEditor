@@ -85,6 +85,7 @@
             this.Controls.Add(this.intensityValue);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "CustomFilterForm";
             this.Text = "Intensity";
             this.Load += new System.EventHandler(this.CustomFilterForm_Load);
