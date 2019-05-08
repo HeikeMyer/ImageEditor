@@ -9,7 +9,6 @@ namespace ImageProcessing
         private int[] kernel;
         private int kernelSize;
 
-
         private void SetUpKernel(ConvolutionMatrix filterKernel)
         {
             kernel = new int[kernelSize];
@@ -19,7 +18,6 @@ namespace ImageProcessing
                     kernel[iY * size + iX] = filterKernel.matrix[iY][iX];                        
         }
 
-
         public KernelFilter(ConvolutionMatrix filterKernel)
         {
             SetUp(filterKernel.size);
@@ -27,7 +25,6 @@ namespace ImageProcessing
             factor = filterKernel.convolutionFactor;
             SetUpKernel(filterKernel);
         }
-
 
         protected  override byte ComputeNewRgbComponentValue(byte[] neighborhood)
         {
@@ -41,13 +38,11 @@ namespace ImageProcessing
             return RgbComponentOperations.ControlOverflow(sum);
         }
 
-
         public Bitmap ApplyKernelFilter(Bitmap source)
         {
             Bitmap output = new Bitmap(source.Width, source.Height);
             Apply(source, output);
             return output;
         }
-
     }
 }

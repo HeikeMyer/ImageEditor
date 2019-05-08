@@ -26,9 +26,6 @@ namespace ImageProcessing
             Middle?.Invoke(this, new ImageProcessingEventArgs() { Val = val  });
         }
 
-
-
-
         public static int[][] InitializeFilterKernel(int size)
         {
             int[][] kernel = new int[size][];
@@ -37,7 +34,6 @@ namespace ImageProcessing
 
             return kernel;
         }
-
 
         public static ConvolutionMatrix LightSharpenMatrix()
         {
@@ -56,7 +52,6 @@ namespace ImageProcessing
             return sharpenMatrix;
         }
 
-
         public static ConvolutionMatrix SharpenMatrix()
         {
             ConvolutionMatrix sharpenMatrix = new ConvolutionMatrix();
@@ -73,7 +68,6 @@ namespace ImageProcessing
 
             return sharpenMatrix;
         }
-
 
         public static ConvolutionMatrix BoxBlur()
         {
@@ -92,7 +86,6 @@ namespace ImageProcessing
             return boxBlur;
         }
 
-
         public static ConvolutionMatrix EdgeDetection()
         {
             ConvolutionMatrix edgeDetection = new ConvolutionMatrix();
@@ -109,7 +102,6 @@ namespace ImageProcessing
 
             return edgeDetection;
         }
-
 
         public static ConvolutionMatrix GaussianBlur()
         {
@@ -132,7 +124,6 @@ namespace ImageProcessing
             return gaussianBlur;
         }
 
-
         public static ConvolutionMatrix UnsharpMasking()
         {
             ConvolutionMatrix unsharpMasking = new ConvolutionMatrix();
@@ -153,7 +144,6 @@ namespace ImageProcessing
 
             return unsharpMasking;
         }
-
 
         public void ApplyFilter(object sender, FilterEventArgs e)
         {

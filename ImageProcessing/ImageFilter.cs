@@ -25,14 +25,12 @@ namespace ImageProcessing
             neighborhoodSize = size * size;
         }
 
-
         private byte[] InitializePixelNeighborhood()
         {
             byte[] neighborhood = new byte[neighborhoodSize];
 
             return neighborhood;
         }
-
 
         private unsafe byte[] GetRgbComponentNeighborhood(LockedBitmap lockedBitmapData, byte* rgbComponent)
         {
@@ -53,7 +51,6 @@ namespace ImageProcessing
 
             return neighborhood;
         }
-
 
         private unsafe void ApplyFilterToBitmap(LockedBitmap  intermediate, LockedBitmap bitmap)
         {
@@ -76,7 +73,6 @@ namespace ImageProcessing
             });
         }
 
-
         protected void Apply(Bitmap input, Bitmap output)
         {
             if (!IsValid())
@@ -96,6 +92,5 @@ namespace ImageProcessing
             lockedBitmap.Unlock(output);
             lockedIntermediate.Unlock(intermediate.OutputImage);
         }
-
     }
 }

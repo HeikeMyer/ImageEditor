@@ -45,6 +45,5 @@ namespace ImageProcessing
         public CustomFilterAdjustment Adjustment { get; }
 
         public CustomFilter Filter { get; }
-
     }
 }
