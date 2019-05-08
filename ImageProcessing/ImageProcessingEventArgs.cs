@@ -7,6 +7,7 @@ namespace ImageProcessing
     public class ImageProcessingEventArgs
     {
         public Bitmap Image { get; set; }
+        public int Val { get; set; }
         public ImageProcessingEventArgs(Bitmap bitmap)
         {
             Image = bitmap;

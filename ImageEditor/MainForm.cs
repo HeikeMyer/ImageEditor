@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Drawing;
+using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using ImageProcessing;
 
@@ -30,7 +32,26 @@ namespace ImageEditor
 
         protected virtual void OnFilterCall(ConvolutionMatrix filterKernel)
         {
+            //Task task = new Task(() => Meth(filterKernel));
+            //Thread thread = new Thread(Meth)
+            //DisableButtons();
+            //task.Start();
+            //task.Wait();
+            //EnableButtons();
             FilterCall?.Invoke(this, new FilterEventArgs(workingCopy, filterKernel));
+            //var res = FilterCall?.BeginInvoke(this, new FilterEventArgs(workingCopy, filterKernel), null, null);
+            //FilterCall?.EndInvoke(res);
+            //var i = 10;
+            //Thread t = new Thread(new ParameterizedThreadStart(Meth));
+
+            //Thread t = new Thread()
+
+        }
+
+        private void Meth(object filterKernel)
+        {
+
+            FilterCall?.Invoke(this, new FilterEventArgs(workingCopy, (ConvolutionMatrix)filterKernel));
         }
 
 
@@ -56,6 +77,7 @@ namespace ImageEditor
 
             filter.ProcessingCompleted += ViewProcessedImage;
             filter.ProcessingCompleted += ApproveProcessing;
+            filter.Middle += React;
             brightnessContrastForm = new BrightnessContrastForm();
 
             this.AdjustmentCall += brightnessContrastForm.SetInputImage;
@@ -136,12 +158,12 @@ namespace ImageEditor
 
         private void DisableButtons()
         {
-           /* this.adjustmentsStripDropDownButton.Enabled = false;
+            this.adjustmentsStripDropDownButton.Enabled = false;
             this.imageToolStripDropDownButton.Enabled = false;
             this.filterToolStripDropDownButton.Enabled = false;
             this.photoFilterToolStripDropDownButton.Enabled = false;
             this.saveAsToolStripMenuItem.Enabled = false;
-            this.closeToolStripMenuItem.Enabled = false;*/
+            this.closeToolStripMenuItem.Enabled = false;
         }
 
         private void ViewOriginalImage()
@@ -152,6 +174,11 @@ namespace ImageEditor
         private void ViewProcessedImage(object sender, ImageProcessingEventArgs e)
         {
             pictureBox.Image = e.Image;
+        }
+
+        private void React(object sender, ImageProcessingEventArgs e)
+        {
+            MessageBox.Show("aa  " + e.Val);
         }
 
         private void ViewWorkingCopy()
@@ -239,9 +266,20 @@ namespace ImageEditor
 
         private void edgeDetectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BackUpWorkingCopy();
-            OnFilterCall(Filter.EdgeDetection());
+            //BackUpWorkingCopy();
+            //OnFilterCall(Filter.EdgeDetection());
+            Thread t = new Thread(A);
+            t.IsBackground = true;
+            t.Start();
         }
+
+        private void A()
+        {
+            OnFilterCall(Filter.EdgeDetection());
+
+        }
+
+        //private void DoWork(object sender, )
 
         private void erosionToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -359,6 +397,11 @@ namespace ImageEditor
         }
 
         private void pictureBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void topToolStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
         }
