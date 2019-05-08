@@ -54,11 +54,11 @@ namespace ImageEditor
         {
             InitializeComponent();
 
-            brightnessTrackBar.Minimum = TrackBarConstants.MinBrightnessValue;
-            brightnessTrackBar.Maximum = TrackBarConstants.MaxBrightnessValue;
+            brightnessTrackBar.Minimum = ControlValueConstants.MinBrightness;
+            brightnessTrackBar.Maximum = ControlValueConstants.MaxBrightness;
 
-            contrastTrackBar.Minimum = TrackBarConstants.MinBrightnessValue;
-            contrastTrackBar.Maximum = TrackBarConstants.MaxBrightnessValue;
+            contrastTrackBar.Minimum = ControlValueConstants.MinBrightness;
+            contrastTrackBar.Maximum = ControlValueConstants.MaxBrightness;
 
         }
 
@@ -78,11 +78,11 @@ namespace ImageEditor
         {
             brightnessContrast = new Adjustments();
 
-            brightnessTrackBar.Value = 0;
-            brightnessValue.Text = "0";
+            brightnessTrackBar.Value = ControlValueConstants.DefaultBrightness;
+            brightnessValue.Text = ControlValueConstants.DefaultBrightness.ToString();
 
-            contrastTrackBar.Value = 0;
-            contrastValue.Text = "0";
+            contrastTrackBar.Value = ControlValueConstants.DefaultContrast;
+            contrastValue.Text = ControlValueConstants.DefaultContrast.ToString();
         }
 
         private void brightnessTrackbar_Scroll(object sender, EventArgs e)

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ImageEditor.Constants;
 using ImageProcessing;
 
 namespace ImageEditor
@@ -48,6 +49,12 @@ namespace ImageEditor
         public ExposureForm()
         {
             InitializeComponent();
+
+            exposureTrackBar.Minimum = ControlValueConstants.MinExposure;
+            exposureTrackBar.Maximum = ControlValueConstants.MaxExposure;
+
+            gammaTrackBar.Minimum = ControlValueConstants.MinGamma;
+            gammaTrackBar.Maximum = ControlValueConstants.MaxGamma;
         }
 
         private void exposureTrackBar_Scroll(object sender, EventArgs e)
@@ -116,16 +123,11 @@ namespace ImageEditor
         {
             exposure = new Adjustments();
 
-            exposureTrackBar.Minimum = -200;
-            exposureTrackBar.Maximum = 200;
-            exposureTrackBar.Value = 0;
-            exposureValue.Text = "0,00";
+            exposureTrackBar.Value = ControlValueConstants.DefaultExposure;
+            exposureValue.Text = ControlValueConstants.DefaultExposure.ToString();
 
-            gammaTrackBar.Minimum = 1;
-            gammaTrackBar.Maximum = 799;
-            gammaTrackBar.Value = 400;
-            gammaValue.Text = "1,00";
-
+            gammaTrackBar.Value = ControlValueConstants.DefaultGamma;
+            gammaValue.Text = ControlValueConstants.DefaultGamma.ToString();
         }
 
         public void SetInputImage(object sender, ImageProcessingEventArgs e)

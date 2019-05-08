@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ImageEditor.Constants;
 using ImageProcessing;
 
 namespace ImageEditor
@@ -51,6 +52,9 @@ namespace ImageEditor
         public ThresholdForm()
         {
             InitializeComponent();
+
+            thresholdTrackBar.Minimum = ControlValueConstants.MinThresholdLevel;
+            thresholdTrackBar.Maximum = ControlValueConstants.MaxThresholdLevel;
         }
 
         private void okButton_Click(object sender, EventArgs e)
@@ -88,8 +92,8 @@ namespace ImageEditor
         {
             threshold = new Adjustments();
 
-            thresholdTrackBar.Value = 128;
-            thresholdValue.Text = "128";
+            thresholdTrackBar.Value = ControlValueConstants.DefaultThresholdLevel;
+            thresholdValue.Text = ControlValueConstants.DefaultThresholdLevel.ToString();
         }
     }
 }

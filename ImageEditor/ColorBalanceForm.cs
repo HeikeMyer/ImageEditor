@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ImageEditor.Constants;
 using ImageProcessing;
 
 namespace ImageEditor
@@ -53,6 +54,9 @@ namespace ImageEditor
         public ColorBalanceForm()
         {
             InitializeComponent();
+
+            redTrackBar.Minimum = greenTrackBar.Minimum = blueTrackBar.Minimum = ControlValueConstants.MinColorBalance;
+            redTrackBar.Maximum = greenTrackBar.Maximum = blueTrackBar.Maximum = ControlValueConstants.MaxColorBalance;
         }
 
         private void okButton_Click(object sender, EventArgs e)
@@ -124,14 +128,8 @@ namespace ImageEditor
         {
             colorBalance = new Adjustments();
 
-            redTrackBar.Value = 0;
-            redValue.Text = "0";
-
-            greenTrackBar.Value = 0;
-            greenValue.Text = "0";
-
-            blueTrackBar.Value = 0;
-            blueValue.Text = "0";
+            redTrackBar.Value = greenTrackBar.Value = blueTrackBar.Value = ControlValueConstants.DefaultColorBalance;
+            redValue.Text = greenValue.Text = blueValue.Text = ControlValueConstants.DefaultColorBalance.ToString();
         }
 
         private void label1_Click(object sender, EventArgs e)
