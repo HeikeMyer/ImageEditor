@@ -146,6 +146,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(601, 243);
             this.Controls.Add(this.panel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "BrightnessContrastForm";
             this.Text = "Brightness/Contrast";
             this.Load += new System.EventHandler(this.BrightnessContrastForm_Load);

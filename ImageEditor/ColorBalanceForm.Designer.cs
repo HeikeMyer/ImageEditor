@@ -126,70 +126,70 @@
             this.blueTrackBar.Scroll += new System.EventHandler(this.blueTrackBar_Scroll);
             this.blueTrackBar.ValueChanged += new System.EventHandler(this.blueTrackBar_ValueChanged);
             // 
-            // label1
+            // cyanLabel
             // 
             this.cyanLabel.AutoSize = true;
             this.cyanLabel.Location = new System.Drawing.Point(25, 72);
             this.cyanLabel.Margin = new System.Windows.Forms.Padding(0);
             this.cyanLabel.MinimumSize = new System.Drawing.Size(75, 20);
-            this.cyanLabel.Name = "label1";
+            this.cyanLabel.Name = "cyanLabel";
             this.cyanLabel.Size = new System.Drawing.Size(75, 20);
             this.cyanLabel.TabIndex = 8;
             this.cyanLabel.Text = "Cyan";
             this.cyanLabel.Click += new System.EventHandler(this.label1_Click);
             // 
-            // label2
+            // magentaLabel
             // 
             this.magentaLabel.AutoSize = true;
             this.magentaLabel.Location = new System.Drawing.Point(25, 153);
             this.magentaLabel.Margin = new System.Windows.Forms.Padding(0);
             this.magentaLabel.MinimumSize = new System.Drawing.Size(75, 20);
-            this.magentaLabel.Name = "label2";
+            this.magentaLabel.Name = "magentaLabel";
             this.magentaLabel.Size = new System.Drawing.Size(75, 20);
             this.magentaLabel.TabIndex = 9;
             this.magentaLabel.Text = "Magenta";
             // 
-            // label3
+            // yellowLabel
             // 
             this.yellowLabel.AutoSize = true;
             this.yellowLabel.Location = new System.Drawing.Point(25, 234);
             this.yellowLabel.Margin = new System.Windows.Forms.Padding(0);
             this.yellowLabel.MinimumSize = new System.Drawing.Size(75, 20);
-            this.yellowLabel.Name = "label3";
+            this.yellowLabel.Name = "yellowLabel";
             this.yellowLabel.Size = new System.Drawing.Size(75, 20);
             this.yellowLabel.TabIndex = 10;
             this.yellowLabel.Text = "Yellow";
             // 
-            // label4
+            // greenLabel
             // 
             this.greenLabel.AutoSize = true;
             this.greenLabel.Location = new System.Drawing.Point(525, 153);
             this.greenLabel.Margin = new System.Windows.Forms.Padding(0);
             this.greenLabel.MinimumSize = new System.Drawing.Size(75, 20);
-            this.greenLabel.Name = "label4";
+            this.greenLabel.Name = "greenLabel";
             this.greenLabel.Size = new System.Drawing.Size(75, 20);
             this.greenLabel.TabIndex = 11;
             this.greenLabel.Text = "Green";
             this.greenLabel.Click += new System.EventHandler(this.label4_Click);
             // 
-            // label5
+            // redLabel
             // 
             this.redLabel.AutoSize = true;
             this.redLabel.Location = new System.Drawing.Point(525, 72);
             this.redLabel.Margin = new System.Windows.Forms.Padding(0);
             this.redLabel.MinimumSize = new System.Drawing.Size(75, 20);
-            this.redLabel.Name = "label5";
+            this.redLabel.Name = "redLabel";
             this.redLabel.Size = new System.Drawing.Size(75, 20);
             this.redLabel.TabIndex = 12;
             this.redLabel.Text = "Red";
             // 
-            // label6
+            // blueLabel
             // 
             this.blueLabel.AutoSize = true;
             this.blueLabel.Location = new System.Drawing.Point(525, 234);
             this.blueLabel.Margin = new System.Windows.Forms.Padding(0);
             this.blueLabel.MinimumSize = new System.Drawing.Size(75, 20);
-            this.blueLabel.Name = "label6";
+            this.blueLabel.Name = "blueLabel";
             this.blueLabel.Size = new System.Drawing.Size(75, 20);
             this.blueLabel.TabIndex = 13;
             this.blueLabel.Text = "Blue";
@@ -198,7 +198,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(732, 293);
+            this.ClientSize = new System.Drawing.Size(742, 318);
             this.Controls.Add(this.blueLabel);
             this.Controls.Add(this.redLabel);
             this.Controls.Add(this.greenLabel);
@@ -213,6 +213,7 @@
             this.Controls.Add(this.redValue);
             this.Controls.Add(this.cancelButton);
             this.Controls.Add(this.okButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ColorBalanceForm";
             this.Text = "Color Balance";
             this.Load += new System.EventHandler(this.ColorBalanceForm_Load);
