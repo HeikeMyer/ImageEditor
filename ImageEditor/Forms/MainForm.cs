@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ImageProcessing;
+using ImageEditor.Operations;
 
 namespace ImageEditor.Forms
 {
@@ -56,7 +57,7 @@ namespace ImageEditor.Forms
         }
 
 
-        FileOperations fileOperations;
+        FileOperation fileOperations;
         Filter filter;
         BrightnessContrastForm brightnessContrastForm;
         ExposureForm exposureForm;
@@ -79,7 +80,7 @@ namespace ImageEditor.Forms
             var lan2g = ConfigurationManager.AppSettings["Language"];
             
 
-            fileOperations = new FileOperations();
+            fileOperations = new FileOperation();
 
             fileOperations.FileOpened += ReceiveImage;
 
@@ -146,7 +147,7 @@ namespace ImageEditor.Forms
             workingCopy = (Bitmap)backup?.Clone();
         }
 
-        private void ReceiveImage(object sender, FileOperations.OpenEventArgs e)
+        private void ReceiveImage(object sender, FileOperation.OpenEventArgs e)
         {
             if (e.Input == null)
                 return;
