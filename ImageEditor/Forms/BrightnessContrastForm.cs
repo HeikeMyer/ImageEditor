@@ -81,7 +81,8 @@ namespace ImageEditor.Forms
             contrastValue.Text = ControlConstants.DefaultContrast.ToString();
 
             var cultureCode = ConfigurationManager.AppSettings[ConfigurationConstants.CultureCodeKey];
-            FormExtensions.UpdateLanguage(this, GetType(), ReloadControlText, cultureCode);
+            ReloadTextFormExtension.ReloadText(this, GetType(), cultureCode);
+            //ReloadTextFormExtension.ReloadText(this, GetType(), ReloadControlText, cultureCode);
         }
 
         private void brightnessTrackbar_Scroll(object sender, EventArgs e)

@@ -77,7 +77,8 @@ namespace ImageEditor.Forms
         {
             intensityValue.Text = "1";
             var cultureCode = ConfigurationManager.AppSettings[ConfigurationConstants.CultureCodeKey];
-            FormExtensions.UpdateLanguage(this, GetType(), ReloadControlText, cultureCode);
+            ReloadTextFormExtension.ReloadText(this, GetType(), cultureCode);
+            // ReloadTextFormExtension.ReloadText(this, GetType(), ReloadControlText, cultureCode);
         }
 
         private void intensityValue_TextChanged(object sender, EventArgs e)

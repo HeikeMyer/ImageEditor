@@ -126,7 +126,8 @@ namespace ImageEditor.Forms
             gammaValue.Text = ControlConstants.DefaultGamma.ToString();
 
             var cultureCode = ConfigurationManager.AppSettings[ConfigurationConstants.CultureCodeKey];
-            FormExtensions.UpdateLanguage(this, GetType(), ReloadControlText, cultureCode);
+            ReloadTextFormExtension.ReloadText(this, GetType(), cultureCode);
+            //ReloadTextFormExtension.ReloadText(this, GetType(), ReloadControlText, cultureCode);
         }
 
         public void SetInputImage(object sender, ImageProcessingEventArgs e)

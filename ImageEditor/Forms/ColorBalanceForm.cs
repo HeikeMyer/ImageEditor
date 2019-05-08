@@ -128,7 +128,8 @@ namespace ImageEditor.Forms
             redValue.Text = greenValue.Text = blueValue.Text = ControlConstants.DefaultColorBalance.ToString();
 
             var cultureCode = ConfigurationManager.AppSettings[ConfigurationConstants.CultureCodeKey];
-            FormExtensions.UpdateLanguage(this, GetType(), ReloadControlText, cultureCode);
+            ReloadTextFormExtension.ReloadText(this, GetType(), cultureCode);
+            //ReloadTextFormExtension.ReloadText(this, GetType(), ReloadControlText, cultureCode);
         }
 
         private void label1_Click(object sender, EventArgs e)

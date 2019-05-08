@@ -92,7 +92,8 @@ namespace ImageEditor.Forms
             thresholdValue.Text = ControlConstants.DefaultThresholdLevel.ToString();
 
             var cultureCode = ConfigurationManager.AppSettings[ConfigurationConstants.CultureCodeKey];
-            FormExtensions.UpdateLanguage(this, GetType(), ReloadControlText, cultureCode);
+            ReloadTextFormExtension.ReloadText(this, GetType(), cultureCode);
+            // ReloadTextFormExtension.ReloadText(this, GetType(), ReloadControlText, cultureCode);
         }
 
         public void ReloadControlText(ResourceManager resourceManager)

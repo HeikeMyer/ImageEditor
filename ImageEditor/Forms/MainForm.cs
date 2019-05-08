@@ -8,6 +8,8 @@ using ImageProcessing;
 using ImageEditor.Operations;
 using System.Resources;
 using ImageEditor.Constants;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ImageEditor.Forms
 {
@@ -72,8 +74,10 @@ namespace ImageEditor.Forms
         {
             InitializeComponent();
 
+            
             var cultureCode = ConfigurationManager.AppSettings[ConfigurationConstants.CultureCodeKey];
-            FormExtensions.UpdateLanguage(this, GetType(), ReloadControlText, cultureCode);
+            ReloadTextFormExtension.ReloadText(this, GetType(), cultureCode);
+            //ReloadTextFormExtension.ReloadText(this, GetType(), ReloadControlText, cultureCode);
 
             fileOperations = new FileOperation();
 
@@ -124,7 +128,7 @@ namespace ImageEditor.Forms
 
         private void toolStripDropDownButton1_Click(object sender, EventArgs e)
         {
-
+          
         }
 
 
@@ -420,17 +424,18 @@ namespace ImageEditor.Forms
 
         private void englishToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormExtensions.UpdateLanguage(this, GetType(), ReloadControlText, ConfigurationConstants.EnglishCultureCode);
+            ReloadTextFormExtension.ReloadText(this, GetType(), ConfigurationConstants.EnglishCultureCode);
         }
 
         private void russianToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormExtensions.UpdateLanguage(this, GetType(), ReloadControlText, ConfigurationConstants.RussianCultureCode);
+            ReloadTextFormExtension.ReloadText(this, GetType(), ConfigurationConstants.RussianCultureCode);
         }
 
         public void ReloadControlText(ResourceManager resourceManager)
         {         
-            fileToolStripDropDownButton.Text = resourceManager.GetString(nameof(fileToolStripDropDownButton) + ControlConstants.TextPropertyName);
+            //foreach (var control in Controls)
+            /*fileToolStripDropDownButton.Text = resourceManager.GetString(nameof(fileToolStripDropDownButton) + ControlConstants.TextPropertyName);
             openToolStripMenuItem.Text = resourceManager.GetString(nameof(openToolStripMenuItem) + ControlConstants.TextPropertyName);
             closeToolStripMenuItem.Text = resourceManager.GetString(nameof(closeToolStripMenuItem) + ControlConstants.TextPropertyName);
             saveAsToolStripMenuItem.Text = resourceManager.GetString(nameof(saveAsToolStripMenuItem) + ControlConstants.TextPropertyName);
@@ -462,7 +467,8 @@ namespace ImageEditor.Forms
             edgeDetectionToolStripMenuItem.Text = resourceManager.GetString(nameof(openToolStripMenuItem) + ControlConstants.TextPropertyName);
             dilutionToolStripMenuItem.Text = resourceManager.GetString(nameof(dilutionToolStripMenuItem) + ControlConstants.TextPropertyName);
             erosionToolStripMenuItem.Text = resourceManager.GetString(nameof(erosionToolStripMenuItem) + ControlConstants.TextPropertyName);
-        }
+    */   
+    }
 
         
     }
