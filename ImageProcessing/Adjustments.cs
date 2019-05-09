@@ -11,26 +11,10 @@ namespace ImageProcessing
 
     public class Adjustments
     {           
-        private unsafe delegate void ApplyToPixel(byte* blue, double factor);
+        public unsafe delegate void ApplyToPixel(byte* blue, double factor);
 
-        private unsafe void Adjust(Bitmap bitmap, double factor, ApplyToPixel applyToPixel)
-        {
-            LockedBitmap lockedBitmap = new LockedBitmap(bitmap);
 
-            Parallel.For(0, lockedBitmap.HeightInPixels, iY =>
-            {
-                byte* pixel = lockedBitmap.FirstByte + (iY * lockedBitmap.Stride);
-                for (int iX = 0; iX < lockedBitmap.WidthInBytes; iX += lockedBitmap.BytesPerPixel)
-                {
-                    applyToPixel(pixel, factor);
-                    pixel += lockedBitmap.BytesPerPixel;
-                }
-            });
-
-            lockedBitmap.Unlock(bitmap);
-        }
-
-        struct Adjustment
+        public struct Adjustment
         {
             public ApplyToPixel adjustment;
             public double factor;
@@ -42,25 +26,6 @@ namespace ImageProcessing
             }
         }
 
-        private unsafe void Adjust(Bitmap bitmap, List<Adjustment> adjustmentsPack)
-        {
-            LockedBitmap lockedBitmap = new LockedBitmap(bitmap);
-
-            Parallel.For(0, lockedBitmap.HeightInPixels, iY =>
-            {
-                byte* pixel = lockedBitmap.FirstByte + (iY * lockedBitmap.Stride);
-                for (int iX = 0; iX < lockedBitmap.WidthInBytes; iX += lockedBitmap.BytesPerPixel)
-                {
-                    foreach (Adjustment adjustment in adjustmentsPack)
-                        adjustment.adjustment(pixel, adjustment.factor);
-
-                    pixel += lockedBitmap.BytesPerPixel;
-                }
-            });
-
-            lockedBitmap.Unlock(bitmap);
-        }
-     
         public unsafe void AdjustBrightnessAndContrast(Bitmap source, int brightnessFactor, int contrastFactor)
         {
             List<Adjustment> AdjustmentsPack = new List<Adjustment>();
@@ -72,7 +37,7 @@ namespace ImageProcessing
                 AdjustmentsPack.Add(new Adjustment(ApplyContrastToPixel, contrastFactor));
 
             if (AdjustmentsPack.Count != 0)
-                Adjust(source, AdjustmentsPack);
+                ImageProcessingBase.Adjust(source, AdjustmentsPack);
         }
 
         public unsafe void AdjustExposure(Bitmap source, double exposure, double gamma)
@@ -86,7 +51,7 @@ namespace ImageProcessing
                 AdjustmentsPack.Add(new Adjustment(ApplyGammaCorrectionToPixel, gamma));
 
             if (AdjustmentsPack.Count != 0)
-                Adjust(source, AdjustmentsPack);
+                ImageProcessingBase.Adjust(source, AdjustmentsPack);
         }
 
         public unsafe void AdjustColorBalance(Bitmap source, int redFactor, int greenFactor, int blueFactor)
@@ -104,7 +69,7 @@ namespace ImageProcessing
                 adjustmentsPack.Add(new Adjustment(ApplyBrightnessToPixelBlue, blueFactor));
 
             if (adjustmentsPack.Count != 0)
-                Adjust(source, adjustmentsPack);
+                ImageProcessingBase.Adjust(source, adjustmentsPack);
         }
 
         private unsafe void ApplyContrastToPixel(byte* blue, double factor)
@@ -119,25 +84,25 @@ namespace ImageProcessing
         public unsafe void Sepia(Bitmap source, int factor)
         {
             ApplyToPixel adjustment = new ApplyToPixel(ApplySepiaToPixel);
-            Adjust(source, factor, adjustment);
+            ImageProcessingBase.Adjust(source, factor, adjustment);
         }
 
         public unsafe void Invert(Bitmap source, int factor)
         {
             ApplyToPixel adjustment = new ApplyToPixel(ApplyInversionToPixel);
-            Adjust(source, factor, adjustment);
+            ImageProcessingBase.Adjust(source, factor, adjustment);
         }
 
         public unsafe void BlackAndWhite(Bitmap source, int factor)
         {
             ApplyToPixel adjustment = new ApplyToPixel(ApplyBlackAndWhiteToPixel);
-            Adjust(source, factor, adjustment);
+            ImageProcessingBase.Adjust(source, factor, adjustment);
         }
 
         public unsafe void Threshold(Bitmap source, int factor)
         {
             ApplyToPixel adjustment = new ApplyToPixel(ApplyThresholdToPixel);
-            Adjust(source, factor, adjustment);
+            ImageProcessingBase.Adjust(source, factor, adjustment);
         }
 
         private unsafe void ApplyBrightnessToPixel(byte* blue, double factor)

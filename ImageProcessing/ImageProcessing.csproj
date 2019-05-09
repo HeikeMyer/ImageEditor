@@ -48,6 +48,7 @@
     <Compile Include="CustomFilter.cs" />
     <Compile Include="Filter.cs" />
     <Compile Include="ImageFilter.cs" />
+    <Compile Include="ImageProcessingBase.cs" />
     <Compile Include="ImageProcessingEventArgs.cs" />
     <Compile Include="IntermediateImage.cs" />
     <Compile Include="Kernel.cs" />
