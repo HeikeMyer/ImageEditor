@@ -4,7 +4,7 @@ namespace ImageProcessing
 {
     public class CustomFilter: ImageFilter
     {
-        public delegate byte ComputeRgbComponentValue(byte[] neighborhood);
+        public delegate byte ComputeRgbComponentValue(byte[] neighborhood, int size);
 
         public new void SetUp(int size)
         {
@@ -15,44 +15,12 @@ namespace ImageProcessing
 
         protected override byte ComputeNewRgbComponentValue(byte[] neighborhood)
         {
-            return computeRgbComponentValue(neighborhood);
-        }
-
-        private byte ApplyDilution(byte[] neighborhood)
-        {
-            byte minimum = neighborhood[0];
-
-            for (int i = 0; i < neighborhoodSize; ++i)
-                if (neighborhood[i] < minimum)
-                    minimum = neighborhood[i];
-
-            return minimum;
-        }
-
-        private byte ApplyErosion(byte[] neighborhood)
-        {
-            byte maximum = neighborhood[0];
-
-            for (int i = 0; i < neighborhoodSize; ++i)
-                if (neighborhood[i] > maximum)
-                    maximum = neighborhood[i];
-
-            return maximum;
-        }
-
-        private byte ApplyBlur(byte[] neighborhood)
-        {
-            int sum = 0;
-
-            for (int i = 0; i < neighborhoodSize; ++i)
-                sum += neighborhood[i];
-
-            return RgbComponentOperations.ControlOverflow(sum/neighborhoodSize);
+            return computeRgbComponentValue(neighborhood, size);
         }
 
         public Bitmap Erosion(Bitmap input)
         {
-            computeRgbComponentValue = new ComputeRgbComponentValue(ApplyErosion);
+            computeRgbComponentValue = new ComputeRgbComponentValue(RgbComponentCalculation.Erosion);
             Bitmap output = new Bitmap(input.Width, input.Height);
             Apply(input, output);
             return output;
@@ -60,7 +28,7 @@ namespace ImageProcessing
 
         public Bitmap Dilution(Bitmap input)
         {
-            computeRgbComponentValue = new ComputeRgbComponentValue(ApplyDilution);
+            computeRgbComponentValue = new ComputeRgbComponentValue(RgbComponentCalculation.Dilution);
             Bitmap output = new Bitmap(input.Width, input.Height);
             Apply(input, output);
             return output;
@@ -68,7 +36,7 @@ namespace ImageProcessing
 
         public Bitmap Blur(Bitmap input)
         {
-            computeRgbComponentValue = new ComputeRgbComponentValue(ApplyBlur);
+            computeRgbComponentValue = new ComputeRgbComponentValue(RgbComponentCalculation.Blur);
             Bitmap output = new Bitmap(input.Width, input.Height);
             Apply(input, output);
             return output;

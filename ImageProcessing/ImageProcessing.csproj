@@ -52,7 +52,7 @@
     <Compile Include="Kernel.cs" />
     <Compile Include="LockedBitmap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RgbComponentOperations.cs" />
+    <Compile Include="RgbComponentCalculation.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

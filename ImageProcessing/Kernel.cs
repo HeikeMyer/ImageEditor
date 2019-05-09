@@ -35,7 +35,7 @@ namespace ImageProcessing
 
             sum *= factor;
 
-            return RgbComponentOperations.ControlOverflow(sum);
+            return RgbComponentCalculation.ControlOverflow(sum);
         }
 
         public Bitmap ApplyKernelFilter(Bitmap source)
