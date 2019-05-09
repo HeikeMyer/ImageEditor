@@ -2,16 +2,11 @@
 using System.Drawing;
 using System.Threading;
 using ImageProcessing.Models;
+using ImageProcessing.Base;
 
 namespace ImageProcessing
 {
-    public struct ConvolutionMatrix
-    {
-        public int[][] Matrix;
-        public double Factor;
-        public int Size;
-        public int[] Kernel;
-    }
+    
 
     public class ImageProcessingApi
     {

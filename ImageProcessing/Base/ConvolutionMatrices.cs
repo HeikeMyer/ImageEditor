@@ -1,4 +1,6 @@
-﻿namespace ImageProcessing
+﻿using ImageProcessing.Models;
+
+namespace ImageProcessing.Base
 {
     public static class ConvolutionMatrices
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ImageProcessing
+namespace ImageProcessing.Base
 {
     public static class RgbComponentCalculation
     {

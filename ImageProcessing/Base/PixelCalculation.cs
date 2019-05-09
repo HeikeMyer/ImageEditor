@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ImageProcessing.Models;
 
-namespace ImageProcessing
+namespace ImageProcessing.Base
 {
     public static class PixelCalculation
     {

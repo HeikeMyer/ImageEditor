@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using ImageProcessing.Models;
 //using static ImageProcessing.Adjustments;
 
-namespace ImageProcessing
+namespace ImageProcessing.Base
 {
     internal static class ImageProcessingBase
     {

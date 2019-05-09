@@ -1,14 +1,14 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace ImageProcessing
+namespace ImageProcessing.Models
 {
     enum Bits: byte
     {
-        bitsInByte = 8
+        BitsInByte = 8
     }
 
-    public class LockedBitmap
+    internal class LockedBitmap
     {
         public BitmapData Data { get; }
 
@@ -26,7 +26,7 @@ namespace ImageProcessing
         {
             Data = source.LockBits(lockedArea, ImageLockMode.ReadWrite, source.PixelFormat);
 
-            BytesPerPixel = Bitmap.GetPixelFormatSize(source.PixelFormat) / (int)Bits.bitsInByte;
+            BytesPerPixel = Image.GetPixelFormatSize(source.PixelFormat) / (int)Bits.BitsInByte;
             HeightInPixels = Data.Height;
             WidthInBytes = Data.Width * BytesPerPixel;
             FirstByte = (byte*)Data.Scan0;
@@ -38,7 +38,7 @@ namespace ImageProcessing
             Data = source.LockBits(new Rectangle(0, 0, source.Width, source.Height), 
                                          ImageLockMode.ReadWrite, source.PixelFormat);
 
-            BytesPerPixel = Bitmap.GetPixelFormatSize(source.PixelFormat) / (int)Bits.bitsInByte;
+            BytesPerPixel = Image.GetPixelFormatSize(source.PixelFormat) / (int)Bits.BitsInByte;
             HeightInPixels = Data.Height;
             WidthInBytes = Data.Width * BytesPerPixel;
             FirstByte = (byte*)Data.Scan0;

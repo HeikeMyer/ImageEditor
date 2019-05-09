@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using System.Drawing;
 
-namespace ImageProcessing
+namespace ImageProcessing.Models
 {
     class IntermediateImage
     {

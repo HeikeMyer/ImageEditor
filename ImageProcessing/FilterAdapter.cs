@@ -4,6 +4,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ImageProcessing.Base;
+using ImageProcessing.Models;
 
 namespace ImageProcessing
 {
@@ -51,7 +53,7 @@ namespace ImageProcessing
             if (!IsValid())
                 return;
 
-            bytesPerPixel = Bitmap.GetPixelFormatSize(input.PixelFormat) / (int)Bits.bitsInByte;
+            bytesPerPixel = Bitmap.GetPixelFormatSize(input.PixelFormat) / (int)Bits.BitsInByte;
             gapInBytes = gap * bytesPerPixel;
 
             IntermediateImage intermediate = new IntermediateImage(input, gap);
