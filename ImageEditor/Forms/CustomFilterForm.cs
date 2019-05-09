@@ -76,8 +76,7 @@ namespace ImageEditor.Forms
         private void CustomFilterForm_Load(object sender, EventArgs e)
         {
             intensityValue.Text = "1";
-            var cultureCode = ConfigurationManager.AppSettings[ConfigurationConstants.CultureCodeKey];
-            ReloadTextFormExtension.ReloadText(this, GetType(), cultureCode);
+            ReloadTextFormExtension.ReloadText(this, GetType());
             // ReloadTextFormExtension.ReloadText(this, GetType(), ReloadControlText, cultureCode);
         }
 

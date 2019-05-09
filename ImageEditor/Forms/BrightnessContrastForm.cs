@@ -79,9 +79,8 @@ namespace ImageEditor.Forms
 
             contrastTrackBar.Value = ControlConstants.DefaultContrast;
             contrastValue.Text = ControlConstants.DefaultContrast.ToString();
-
-            var cultureCode = ConfigurationManager.AppSettings[ConfigurationConstants.CultureCodeKey];
-            ReloadTextFormExtension.ReloadText(this, GetType(), cultureCode);
+            
+            ReloadTextFormExtension.ReloadText(this, GetType());
             //ReloadTextFormExtension.ReloadText(this, GetType(), ReloadControlText, cultureCode);
         }
 

@@ -90,9 +90,8 @@ namespace ImageEditor.Forms
 
             thresholdTrackBar.Value = ControlConstants.DefaultThresholdLevel;
             thresholdValue.Text = ControlConstants.DefaultThresholdLevel.ToString();
-
-            var cultureCode = ConfigurationManager.AppSettings[ConfigurationConstants.CultureCodeKey];
-            ReloadTextFormExtension.ReloadText(this, GetType(), cultureCode);
+            
+            ReloadTextFormExtension.ReloadText(this, GetType());
             // ReloadTextFormExtension.ReloadText(this, GetType(), ReloadControlText, cultureCode);
         }
 

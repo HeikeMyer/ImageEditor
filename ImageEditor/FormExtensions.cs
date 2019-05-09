@@ -6,6 +6,7 @@ using System.Windows.Forms;
 using System.Linq;
 using System.Collections.Generic;
 using ImageEditor.Constants;
+using System.Configuration;
 
 namespace ImageEditor
 {
@@ -67,8 +68,9 @@ namespace ImageEditor
             }
         }
 
-        public static void ReloadText(this Form form, Type type, string cultureCode)
+        public static void ReloadText(this Form form, Type type)
         {
+            var cultureCode = ConfigurationManager.AppSettings[ConfigurationConstants.CultureCodeKey];        
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureCode);
             ResourceManager resourceManager = new ResourceManager(type);
 

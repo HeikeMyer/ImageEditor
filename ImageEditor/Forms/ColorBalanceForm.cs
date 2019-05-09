@@ -126,9 +126,8 @@ namespace ImageEditor.Forms
 
             redTrackBar.Value = greenTrackBar.Value = blueTrackBar.Value = ControlConstants.DefaultColorBalance;
             redValue.Text = greenValue.Text = blueValue.Text = ControlConstants.DefaultColorBalance.ToString();
-
-            var cultureCode = ConfigurationManager.AppSettings[ConfigurationConstants.CultureCodeKey];
-            ReloadTextFormExtension.ReloadText(this, GetType(), cultureCode);
+            
+            ReloadTextFormExtension.ReloadText(this, GetType());
             //ReloadTextFormExtension.ReloadText(this, GetType(), ReloadControlText, cultureCode);
         }
 

@@ -124,9 +124,8 @@ namespace ImageEditor.Forms
 
             gammaTrackBar.Value = ControlConstants.DefaultGamma;
             gammaValue.Text = ControlConstants.DefaultGamma.ToString();
-
-            var cultureCode = ConfigurationManager.AppSettings[ConfigurationConstants.CultureCodeKey];
-            ReloadTextFormExtension.ReloadText(this, GetType(), cultureCode);
+            
+            ReloadTextFormExtension.ReloadText(this, GetType());
             //ReloadTextFormExtension.ReloadText(this, GetType(), ReloadControlText, cultureCode);
         }
 

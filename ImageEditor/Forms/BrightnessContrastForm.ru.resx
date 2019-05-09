@@ -117,21 +117,67 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="cancelButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="cancelButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>477, 133</value>
+  </data>
   <data name="cancelButton.Text" xml:space="preserve">
     <value>Отмена</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="brightnessLabel.Size" type="System.Drawing.Size, System.Drawing">
-    <value>62, 20</value>
+  <data name="brightnessValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>327, 27</value>
   </data>
-  <data name="brightnessLabel.Text" xml:space="preserve">
-    <value>Яркость</value>
+  <data name="okButton.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="okButton.Location" type="System.Drawing.Point, System.Drawing">
+    <value>477, 88</value>
+  </data>
+  <data name="contrastValue.Location" type="System.Drawing.Point, System.Drawing">
+    <value>327, 128</value>
+  </data>
+  <data name="contrastTrackBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="contrastTrackBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 163</value>
+  </data>
+  <data name="brightnessTrackBar.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="brightnessTrackBar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 62</value>
+  </data>
+  <data name="contrastLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="contrastLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 128</value>
   </data>
   <data name="contrastLabel.Size" type="System.Drawing.Size, System.Drawing">
     <value>107, 20</value>
   </data>
   <data name="contrastLabel.Text" xml:space="preserve">
     <value>Контрастность</value>
+  </data>
+  <data name="brightnessLabel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="brightnessLabel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>27, 27</value>
+  </data>
+  <data name="brightnessLabel.Size" type="System.Drawing.Size, System.Drawing">
+    <value>62, 20</value>
+  </data>
+  <data name="brightnessLabel.Text" xml:space="preserve">
+    <value>Яркость</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>600, 225</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Яркость/Контрастность</value>

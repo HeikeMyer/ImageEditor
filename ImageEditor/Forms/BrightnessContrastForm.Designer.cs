@@ -29,40 +29,17 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BrightnessContrastForm));
-            this.brightnessTrackBar = new System.Windows.Forms.TrackBar();
-            this.contrastTrackBar = new System.Windows.Forms.TrackBar();
-            this.okButton = new System.Windows.Forms.Button();
             this.cancelButton = new System.Windows.Forms.Button();
             this.brightnessValue = new System.Windows.Forms.TextBox();
+            this.okButton = new System.Windows.Forms.Button();
             this.contrastValue = new System.Windows.Forms.TextBox();
-            this.brightnessLabel = new System.Windows.Forms.Label();
+            this.contrastTrackBar = new System.Windows.Forms.TrackBar();
+            this.brightnessTrackBar = new System.Windows.Forms.TrackBar();
             this.contrastLabel = new System.Windows.Forms.Label();
-            this.panel = new System.Windows.Forms.Panel();
-            ((System.ComponentModel.ISupportInitialize)(this.brightnessTrackBar)).BeginInit();
+            this.brightnessLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.contrastTrackBar)).BeginInit();
-            this.panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.brightnessTrackBar)).BeginInit();
             this.SuspendLayout();
-            // 
-            // brightnessTrackBar
-            // 
-            resources.ApplyResources(this.brightnessTrackBar, "brightnessTrackBar");
-            this.brightnessTrackBar.Name = "brightnessTrackBar";
-            this.brightnessTrackBar.Scroll += new System.EventHandler(this.brightnessTrackbar_Scroll);
-            this.brightnessTrackBar.ValueChanged += new System.EventHandler(this.brightnessTrackbar_ValueChanged);
-            // 
-            // contrastTrackBar
-            // 
-            resources.ApplyResources(this.contrastTrackBar, "contrastTrackBar");
-            this.contrastTrackBar.Name = "contrastTrackBar";
-            this.contrastTrackBar.Scroll += new System.EventHandler(this.contrastTrackbar_Scroll);
-            this.contrastTrackBar.ValueChanged += new System.EventHandler(this.contrastTrackbar_ValueChanged);
-            // 
-            // okButton
-            // 
-            resources.ApplyResources(this.okButton, "okButton");
-            this.okButton.Name = "okButton";
-            this.okButton.UseVisualStyleBackColor = true;
-            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // cancelButton
             // 
@@ -77,11 +54,37 @@
             this.brightnessValue.Name = "brightnessValue";
             this.brightnessValue.TextChanged += new System.EventHandler(this.brightnessValue_TextChanged);
             // 
+            // okButton
+            // 
+            resources.ApplyResources(this.okButton, "okButton");
+            this.okButton.Name = "okButton";
+            this.okButton.UseVisualStyleBackColor = true;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
+            // 
             // contrastValue
             // 
             resources.ApplyResources(this.contrastValue, "contrastValue");
             this.contrastValue.Name = "contrastValue";
             this.contrastValue.TextChanged += new System.EventHandler(this.contrastValue_TextChanged);
+            // 
+            // contrastTrackBar
+            // 
+            resources.ApplyResources(this.contrastTrackBar, "contrastTrackBar");
+            this.contrastTrackBar.Name = "contrastTrackBar";
+            this.contrastTrackBar.Scroll += new System.EventHandler(this.contrastTrackbar_Scroll);
+            this.contrastTrackBar.ValueChanged += new System.EventHandler(this.contrastTrackbar_ValueChanged);
+            // 
+            // brightnessTrackBar
+            // 
+            resources.ApplyResources(this.brightnessTrackBar, "brightnessTrackBar");
+            this.brightnessTrackBar.Name = "brightnessTrackBar";
+            this.brightnessTrackBar.Scroll += new System.EventHandler(this.brightnessTrackbar_Scroll);
+            this.brightnessTrackBar.ValueChanged += new System.EventHandler(this.brightnessTrackbar_ValueChanged);
+            // 
+            // contrastLabel
+            // 
+            resources.ApplyResources(this.contrastLabel, "contrastLabel");
+            this.contrastLabel.Name = "contrastLabel";
             // 
             // brightnessLabel
             // 
@@ -89,51 +92,37 @@
             this.brightnessLabel.Name = "brightnessLabel";
             this.brightnessLabel.Click += new System.EventHandler(this.label1_Click);
             // 
-            // contrastLabel
-            // 
-            resources.ApplyResources(this.contrastLabel, "contrastLabel");
-            this.contrastLabel.Name = "contrastLabel";
-            // 
-            // panel
-            // 
-            resources.ApplyResources(this.panel, "panel");
-            this.panel.Controls.Add(this.brightnessLabel);
-            this.panel.Controls.Add(this.contrastLabel);
-            this.panel.Controls.Add(this.brightnessTrackBar);
-            this.panel.Controls.Add(this.contrastTrackBar);
-            this.panel.Controls.Add(this.contrastValue);
-            this.panel.Controls.Add(this.okButton);
-            this.panel.Controls.Add(this.brightnessValue);
-            this.panel.Controls.Add(this.cancelButton);
-            this.panel.Name = "panel";
-            this.panel.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
             // BrightnessContrastForm
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel);
+            this.Controls.Add(this.brightnessLabel);
+            this.Controls.Add(this.contrastLabel);
+            this.Controls.Add(this.brightnessTrackBar);
+            this.Controls.Add(this.cancelButton);
+            this.Controls.Add(this.contrastTrackBar);
+            this.Controls.Add(this.brightnessValue);
+            this.Controls.Add(this.contrastValue);
+            this.Controls.Add(this.okButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "BrightnessContrastForm";
             this.Load += new System.EventHandler(this.BrightnessContrastForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.brightnessTrackBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.contrastTrackBar)).EndInit();
-            this.panel.ResumeLayout(false);
-            this.panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.brightnessTrackBar)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TrackBar brightnessTrackBar;
-        private System.Windows.Forms.TrackBar contrastTrackBar;
-        private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.Button cancelButton;
         private System.Windows.Forms.TextBox brightnessValue;
+        private System.Windows.Forms.Button okButton;
         private System.Windows.Forms.TextBox contrastValue;
-        private System.Windows.Forms.Label brightnessLabel;
+        private System.Windows.Forms.TrackBar contrastTrackBar;
+        private System.Windows.Forms.TrackBar brightnessTrackBar;
         private System.Windows.Forms.Label contrastLabel;
-        private System.Windows.Forms.Panel panel;
+        private System.Windows.Forms.Label brightnessLabel;
     }
 }
