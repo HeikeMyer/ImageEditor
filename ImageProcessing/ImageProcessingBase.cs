@@ -78,7 +78,7 @@ namespace ImageProcessing
 
         public static unsafe void ApplyFilterToBitmap(LockedBitmap intermediate, LockedBitmap bitmap,
             int neighborhoodSize, int gap, int gapInBytes, int size, int bytesPerPixel,
-            Func<byte[], byte> ComputeNewRgbComponentValue
+            Func<byte[], byte> ComputeNewRgbComponentValue, Action<int> onProgress
             )
         {
             Parallel.For(0, bitmap.HeightInPixels, iY =>
@@ -98,6 +98,9 @@ namespace ImageProcessing
                     outputCurrentByte += bytesPerPixel;
                     intermediateCurrentByte += bytesPerPixel;
                 }
+
+                if (iY % 100 == 0)
+                    onProgress(1);
             });
         }
 

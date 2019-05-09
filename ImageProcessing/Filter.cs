@@ -39,7 +39,7 @@ namespace ImageProcessing
             filter.ConvolutionFunction = RgbComponentCalculation.ComputeNewRgbComponentValue;
             filter.ComputeNewRgbComponentValue = filter.ConvolutionAdapter;//ComputeNewRgbComponentValue;
             filter.SetUp(m.Size);
-            filter.Apply(source, output);
+            filter.Apply(source, output, OnMiddle);
             //Apply(source, output);
             //return output;
             //KernelFilter kernel = new KernelFilter();
@@ -55,7 +55,7 @@ namespace ImageProcessing
             filter.SquareFunction = RgbComponentCalculation.Erosion;
             filter.ComputeNewRgbComponentValue = filter.SquareAdapter;//ComputeNewRgbComponentValue;
             filter.SetUp(size);
-            filter.Apply(source, output);
+            filter.Apply(source, output, OnMiddle);
 
             return output;
         }
@@ -77,7 +77,7 @@ namespace ImageProcessing
             filter.SquareFunction = RgbComponentCalculation.Dilution;
             filter.ComputeNewRgbComponentValue = filter.SquareAdapter;//ComputeNewRgbComponentValue;
             filter.SetUp(size);
-            filter.Apply(source, output);
+            filter.Apply(source, output, OnMiddle);
             //Apply(source, output);
             //return output;
 
@@ -93,7 +93,7 @@ namespace ImageProcessing
             filter.SquareFunction = RgbComponentCalculation.Blur;
             filter.ComputeNewRgbComponentValue = filter.SquareAdapter;//ComputeNewRgbComponentValue;
             filter.SetUp(size);
-            filter.Apply(source, output);
+            filter.Apply(source, output, OnMiddle);
 
             return output;
         }

@@ -163,7 +163,9 @@ namespace ImageEditor.Forms
 
         private void React(object sender, ImageProcessingEventArgs e)
         {
-            MessageBox.Show("aa  " + e.Val);
+            // MessageBox.Show("aa  " + e.Val);
+            Invoke(new Action(() => progressBar.Value++ ));
+            //progressBar.Value++;
         }
 
         private void ViewWorkingCopy()
@@ -413,6 +415,9 @@ namespace ImageEditor.Forms
            // ReloadChildFormsText();
         }
 
-        
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

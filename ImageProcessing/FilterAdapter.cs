@@ -46,7 +46,7 @@ namespace ImageProcessing
             neighborhoodSize = size * size;
         }
 
-        public void Apply(Bitmap input, Bitmap output)
+        public void Apply(Bitmap input, Bitmap output, Action<int> onProgress)
         {
             if (!IsValid())
                 return;
@@ -60,7 +60,7 @@ namespace ImageProcessing
             LockedBitmap lockedBitmap = new LockedBitmap(output);
             LockedBitmap lockedIntermediate = new LockedBitmap(intermediate.OutputImage);
 
-            ImageProcessingBase.ApplyFilterToBitmap(lockedIntermediate, lockedBitmap, neighborhoodSize, gap, gapInBytes, size, bytesPerPixel, ComputeNewRgbComponentValue);
+            ImageProcessingBase.ApplyFilterToBitmap(lockedIntermediate, lockedBitmap, neighborhoodSize, gap, gapInBytes, size, bytesPerPixel, ComputeNewRgbComponentValue, onProgress);
 
             lockedBitmap.Unlock(output);
             lockedIntermediate.Unlock(intermediate.OutputImage);
