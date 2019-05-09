@@ -12,7 +12,6 @@ using System.Collections.Generic;
 using System.Linq;
 using ImageEditor.Interfaces;
 using ImageProcessing.Base;
-using ImageProcessing.Models;
 
 namespace ImageEditor.Forms
 {

@@ -1,6 +1,4 @@
-﻿using ImageProcessing.Models;
-
-namespace ImageProcessing.Base
+﻿namespace ImageProcessing.Base
 {
     internal static class PixelCalculation
     {

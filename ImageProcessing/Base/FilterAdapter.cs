@@ -1,9 +1,17 @@
 ﻿using System;
 using System.Drawing;
-using ImageProcessing.Models;
 
 namespace ImageProcessing.Base
 {
+    internal struct Filter
+    {
+        public int Size;
+        public int NeighborhoodSize;
+        public int Gap;
+        public int GapInBytes;
+        public int BytesPerPixel;
+    }
+
     internal class FilterAdapter
     {
         #region [Convolution]

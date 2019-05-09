@@ -49,11 +49,8 @@
     <Compile Include="Base\ImageProcessingBase.cs" />
     <Compile Include="ImageProcessingEventArgs.cs" />
     <Compile Include="ImageProcessingExtensions.cs" />
-    <Compile Include="Models\Filter.cs" />
-    <Compile Include="Models\IntermediateImage.cs" />
-    <Compile Include="Models\LockedBitmap.cs" />
-    <Compile Include="Models\Adjustment.cs" />
-    <Compile Include="Models\ConvolutionMatrix.cs" />
+    <Compile Include="Base\IntermediateImage.cs" />
+    <Compile Include="Base\LockedBitmap.cs" />
     <Compile Include="Base\PixelCalculation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Base\RgbComponentCalculation.cs" />

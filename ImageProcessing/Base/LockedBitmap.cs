@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using System.Drawing.Imaging;
 
-namespace ImageProcessing.Models
+namespace ImageProcessing.Base
 {
     enum Bits: byte
     {

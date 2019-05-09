@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Drawing;
-using ImageProcessing.Models;
+using ImageProcessing.Base;
 
 namespace ImageProcessing
 {

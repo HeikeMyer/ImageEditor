@@ -1,7 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using System.Threading;
-using ImageProcessing.Models;
 using ImageProcessing.Base;
 
 namespace ImageProcessing

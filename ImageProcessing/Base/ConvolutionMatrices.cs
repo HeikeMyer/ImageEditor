@@ -1,7 +1,12 @@
-﻿using ImageProcessing.Models;
-
-namespace ImageProcessing.Base
+﻿namespace ImageProcessing.Base
 {
+    public struct ConvolutionMatrix
+    {
+        public int[][] Matrix;
+        public int Size;
+        public double Factor;
+    }
+
     public static class ConvolutionMatrices
     {
         public static int[][] InitializeMatrix(int size)

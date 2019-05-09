@@ -2,10 +2,32 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Threading.Tasks;
-using ImageProcessing.Models;
 
 namespace ImageProcessing.Base
 {
+    public enum Argb : byte
+    {
+        Blue,
+        Green,
+        Red,
+        Alfa
+    }
+
+    internal unsafe delegate void AdjustPixel(byte* blue, double factor);
+
+    internal struct Adjustment
+    {
+        public AdjustPixel AdjustPixel;
+
+        public double Factor;
+
+        public Adjustment(AdjustPixel adjustPixel, double factor)
+        {
+            AdjustPixel = adjustPixel;
+            Factor = factor;
+        }
+    }
+
     internal static class ImageProcessingBase
     {
         public static unsafe void Adjust(System.Drawing.Bitmap bitmap, double factor, AdjustPixel applyToPixel)
