@@ -6,7 +6,7 @@ namespace ImageProcessing.Base
     {
         public static int[][] InitializeMatrix(int size)
         {
-            int[][] matrix = new int[size][];
+            var matrix = new int[size][];
             for (int i = 0; i < size; ++i)
                 matrix[i] = new int[size];
 
@@ -15,9 +15,9 @@ namespace ImageProcessing.Base
 
         public static ConvolutionMatrix LightSharpenMatrix()
         {
-            ConvolutionMatrix sharpenMatrix = new ConvolutionMatrix { Size = 3, Factor = 1 };
+            var sharpenMatrix = new ConvolutionMatrix { Size = 3, Factor = 1 };
 
-            int[][] matrix = InitializeMatrix(sharpenMatrix.Size);
+            var matrix = InitializeMatrix(sharpenMatrix.Size);
 
             matrix[0][0] = matrix[0][2] = matrix[2][2] = matrix[2][0] = 0;
             matrix[1][0] = matrix[0][1] = matrix[1][2] = matrix[2][1] = -1;
@@ -30,9 +30,9 @@ namespace ImageProcessing.Base
 
         public static ConvolutionMatrix SharpenMatrix()
         {
-            ConvolutionMatrix sharpenMatrix = new ConvolutionMatrix { Size = 3, Factor = 1 };
+            var sharpenMatrix = new ConvolutionMatrix { Size = 3, Factor = 1 };
 
-            int[][] matrix = InitializeMatrix(sharpenMatrix.Size);
+            var matrix = InitializeMatrix(sharpenMatrix.Size);
 
             matrix[0][0] = matrix[0][2] = matrix[2][2] = matrix[2][0] =
             matrix[1][0] = matrix[0][1] = matrix[1][2] = matrix[2][1] = -1;
@@ -45,9 +45,9 @@ namespace ImageProcessing.Base
 
         public static ConvolutionMatrix BoxBlur()
         {
-            ConvolutionMatrix boxBlur = new ConvolutionMatrix { Size = 3, Factor = 1.0 / 9 };
+            var boxBlur = new ConvolutionMatrix { Size = 3, Factor = 1.0 / 9 };
 
-            int[][] matrix = InitializeMatrix(boxBlur.Size);
+            var matrix = InitializeMatrix(boxBlur.Size);
 
             matrix[0][0] = matrix[0][2] = matrix[2][2] = matrix[2][0] =
             matrix[1][0] = matrix[0][1] = matrix[1][2] = matrix[2][1] =
@@ -60,9 +60,9 @@ namespace ImageProcessing.Base
 
         public static ConvolutionMatrix EdgeDetection()
         {
-            ConvolutionMatrix edgeDetection = new ConvolutionMatrix { Size = 3, Factor = 1 };
+            var edgeDetection = new ConvolutionMatrix { Size = 3, Factor = 1 };
 
-            int[][] matrix = InitializeMatrix(edgeDetection.Size);
+            var matrix = InitializeMatrix(edgeDetection.Size);
 
             matrix[0][0] = matrix[0][2] = matrix[2][2] = matrix[2][0] =
             matrix[1][0] = matrix[0][1] = matrix[1][2] = matrix[2][1] = -1;
@@ -75,9 +75,9 @@ namespace ImageProcessing.Base
 
         public static ConvolutionMatrix GaussianBlur()
         {
-            ConvolutionMatrix gaussianBlur = new ConvolutionMatrix { Size = 5, Factor = 0.00390625 };
+            var gaussianBlur = new ConvolutionMatrix { Size = 5, Factor = 0.00390625 };
             
-            int[][] matrix = InitializeMatrix(gaussianBlur.Size);
+            var matrix = InitializeMatrix(gaussianBlur.Size);
 
             matrix[0][0] = matrix[0][4] = matrix[4][4] = matrix[4][0] = 1;
             matrix[0][1] = matrix[0][3] = matrix[1][4] = matrix[3][4] =
@@ -94,9 +94,9 @@ namespace ImageProcessing.Base
 
         public static ConvolutionMatrix UnsharpMasking()
         {
-            ConvolutionMatrix unsharpMasking = new ConvolutionMatrix { Size = 5, Factor = -0.00390625 };
+            var unsharpMasking = new ConvolutionMatrix { Size = 5, Factor = -0.00390625 };
             
-            int[][] matrix = InitializeMatrix(unsharpMasking.Size);
+            var matrix = InitializeMatrix(unsharpMasking.Size);
 
             matrix[0][0] = matrix[0][4] = matrix[4][4] = matrix[4][0] = 1;
             matrix[0][1] = matrix[0][3] = matrix[1][4] = matrix[3][4] =

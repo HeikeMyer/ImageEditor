@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using ImageProcessing.Base;
 using ImageProcessing.Models;
 
-namespace ImageProcessing
+namespace ImageProcessing.Base
 {
     internal class FilterAdapter
     {
@@ -56,13 +56,22 @@ namespace ImageProcessing
             bytesPerPixel = Bitmap.GetPixelFormatSize(input.PixelFormat) / (int)Bits.BitsInByte;
             gapInBytes = gap * bytesPerPixel;
 
-            IntermediateImage intermediate = new IntermediateImage(input, gap);
+            var intermediate = new IntermediateImage(input, gap);
             intermediate.FillIn();
 
-            LockedBitmap lockedBitmap = new LockedBitmap(output);
-            LockedBitmap lockedIntermediate = new LockedBitmap(intermediate.OutputImage);
+            var lockedBitmap = new LockedBitmap(output);
+            var lockedIntermediate = new LockedBitmap(intermediate.OutputImage);
 
-            ImageProcessingBase.ApplyFilterToBitmap(lockedIntermediate, lockedBitmap, neighborhoodSize, gap, gapInBytes, size, bytesPerPixel, ComputeNewRgbComponentValue, onProgress);
+            var filter = new Filter
+            {
+                Size = size,
+                NeighborhoodSize = neighborhoodSize,
+                Gap = gap,
+                GapInBytes = gapInBytes, 
+                BytesPerPixel = bytesPerPixel
+            };
+
+            ImageProcessingBase.ApplyFilterToBitmap(lockedIntermediate, lockedBitmap, filter, ComputeNewRgbComponentValue, onProgress);
 
             lockedBitmap.Unlock(output);
             lockedIntermediate.Unlock(intermediate.OutputImage);

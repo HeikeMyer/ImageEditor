@@ -45,10 +45,11 @@
   <ItemGroup>
     <Compile Include="Base\ConvolutionMatrices.cs" />
     <Compile Include="ImageProcessingApi.cs" />
-    <Compile Include="FilterAdapter.cs" />
+    <Compile Include="Base\FilterAdapter.cs" />
     <Compile Include="Base\ImageProcessingBase.cs" />
     <Compile Include="ImageProcessingEventArgs.cs" />
     <Compile Include="ImageProcessingExtensions.cs" />
+    <Compile Include="Models\Filter.cs" />
     <Compile Include="Models\IntermediateImage.cs" />
     <Compile Include="Models\LockedBitmap.cs" />
     <Compile Include="Models\Adjustment.cs" />
