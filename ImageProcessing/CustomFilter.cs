@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using ImageProcessing.Base;
 
 namespace ImageProcessing
 {

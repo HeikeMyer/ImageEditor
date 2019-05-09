@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Drawing;
+using ImageProcessing.Base;
 
 namespace ImageProcessing
 {
@@ -61,11 +62,11 @@ namespace ImageProcessing
 
                 for (int i = 0; i < bitmap.WidthInBytes; i += bytesPerPixel)
                 {
-                    for (Argb j = Argb.blue; j <= Argb.red; ++j)
+                    for (Rgba j = Rgba.Blue; j <= Rgba.Red; ++j)
                         *(outputCurrentByte + (byte)j) = 
                         ComputeNewRgbComponentValue(GetRgbComponentNeighborhood(intermediate, intermediateCurrentByte + (byte)j));
 
-                    *(outputCurrentByte + (byte)Argb.alfa) = *(intermediateCurrentByte + (byte)Argb.alfa);
+                    *(outputCurrentByte + (byte)Rgba.Alfa) = *(intermediateCurrentByte + (byte)Rgba.Alfa);
 
                     outputCurrentByte += bytesPerPixel;
                     intermediateCurrentByte += bytesPerPixel;

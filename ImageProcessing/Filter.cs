@@ -29,7 +29,7 @@ namespace ImageProcessing
         
 
         
-        public void ApplyFilter(object sender, FilterEventArgs e)
+        public void ApplyFilter(object sender, ImageProcessingEventArgs e)
         {
             /*Thread.Sleep(5000);
             OnMiddle(1);
@@ -37,8 +37,8 @@ namespace ImageProcessing
             OnMiddle(2);
             Thread.Sleep(5000);
             OnMiddle(3);*/
-            KernelFilter kernel = new KernelFilter(e.Filter);
-            OnProcessingCompleted(kernel.ApplyKernelFilter(e.Input));
+            KernelFilter kernel = new KernelFilter(e.ConvolutionMatrix);
+            OnProcessingCompleted(kernel.ApplyKernelFilter(e.Image));
         }   
     }
 }

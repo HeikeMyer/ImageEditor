@@ -143,6 +143,7 @@
             this.invertToolStripMenuItem,
             this.photoFilterToolStripMenuItem});
             this.adjustmentsToolStripMenuItem.Name = "adjustmentsToolStripMenuItem";
+            this.adjustmentsToolStripMenuItem.Click += new System.EventHandler(this.adjustmentsToolStripMenuItem_Click);
             // 
             // brightnessContrastToolStripMenuItem
             // 

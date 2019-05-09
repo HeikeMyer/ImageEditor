@@ -11,6 +11,7 @@ using ImageEditor.Constants;
 using System.Collections.Generic;
 using System.Linq;
 using ImageEditor.Interfaces;
+using ImageProcessing.Base;
 
 namespace ImageEditor.Forms
 {
@@ -18,14 +19,14 @@ namespace ImageEditor.Forms
     {
         public event ImageProcessingEventHandler AdjustmentCall;
 
-        protected virtual void OnAdjustmentCall(CustomFilter filter = null, Func<Bitmap, Bitmap> adjustment = null)
+        protected virtual void OnAdjustmentCall(ImageProcessingEventArgs imageProcessingEventArgs)
         {
-            var imageProcessingEventArgs = new ImageProcessingEventArgs
+            /*var imageProcessingEventArgs = new ImageProcessingEventArgs
             {
                 Image = workingCopy,
                 Filter = filter,
                 Adjustment = adjustment
-            };
+            };*/
 
             AdjustmentCall?.Invoke(this, imageProcessingEventArgs);
         }
@@ -42,7 +43,7 @@ namespace ImageEditor.Forms
         }*/
 
 
-        public delegate void FilterEventHandler(object sender, FilterEventArgs e);
+        /*public delegate void FilterEventHandler(object sender, FilterEventArgs e);
 
         public event FilterEventHandler FilterCall;
 
@@ -62,13 +63,13 @@ namespace ImageEditor.Forms
 
             //Thread t = new Thread()
 
-        }
+        }*/
 
-        private void Meth(object filterKernel)
+        /*private void Meth(object filterKernel)
         {
 
             FilterCall?.Invoke(this, new FilterEventArgs(workingCopy, (ConvolutionMatrix)filterKernel));
-        }
+        }*/
 
 
         FileOperation fileOperations;
@@ -123,7 +124,7 @@ namespace ImageEditor.Forms
             fileOperations.FileOpened += ReceiveImage;
 
             filter = new Filter();
-            this.FilterCall += filter.ApplyFilter;
+            this.AdjustmentCall += filter.ApplyFilter;
 
             filter.ProcessingCompleted += ViewProcessedImage;
             filter.ProcessingCompleted += ApproveProcessing;
@@ -272,46 +273,84 @@ namespace ImageEditor.Forms
         private void thresholdToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            OnAdjustmentCall();
+            OnAdjustmentCall(new ImageProcessingEventArgs());
             ImageProcessingDialogForms[ControlConstants.ThresholdFormName].ShowDialog();
         }
 
         private void exposureToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            OnAdjustmentCall();
+            OnAdjustmentCall(new ImageProcessingEventArgs());
             ImageProcessingDialogForms[ControlConstants.ExposureFormName].ShowDialog();
         }
 
         private void sharpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             backup = workingCopy;
-            OnFilterCall(ConvolutionMatrices.LightSharpenMatrix());
+            var imageProcessingEventArgs = new ImageProcessingEventArgs
+            {
+                Image = workingCopy,
+                ConvolutionMatrix = ConvolutionMatrices.LightSharpenMatrix()
+            };
+
+            OnAdjustmentCall(imageProcessingEventArgs);
         }
 
         private void sharpenMoreToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            OnFilterCall(ConvolutionMatrices.SharpenMatrix());
+            var imageProcessingEventArgs = new ImageProcessingEventArgs
+            {
+                Image = workingCopy,
+                ConvolutionMatrix = ConvolutionMatrices.SharpenMatrix()
+            };
+
+            OnAdjustmentCall(imageProcessingEventArgs);
+
+            //OnFilterCall(ConvolutionMatrices.SharpenMatrix());
         }
 
         private void unsharpMaskToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
             BackUpWorkingCopy();
-            OnFilterCall(ConvolutionMatrices.UnsharpMasking());
+            var imageProcessingEventArgs = new ImageProcessingEventArgs
+            {
+                Image = workingCopy,
+                ConvolutionMatrix = ConvolutionMatrices.UnsharpMasking()
+            };
+
+            OnAdjustmentCall(imageProcessingEventArgs);
+
+            // OnFilterCall(ConvolutionMatrices.UnsharpMasking());
         }
 
         private void boxBlurToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            OnFilterCall(ConvolutionMatrices.BoxBlur());
+            var imageProcessingEventArgs = new ImageProcessingEventArgs
+            {
+                Image = workingCopy,
+                ConvolutionMatrix = ConvolutionMatrices.BoxBlur()
+            };
+
+            OnAdjustmentCall(imageProcessingEventArgs);
+
+            // OnFilterCall(ConvolutionMatrices.BoxBlur());
         }
 
         private void gaussianBlurToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            OnFilterCall(ConvolutionMatrices.GaussianBlur());
+            var imageProcessingEventArgs = new ImageProcessingEventArgs
+            {
+                Image = workingCopy,
+                ConvolutionMatrix = ConvolutionMatrices.GaussianBlur()
+            };
+
+            OnAdjustmentCall(imageProcessingEventArgs);
+
+            //OnFilterCall(ConvolutionMatrices.GaussianBlur());
         }
 
         private void edgeDetectionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -325,7 +364,7 @@ namespace ImageEditor.Forms
 
         private void A()
         {
-            OnFilterCall(ConvolutionMatrices.EdgeDetection());
+           // OnFilterCall(ConvolutionMatrices.EdgeDetection());
 
         }
 
@@ -339,7 +378,17 @@ namespace ImageEditor.Forms
             //CustomFilterAdjustment adjustment = new CustomFilterAdjustment(customFilter.Erosion);
 
             // OnCustomFilterCall(customFilter, adjustment);
-            OnAdjustmentCall(customFilter, customFilter.Erosion);
+            // OnAdjustmentCall(customFilter, customFilter.Erosion);
+            var imageProcessingEventArgs = new ImageProcessingEventArgs
+            {
+                Image = workingCopy,
+                Filter = customFilter,
+                Adjustment = customFilter.Erosion
+                //ConvolutionMatrix = ConvolutionMatrices.LightSharpenMatrix()
+            };
+
+            OnAdjustmentCall(imageProcessingEventArgs);
+
 
             ImageProcessingDialogForms[ControlConstants.CustomFilterFormName].ShowDialog();
         }
@@ -352,7 +401,16 @@ namespace ImageEditor.Forms
             //CustomFilterAdjustment adjustment = new CustomFilterAdjustment(customFilter.Dilution);
 
             //OnCustomFilterCall(customFilter, adjustment);
-            OnAdjustmentCall(customFilter, customFilter.Dilution);
+            // OnAdjustmentCall(customFilter, customFilter.Dilution);
+            var imageProcessingEventArgs = new ImageProcessingEventArgs
+            {
+                Image = workingCopy,
+                Filter = customFilter,
+                Adjustment = customFilter.Dilution
+                //ConvolutionMatrix = ConvolutionMatrices.LightSharpenMatrix()
+            };
+
+
 
             ImageProcessingDialogForms[ControlConstants.CustomFilterFormName].ShowDialog();
         }
@@ -369,14 +427,14 @@ namespace ImageEditor.Forms
         private void brightnessContrastToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            OnAdjustmentCall();
+            OnAdjustmentCall(new ImageProcessingEventArgs());
             ImageProcessingDialogForms[ControlConstants.BrightnessContrastFormName].ShowDialog();
         }
 
         private void colorBalanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            OnAdjustmentCall();
+            OnAdjustmentCall(new ImageProcessingEventArgs());
             ImageProcessingDialogForms[ControlConstants.ColorBalanceFilterFormName].ShowDialog();
 
         }
@@ -416,7 +474,16 @@ namespace ImageEditor.Forms
             BackUpWorkingCopy();
 
             CustomFilter customFilter = new CustomFilter();
-            OnAdjustmentCall(customFilter, customFilter.Blur);
+            var imageProcessingEventArgs = new ImageProcessingEventArgs
+            {
+                Image = workingCopy,
+                Filter = customFilter,
+                Adjustment = customFilter.Erosion
+                //ConvolutionMatrix = ConvolutionMatrices.LightSharpenMatrix()
+            };
+
+
+            OnAdjustmentCall(imageProcessingEventArgs);
             //CustomFilterAdjustment adjustment = new CustomFilterAdjustment(customFilter.Blur);
 
             //OnCustomFilterCall(customFilter, adjustment);
@@ -478,6 +545,11 @@ namespace ImageEditor.Forms
            // ReloadChildFormsText();
         }
 
+        private void adjustmentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
         /*private void ReloadChildFormsText()
         {
             ReloadTextFormExtension.ReloadText(brightnessContrastForm, GetType());
@@ -486,6 +558,6 @@ namespace ImageEditor.Forms
             ReloadTextFormExtension.ReloadText(customFilterForm, GetType());
             ReloadTextFormExtension.ReloadText(thresholdForm, GetType());
         }*/
-        
+
     }
 }
