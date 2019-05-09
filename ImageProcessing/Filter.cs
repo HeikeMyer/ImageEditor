@@ -29,7 +29,7 @@ namespace ImageProcessing
   
         public void ApplyFilter(object sender, FilterEventArgs e)
         {
-            KernelFilter kernel = new KernelFilter(e.Filter);
+            KernelFilter kernel = new KernelFilter();
             OnProcessingCompleted(kernel.ApplyKernelFilter(e.Input, e.Filter));
         }   
     }

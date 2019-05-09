@@ -2,9 +2,9 @@
 
 namespace ImageProcessing
 {
-    class KernelFilter: ImageFilter
+    class KernelFilter//: ImageFilter
     {
-        private double factor;
+        /*private double factor;
 
         private int[] kernel;
         private int kernelSize;
@@ -28,17 +28,17 @@ namespace ImageProcessing
 
         protected override byte ComputeNewRgbComponentValue(byte[] neighborhood)
         {
-            /*   double sum = 0;
+            double sum = 0;
 
                for (int i = 0; i < neighborhood.Length; ++i)
                    sum += neighborhood[i] * kernel[i];
 
                sum *= factor;
 
-               return RgbComponentCalculation.ControlOverflow(sum);*/
+               return RgbComponentCalculation.ControlOverflow(sum);
             throw new System.Exception();
         }
-
+        */
         public Bitmap ApplyKernelFilter(Bitmap source, ConvolutionMatrix m)
         {
             Bitmap output = new Bitmap(source.Width, source.Height);
