@@ -18,7 +18,7 @@ namespace ImageEditor.Forms
     {
         public event ImageProcessingEventHandler AdjustmentCall;
 
-        protected virtual void OnAdjustmentCall(CustomFilter filter = null, Func<Bitmap, int, Bitmap> adjustment = null)
+        protected virtual void OnAdjustmentCall(Filter filter = null, Func<Bitmap, int, Bitmap> adjustment = null)
         {
             var imageProcessingEventArgs = new ImageProcessingEventArgs
             {
@@ -270,7 +270,7 @@ namespace ImageEditor.Forms
         {
             BackUpWorkingCopy();
 
-            CustomFilter customFilter = new CustomFilter();
+            Filter customFilter = new Filter();
             //CustomFilterAdjustment adjustment = new CustomFilterAdjustment(customFilter.Erosion);
 
             // OnCustomFilterCall(customFilter, adjustment);
@@ -283,7 +283,7 @@ namespace ImageEditor.Forms
         {
             BackUpWorkingCopy();
 
-            CustomFilter customFilter = new CustomFilter();
+            Filter customFilter = new Filter();
             //CustomFilterAdjustment adjustment = new CustomFilterAdjustment(customFilter.Dilution);
 
             //OnCustomFilterCall(customFilter, adjustment);
@@ -350,7 +350,7 @@ namespace ImageEditor.Forms
         {
             BackUpWorkingCopy();
 
-            CustomFilter customFilter = new CustomFilter();
+            Filter customFilter = new Filter();
             OnAdjustmentCall(customFilter, customFilter.Blur);
             //CustomFilterAdjustment adjustment = new CustomFilterAdjustment(customFilter.Blur);
 

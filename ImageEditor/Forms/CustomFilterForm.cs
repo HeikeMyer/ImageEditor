@@ -38,7 +38,7 @@ namespace ImageEditor.Forms
         }
 
 
-        private CustomFilter customFilter;
+        private Filter customFilter;
         private Bitmap input;
         private Func<Bitmap, int, Bitmap> adjustment;
        // private CustomFilterAdjustment adjustment;
@@ -95,7 +95,7 @@ namespace ImageEditor.Forms
                 return;
             }
 
-            customFilter.SetUp(value);
+            //customFilter.SetUp(value);
             Bitmap preview = new Bitmap(input);
             preview = adjustment(preview, value);
             OnProcessingCompleted(preview);
@@ -110,7 +110,7 @@ namespace ImageEditor.Forms
         {
             var i = 10;
             input = new Bitmap(e.Image);
-            customFilter = e.Filter;
+            //customFilter = e.Filter;
             adjustment = e.Adjustment;
             maximalIntensity = 2 * Synchronization.GetLessValue(input.Height, input.Width) + 1;
             //throw new NotImplementedException();
