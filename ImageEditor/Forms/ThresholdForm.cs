@@ -42,7 +42,7 @@ namespace ImageEditor.Forms
             input = e.Image;
         }
 
-        private Adjustments threshold;
+        //private Adjustments threshold;
         private Bitmap input;
 
 
@@ -90,7 +90,7 @@ namespace ImageEditor.Forms
 
         private void ThresholdForm_Load(object sender, EventArgs e)
         {
-            threshold = new Adjustments();
+           // threshold = new Adjustments();
 
             thresholdTrackBar.Value = ControlConstants.DefaultThresholdLevel;
             thresholdValue.Text = ControlConstants.DefaultThresholdLevel.ToString();

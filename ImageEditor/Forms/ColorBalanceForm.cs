@@ -38,7 +38,7 @@ namespace ImageEditor.Forms
         }
 
 
-        Adjustments colorBalance;
+        //Adjustments colorBalance;
         Bitmap input;
 
 
@@ -126,7 +126,7 @@ namespace ImageEditor.Forms
 
         private void ColorBalanceForm_Load(object sender, EventArgs e)
         {
-            colorBalance = new Adjustments();
+           // colorBalance = new Adjustments();
 
             redTrackBar.Value = greenTrackBar.Value = blueTrackBar.Value = ControlConstants.DefaultColorBalance;
             redValue.Text = greenValue.Text = blueValue.Text = ControlConstants.DefaultColorBalance.ToString();

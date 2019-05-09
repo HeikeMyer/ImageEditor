@@ -39,7 +39,7 @@ namespace ImageEditor.Forms
 
         private ImageProcessingApi ImageProcessingApi { get; set; }
 
-        private Adjustments brightnessContrast;
+        //private Adjustments brightnessContrast;
         private Bitmap input;
 
         public void SetInputImage(object sender, ImageProcessingEventArgs e)

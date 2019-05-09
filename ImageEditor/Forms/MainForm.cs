@@ -260,7 +260,7 @@ namespace ImageEditor.Forms
         {
 
             BackUpWorkingCopy();
-            Adjustments adjustment = new Adjustments();
+           // Adjustments adjustment = new Adjustments();
             ImageProcessingApi.Sepia(workingCopy, 0);
             ViewWorkingCopy();
         }
@@ -268,7 +268,7 @@ namespace ImageEditor.Forms
         private void blackAndWhiteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            Adjustments adjustment = new Adjustments();
+          //  Adjustments adjustment = new Adjustments();
             ImageProcessingApi.BnW(workingCopy, 0);
             ViewWorkingCopy();
         }
@@ -422,7 +422,7 @@ namespace ImageEditor.Forms
         {
 
             BackUpWorkingCopy();
-            Adjustments adjustment = new Adjustments();
+            //Adjustments adjustment = new Adjustments();
             ImageProcessingApi.Invert(workingCopy, 0);
             ViewWorkingCopy();
         }

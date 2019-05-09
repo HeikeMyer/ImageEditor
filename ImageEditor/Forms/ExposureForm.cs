@@ -38,7 +38,7 @@ namespace ImageEditor.Forms
         }
 
 
-        private Adjustments exposure;
+       // private Adjustments exposure;
         private Bitmap input;
 
 
@@ -121,7 +121,7 @@ namespace ImageEditor.Forms
 
         private void ExposureForm_Load(object sender, EventArgs e)
         {
-            exposure = new Adjustments();
+            //exposure = new Adjustments();
 
             exposureTrackBar.Value = ControlConstants.DefaultExposure;
             exposureValue.Text = ControlConstants.DefaultExposure.ToString();
