@@ -100,13 +100,6 @@ namespace ImageProcessing
 
         public void ApplyFilter(object sender, ImageProcessingEventArgs e)
         {
-            /*Thread.Sleep(5000);
-            OnMiddle(1);
-            Thread.Sleep(5000);
-            OnMiddle(2);
-            Thread.Sleep(5000);
-            OnMiddle(3);*/
-            //KernelFilter kernel = new KernelFilter(e.ConvolutionMatrix);
             var res = ApplyConvolutionFilter(e.Image, e.ConvolutionMatrix);
             OnProcessingCompleted(res);
         }
@@ -119,7 +112,7 @@ namespace ImageProcessing
                 ConvolutionMatrix = convolutionMatrix,
                 ConvolutionFunction = RgbComponentCalculation.ComputeNewRgbComponentValue
             };
-            //Apply(source, output);
+
             ImageProcessingBase.Apply(source, output, filter.ConvolutionFilter, convolutionMatrix.Size);
             return output;
         }

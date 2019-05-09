@@ -4,7 +4,7 @@ using ImageProcessing.Models;
 
 namespace ImageProcessing
 {
-    class KernelFilter: ImageFilter
+/*    class KernelFilter: ImageFilter
     {
         private double factor;
 
@@ -47,5 +47,5 @@ namespace ImageProcessing
             ImageProcessingBase.Apply(source, output, ComputeNewRgbComponentValue, size);
             return output;
         }
-    }
+    }*/
 }

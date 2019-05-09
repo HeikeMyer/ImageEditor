@@ -84,7 +84,6 @@
             this.topToolStrip.Size = new System.Drawing.Size(1222, 27);
             this.topToolStrip.TabIndex = 0;
             this.topToolStrip.Text = "toolStrip1";
-            this.topToolStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.topToolStrip_ItemClicked);
             // 
             // fileToolStripDropDownButton
             // 
@@ -101,7 +100,6 @@
             this.fileToolStripDropDownButton.Size = new System.Drawing.Size(59, 24);
             this.fileToolStripDropDownButton.Text = "Файл";
             this.fileToolStripDropDownButton.ToolTipText = "File";
-            this.fileToolStripDropDownButton.Click += new System.EventHandler(this.toolStripDropDownButton1_Click);
             // 
             // openToolStripMenuItem
             // 
@@ -147,7 +145,6 @@
             this.imageToolStripDropDownButton.Name = "imageToolStripDropDownButton";
             this.imageToolStripDropDownButton.Size = new System.Drawing.Size(121, 24);
             this.imageToolStripDropDownButton.Text = "Изображение";
-            this.imageToolStripDropDownButton.Click += new System.EventHandler(this.imageToolStripDropDownButton_Click);
             // 
             // adjustmentsToolStripMenuItem
             // 
@@ -162,14 +159,12 @@
             this.adjustmentsToolStripMenuItem.Name = "adjustmentsToolStripMenuItem";
             this.adjustmentsToolStripMenuItem.Size = new System.Drawing.Size(161, 26);
             this.adjustmentsToolStripMenuItem.Text = "Коррекция";
-            this.adjustmentsToolStripMenuItem.Click += new System.EventHandler(this.adjustmentsToolStripMenuItem_Click);
             // 
             // brightnessContrastToolStripMenuItem
             // 
             this.brightnessContrastToolStripMenuItem.Name = "brightnessContrastToolStripMenuItem";
             this.brightnessContrastToolStripMenuItem.Size = new System.Drawing.Size(256, 26);
             this.brightnessContrastToolStripMenuItem.Text = "Яркость/Контрастность...";
-            this.brightnessContrastToolStripMenuItem.Click += new System.EventHandler(this.brightnessContrastToolStripMenuItem_Click);
             // 
             // exposureToolStripMenuItem
             // 
@@ -233,7 +228,6 @@
             this.filterToolStripDropDownButton.Name = "filterToolStripDropDownButton";
             this.filterToolStripDropDownButton.Size = new System.Drawing.Size(74, 24);
             this.filterToolStripDropDownButton.Text = "Фильтр";
-            this.filterToolStripDropDownButton.Click += new System.EventHandler(this.filterToolStripDropDownButton_Click);
             // 
             // blurToolStripMenuItem
             // 
@@ -244,7 +238,6 @@
             this.blurToolStripMenuItem.Name = "blurToolStripMenuItem";
             this.blurToolStripMenuItem.Size = new System.Drawing.Size(217, 26);
             this.blurToolStripMenuItem.Text = "Размытие";
-            this.blurToolStripMenuItem.Click += new System.EventHandler(this.blurToolStripMenuItem_Click);
             // 
             // boxBlurToolStripMenuItem
             // 
@@ -365,7 +358,7 @@
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 1;
             this.pictureBox.TabStop = false;
-            this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
+
             // 
             // progressBar1
             // 
@@ -375,7 +368,7 @@
             this.progressBar1.Size = new System.Drawing.Size(1222, 23);
             this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 2;
-            this.progressBar1.Click += new System.EventHandler(this.progressBar1_Click);
+
             // 
             // toolStripButton1
             // 
