@@ -51,10 +51,13 @@ namespace ImageEditor.Forms
         public ColorBalanceForm()
         {
             InitializeComponent();
+            ImageProcessingApi = new ImageProcessingApi();
 
             redTrackBar.Minimum = greenTrackBar.Minimum = blueTrackBar.Minimum = ControlConstants.MinColorBalance;
             redTrackBar.Maximum = greenTrackBar.Maximum = blueTrackBar.Maximum = ControlConstants.MaxColorBalance;
         }
+
+        private ImageProcessingApi ImageProcessingApi { get; set; }
 
         private void okButton_Click(object sender, EventArgs e)
         {
@@ -101,14 +104,14 @@ namespace ImageEditor.Forms
         private void redTrackBar_ValueChanged(object sender, EventArgs e)
         {
             Bitmap preview = new Bitmap(input);
-            colorBalance.AdjustColorBalance(preview, redTrackBar.Value, greenTrackBar.Value, blueTrackBar.Value);
+            ImageProcessingApi.AdjustColorBalance(preview, redTrackBar.Value, greenTrackBar.Value, blueTrackBar.Value);
             OnProcessingCompleted(preview);
         }
 
         private void greenTrackBar_ValueChanged(object sender, EventArgs e)
         {
             Bitmap preview = new Bitmap(input);
-            colorBalance.AdjustColorBalance(preview, redTrackBar.Value, greenTrackBar.Value, blueTrackBar.Value);
+            ImageProcessingApi.AdjustColorBalance(preview, redTrackBar.Value, greenTrackBar.Value, blueTrackBar.Value);
             OnProcessingCompleted(preview);
 
         }
@@ -116,7 +119,7 @@ namespace ImageEditor.Forms
         private void blueTrackBar_ValueChanged(object sender, EventArgs e)
         {
             Bitmap preview = new Bitmap(input);
-            colorBalance.AdjustColorBalance(preview, redTrackBar.Value, greenTrackBar.Value, blueTrackBar.Value);
+            ImageProcessingApi.AdjustColorBalance(preview, redTrackBar.Value, greenTrackBar.Value, blueTrackBar.Value);
             OnProcessingCompleted(preview);
 
         }

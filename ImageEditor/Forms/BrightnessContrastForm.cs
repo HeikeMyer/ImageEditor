@@ -37,6 +37,7 @@ namespace ImageEditor.Forms
             ProcessingCanceled?.Invoke(this, new ImageProcessingEventArgs());
         }
 
+        private ImageProcessingApi ImageProcessingApi { get; set; }
 
         private Adjustments brightnessContrast;
         private Bitmap input;
@@ -50,6 +51,7 @@ namespace ImageEditor.Forms
         public BrightnessContrastForm()
         {
             InitializeComponent();
+            ImageProcessingApi = new ImageProcessingApi();
 
             brightnessTrackBar.Minimum = ControlConstants.MinBrightness;
             brightnessTrackBar.Maximum = ControlConstants.MaxBrightness;
@@ -73,7 +75,7 @@ namespace ImageEditor.Forms
 
         private void BrightnessContrastForm_Load(object sender, EventArgs e)
         {
-            brightnessContrast = new Adjustments();
+            //brightnessContrast = new Adjustments();
 
             brightnessTrackBar.Value = ControlConstants.DefaultBrightness;
             brightnessValue.Text = ControlConstants.DefaultBrightness.ToString();
@@ -98,14 +100,14 @@ namespace ImageEditor.Forms
         private void brightnessTrackbar_ValueChanged(object sender, EventArgs e)
         {
             Bitmap preview = new Bitmap(input);
-            brightnessContrast.AdjustBrightnessAndContrast(preview, brightnessTrackBar.Value, contrastTrackBar.Value);
+            ImageProcessingApi.AdjustBrightnessAndContrast(preview, brightnessTrackBar.Value, contrastTrackBar.Value);
             OnProcessingCompleted(preview);
         }
 
         private void contrastTrackbar_ValueChanged(object sender, EventArgs e)
         {
             Bitmap preview = new Bitmap(input);
-            brightnessContrast.AdjustBrightnessAndContrast(preview, brightnessTrackBar.Value, contrastTrackBar.Value);
+            ImageProcessingApi.AdjustBrightnessAndContrast(preview, brightnessTrackBar.Value, contrastTrackBar.Value);
             OnProcessingCompleted(preview);
 
         }

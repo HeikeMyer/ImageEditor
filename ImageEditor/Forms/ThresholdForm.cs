@@ -49,6 +49,7 @@ namespace ImageEditor.Forms
         public ThresholdForm()
         {
             InitializeComponent();
+            ImageProcessingApi = new ImageProcessingApi();
 
             thresholdTrackBar.Minimum = ControlConstants.MinThresholdLevel;
             thresholdTrackBar.Maximum = ControlConstants.MaxThresholdLevel;
@@ -60,6 +61,8 @@ namespace ImageEditor.Forms
             Close();
 
         }
+
+        private ImageProcessingApi ImageProcessingApi { get; set; }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
@@ -81,7 +84,7 @@ namespace ImageEditor.Forms
         private void thresholdTrackBar_ValueChanged(object sender, EventArgs e)
         {
             Bitmap preview = new Bitmap(input);
-            threshold.Threshold(preview, thresholdTrackBar.Value);
+            ImageProcessingApi.Threshold(preview, thresholdTrackBar.Value);
             OnProcessingCompleted(preview);
         }
 

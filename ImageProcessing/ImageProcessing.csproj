@@ -51,7 +51,9 @@
     <Compile Include="CustomFilter.cs" />
     <Compile Include="Filter.cs" />
     <Compile Include="ImageFilter.cs" />
+    <Compile Include="ImageProcessingApi.cs" />
     <Compile Include="Models\Adjustment.cs" />
+    <Compile Include="Models\ConvolutionMatrix.cs" />
     <Compile Include="Models\FilterInfo.cs" />
     <Compile Include="Models\ImageProcessingEventArgs.cs" />
     <Compile Include="Models\IntermediateImage.cs" />

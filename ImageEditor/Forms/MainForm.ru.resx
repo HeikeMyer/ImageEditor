@@ -184,6 +184,9 @@
   <data name="photoFilterToolStripMenuItem.Text" xml:space="preserve">
     <value>Фотофильтр</value>
   </data>
+  <data name="adjustmentsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>161, 26</value>
+  </data>
   <data name="adjustmentsToolStripMenuItem.Text" xml:space="preserve">
     <value>Коррекция</value>
   </data>

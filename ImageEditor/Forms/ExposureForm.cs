@@ -46,6 +46,7 @@ namespace ImageEditor.Forms
         public ExposureForm()
         {
             InitializeComponent();
+            ImageProcessingApi = new ImageProcessingApi();
 
             exposureTrackBar.Minimum = ControlConstants.MinExposure;
             exposureTrackBar.Maximum = ControlConstants.MaxExposure;
@@ -67,7 +68,7 @@ namespace ImageEditor.Forms
         private void exposureTrackBar_ValueChanged(object sender, EventArgs e)
         {
             Bitmap preview = new Bitmap(input);
-            exposure.AdjustExposure(preview, ComputeExposureValue(), ComputeGammaValue());
+            ImageProcessingApi.AdjustExposure(preview, ComputeExposureValue(), ComputeGammaValue());
             OnProcessingCompleted(preview);
         }
 
@@ -81,7 +82,7 @@ namespace ImageEditor.Forms
         private void gammaTrackBar_ValueChanged(object sender, EventArgs e)
         {
             Bitmap preview = new Bitmap(input);
-            exposure.AdjustExposure(preview, ComputeExposureValue(), ComputeGammaValue());
+            ImageProcessingApi.AdjustExposure(preview, ComputeExposureValue(), ComputeGammaValue());
             OnProcessingCompleted(preview);
         }
 
@@ -109,6 +110,8 @@ namespace ImageEditor.Forms
             OnProcessingApproved();
             Close();
         }
+
+        private ImageProcessingApi ImageProcessingApi { get; set; }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {

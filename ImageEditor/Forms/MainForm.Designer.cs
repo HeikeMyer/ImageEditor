@@ -213,6 +213,7 @@
             this.dilutionToolStripMenuItem,
             this.gaussianBlurToolStripMenuItem});
             this.blurToolStripMenuItem.Name = "blurToolStripMenuItem";
+            this.blurToolStripMenuItem.Click += new System.EventHandler(this.blurToolStripMenuItem_Click);
             // 
             // boxBlurToolStripMenuItem
             // 

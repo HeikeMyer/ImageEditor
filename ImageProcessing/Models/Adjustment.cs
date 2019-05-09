@@ -12,6 +12,7 @@ namespace ImageProcessing.Models
     public struct Adjustment
     {
         public ApplyToPixel adjustment;
+        //public Action<byte*, double> adjustment;
         public double factor;
 
         public Adjustment(ApplyToPixel applyToPixel, double f)

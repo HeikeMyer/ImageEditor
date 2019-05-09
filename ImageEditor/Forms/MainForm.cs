@@ -19,6 +19,8 @@ namespace ImageEditor.Forms
     {
         public event ImageProcessingEventHandler AdjustmentCall;
 
+        ImageProcessingApi ImageProcessingApi { get; set; }
+
         protected virtual void OnAdjustmentCall(ImageProcessingEventArgs imageProcessingEventArgs)
         {
             /*var imageProcessingEventArgs = new ImageProcessingEventArgs
@@ -112,6 +114,7 @@ namespace ImageEditor.Forms
         public MainForm()
         {
             InitializeComponent();
+            ImageProcessingApi = new ImageProcessingApi();
             CreateImageProcessingDialogForms();
             SetImageProcessingDialogFormsEventHandlers();
 
@@ -229,7 +232,7 @@ namespace ImageEditor.Forms
 
         private void React(object sender, ImageProcessingEventArgs e)
         {
-            MessageBox.Show("aa  " + e.Val);
+            MessageBox.Show("aa  " + e.Progress);
         }
 
         private void ViewWorkingCopy()
@@ -258,7 +261,7 @@ namespace ImageEditor.Forms
 
             BackUpWorkingCopy();
             Adjustments adjustment = new Adjustments();
-            adjustment.Sepia(workingCopy, 0);
+            ImageProcessingApi.Sepia(workingCopy, 0);
             ViewWorkingCopy();
         }
 
@@ -266,7 +269,7 @@ namespace ImageEditor.Forms
         {
             BackUpWorkingCopy();
             Adjustments adjustment = new Adjustments();
-            adjustment.BlackAndWhite(workingCopy, 0);
+            ImageProcessingApi.BnW(workingCopy, 0);
             ViewWorkingCopy();
         }
 
@@ -420,7 +423,7 @@ namespace ImageEditor.Forms
 
             BackUpWorkingCopy();
             Adjustments adjustment = new Adjustments();
-            adjustment.Invert(workingCopy, 0);
+            ImageProcessingApi.Invert(workingCopy, 0);
             ViewWorkingCopy();
         }
 
@@ -546,6 +549,11 @@ namespace ImageEditor.Forms
         }
 
         private void adjustmentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void blurToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }

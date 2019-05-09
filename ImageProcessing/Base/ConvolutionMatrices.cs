@@ -1,4 +1,6 @@
-﻿namespace ImageProcessing.Base
+﻿using ImageProcessing.Models;
+
+namespace ImageProcessing.Base
 {
     public static class ConvolutionMatrices
     {
@@ -13,69 +15,69 @@
 
         public static ConvolutionMatrix LightSharpenMatrix()
         {
-            ConvolutionMatrix sharpenMatrix = new ConvolutionMatrix { size = 3, convolutionFactor = 1 };
+            ConvolutionMatrix sharpenMatrix = new ConvolutionMatrix { Size = 3, Factor = 1 };
 
-            int[][] kernel = InitializeFilterKernel(sharpenMatrix.size);
+            int[][] kernel = InitializeFilterKernel(sharpenMatrix.Size);
 
             kernel[0][0] = kernel[0][2] = kernel[2][2] = kernel[2][0] = 0;
             kernel[1][0] = kernel[0][1] = kernel[1][2] = kernel[2][1] = -1;
             kernel[1][1] = 5;
 
-            sharpenMatrix.matrix = kernel;
+            sharpenMatrix.Matrix = kernel;
 
             return sharpenMatrix;
         }
 
         public static ConvolutionMatrix SharpenMatrix()
         {
-            ConvolutionMatrix sharpenMatrix = new ConvolutionMatrix { size = 3, convolutionFactor = 1 };
+            ConvolutionMatrix sharpenMatrix = new ConvolutionMatrix { Size = 3, Factor = 1 };
 
-            int[][] kernel = InitializeFilterKernel(sharpenMatrix.size);
+            int[][] kernel = InitializeFilterKernel(sharpenMatrix.Size);
 
             kernel[0][0] = kernel[0][2] = kernel[2][2] = kernel[2][0] =
             kernel[1][0] = kernel[0][1] = kernel[1][2] = kernel[2][1] = -1;
             kernel[1][1] = 9;
 
-            sharpenMatrix.matrix = kernel;
+            sharpenMatrix.Matrix = kernel;
 
             return sharpenMatrix;
         }
 
         public static ConvolutionMatrix BoxBlur()
         {
-            ConvolutionMatrix boxBlur = new ConvolutionMatrix { size = 3, convolutionFactor = 1.0 / 9 };
+            ConvolutionMatrix boxBlur = new ConvolutionMatrix { Size = 3, Factor = 1.0 / 9 };
 
-            int[][] kernel = InitializeFilterKernel(boxBlur.size);
+            int[][] kernel = InitializeFilterKernel(boxBlur.Size);
 
             kernel[0][0] = kernel[0][2] = kernel[2][2] = kernel[2][0] =
             kernel[1][0] = kernel[0][1] = kernel[1][2] = kernel[2][1] =
             kernel[1][1] = 1;
 
-            boxBlur.matrix = kernel;
+            boxBlur.Matrix = kernel;
 
             return boxBlur;
         }
 
         public static ConvolutionMatrix EdgeDetection()
         {
-            ConvolutionMatrix edgeDetection = new ConvolutionMatrix { size = 3, convolutionFactor = 1 };
+            ConvolutionMatrix edgeDetection = new ConvolutionMatrix { Size = 3, Factor = 1 };
 
-            int[][] kernel = InitializeFilterKernel(edgeDetection.size);
+            int[][] kernel = InitializeFilterKernel(edgeDetection.Size);
 
             kernel[0][0] = kernel[0][2] = kernel[2][2] = kernel[2][0] =
             kernel[1][0] = kernel[0][1] = kernel[1][2] = kernel[2][1] = -1;
             kernel[1][1] = 8;
 
-            edgeDetection.matrix = kernel;
+            edgeDetection.Matrix = kernel;
 
             return edgeDetection;
         }
 
         public static ConvolutionMatrix GaussianBlur()
         {
-            ConvolutionMatrix gaussianBlur = new ConvolutionMatrix { size = 5, convolutionFactor = 0.00390625 };
+            ConvolutionMatrix gaussianBlur = new ConvolutionMatrix { Size = 5, Factor = 0.00390625 };
             
-            int[][] kernel = InitializeFilterKernel(gaussianBlur.size);
+            int[][] kernel = InitializeFilterKernel(gaussianBlur.Size);
 
             kernel[0][0] = kernel[0][4] = kernel[4][4] = kernel[4][0] = 1;
             kernel[0][1] = kernel[0][3] = kernel[1][4] = kernel[3][4] =
@@ -85,16 +87,16 @@
             kernel[1][2] = kernel[2][3] = kernel[3][2] = kernel[2][1] = 24;
             kernel[2][2] = 36;
 
-            gaussianBlur.matrix = kernel;
+            gaussianBlur.Matrix = kernel;
 
             return gaussianBlur;
         }
 
         public static ConvolutionMatrix UnsharpMasking()
         {
-            ConvolutionMatrix unsharpMasking = new ConvolutionMatrix { size = 5, convolutionFactor = -0.00390625 };
+            ConvolutionMatrix unsharpMasking = new ConvolutionMatrix { Size = 5, Factor = -0.00390625 };
             
-            int[][] kernel = InitializeFilterKernel(unsharpMasking.size);
+            int[][] kernel = InitializeFilterKernel(unsharpMasking.Size);
 
             kernel[0][0] = kernel[0][4] = kernel[4][4] = kernel[4][0] = 1;
             kernel[0][1] = kernel[0][3] = kernel[1][4] = kernel[3][4] =
@@ -104,7 +106,7 @@
             kernel[1][2] = kernel[2][3] = kernel[3][2] = kernel[2][1] = 24;
             kernel[2][2] = -476;
 
-            unsharpMasking.matrix = kernel;
+            unsharpMasking.Matrix = kernel;
 
             return unsharpMasking;
         }

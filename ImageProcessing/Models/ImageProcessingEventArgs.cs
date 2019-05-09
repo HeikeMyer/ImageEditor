@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using ImageProcessing.Models;
 
 namespace ImageProcessing
 {
@@ -11,7 +12,6 @@ namespace ImageProcessing
         public CustomFilter Filter { get; set; }
         public Func<Bitmap, Bitmap> Adjustment { get; set; }
         public ConvolutionMatrix ConvolutionMatrix { get; set; }
-
-        public int Val { get; set; }
+        public int Progress { get; set; }
     }
 }

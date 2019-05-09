@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using ImageProcessing.Base;
+using ImageProcessing.Models;
 
 namespace ImageProcessing
 {
@@ -16,14 +17,14 @@ namespace ImageProcessing
 
             for (int iY = 0; iY < size; ++iY)       
                 for (int iX = 0; iX < size; ++iX)              
-                    kernel[iY * size + iX] = filterKernel.matrix[iY][iX];                        
+                    kernel[iY * size + iX] = filterKernel.Matrix[iY][iX];                        
         }
 
         public KernelFilter(ConvolutionMatrix filterKernel)
         {
-            SetUp(filterKernel.size);
+            SetUp(filterKernel.Size);
             kernelSize = size * size;       
-            factor = filterKernel.convolutionFactor;
+            factor = filterKernel.Factor;
             SetUpKernel(filterKernel);
         }
 

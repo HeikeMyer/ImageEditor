@@ -61,7 +61,10 @@ namespace ImageEditor.Forms
         public CustomFilterForm()
         {
             InitializeComponent();
+            ImageProcessingApi = new ImageProcessingApi();
         }
+
+        private ImageProcessingApi ImageProcessingApi { get; set; }
 
         private void okButton_Click(object sender, EventArgs e)
         {

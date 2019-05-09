@@ -3,13 +3,6 @@ using System.Threading;
 
 namespace ImageProcessing
 {
-    public struct ConvolutionMatrix
-    {
-        public int[][] matrix;
-        public double convolutionFactor;
-        public int size;
-    }
-
     public class Filter
     {
         public event ImageProcessingEventHandler ProcessingCompleted;
@@ -23,7 +16,7 @@ namespace ImageProcessing
 
         protected virtual void OnMiddle(int val)
         {
-            Middle?.Invoke(this, new ImageProcessingEventArgs() { Val = val  });
+            Middle?.Invoke(this, new ImageProcessingEventArgs() { Progress = val  });
         }
 
         
