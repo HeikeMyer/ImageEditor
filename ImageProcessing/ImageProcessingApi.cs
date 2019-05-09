@@ -28,10 +28,14 @@ namespace ImageProcessing
             var m = e.Filter;
             Bitmap output = new Bitmap(source.Width, source.Height);
             FilterAdapter filter = new FilterAdapter();
-            filter.Factor = m.Factor;
-            filter.Kernel = m.Matrix.Straighten(m.Size);
-            filter.ConvolutionFunction = RgbComponentCalculation.ComputeRgbComponentValue;
-            filter.ComputeNewRgbComponentValue = filter.ConvolutionAdapter;//ComputeNewRgbComponentValue;
+            FilterAdapter.ConvolutionAdapterParameters parameters = new FilterAdapter.ConvolutionAdapterParameters
+            {
+                Factor = m.Factor,
+                Kernel = m.Matrix.Straighten(m.Size),
+                Function = RgbComponentCalculation.ComputeRgbComponentValue
+            };
+            filter.ConvolutionAdapterArgs = parameters;
+            filter.ComputeRgbComponentValue = filter.ConvolutionAdapter;//ComputeNewRgbComponentValue;
             filter.SetUp(m.Size);
             filter.Apply(source, output, OnMiddle);
             //Apply(source, output);
@@ -45,9 +49,14 @@ namespace ImageProcessing
             //computeRgbComponentValue = new ComputeRgbComponentValue(RgbComponentCalculation.Erosion);
             Bitmap output = new Bitmap(source.Width, source.Height);
             FilterAdapter filter = new FilterAdapter();
-            filter.Size = size;
-            filter.SquareFunction = RgbComponentCalculation.Erosion;
-            filter.ComputeNewRgbComponentValue = filter.SquareAdapter;//ComputeNewRgbComponentValue;
+            FilterAdapter.SquareAdapterParameters parameters = new FilterAdapter.SquareAdapterParameters
+            {
+                Size = size,
+                Function = RgbComponentCalculation.Erosion
+            };
+            filter.SquareAdapterArgs = parameters;
+            
+            filter.ComputeRgbComponentValue = filter.SquareAdapter;//ComputeNewRgbComponentValue;
             filter.SetUp(size);
             filter.Apply(source, output, OnMiddle);
 
@@ -67,9 +76,13 @@ namespace ImageProcessing
             var m = e.Filter;*/
             Bitmap output = new Bitmap(source.Width, source.Height);
             FilterAdapter filter = new FilterAdapter();
-            filter.Size = size;
-            filter.SquareFunction = RgbComponentCalculation.Dilution;
-            filter.ComputeNewRgbComponentValue = filter.SquareAdapter;//ComputeNewRgbComponentValue;
+            FilterAdapter.SquareAdapterParameters parameters = new FilterAdapter.SquareAdapterParameters
+            {
+                Size = size,
+                Function = RgbComponentCalculation.Dilution
+            };
+            filter.SquareAdapterArgs = parameters;
+            filter.ComputeRgbComponentValue = filter.SquareAdapter;//ComputeNewRgbComponentValue;
             filter.SetUp(size);
             filter.Apply(source, output, OnMiddle);
             //Apply(source, output);
@@ -83,9 +96,15 @@ namespace ImageProcessing
         {
             Bitmap output = new Bitmap(source.Width, source.Height);
             FilterAdapter filter = new FilterAdapter();
-            filter.Size = size;
-            filter.SquareFunction = RgbComponentCalculation.Blur;
-            filter.ComputeNewRgbComponentValue = filter.SquareAdapter;//ComputeNewRgbComponentValue;
+
+            FilterAdapter.SquareAdapterParameters parameters = new FilterAdapter.SquareAdapterParameters
+            {
+                Size = size,
+                Function = RgbComponentCalculation.Blur
+            };
+            filter.SquareAdapterArgs = parameters;
+
+            filter.ComputeRgbComponentValue = filter.SquareAdapter;//ComputeNewRgbComponentValue;
             filter.SetUp(size);
             filter.Apply(source, output, OnMiddle);
 

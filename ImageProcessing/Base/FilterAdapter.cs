@@ -11,24 +11,42 @@ namespace ImageProcessing.Base
 {
     internal class FilterAdapter
     {
-        public Func<byte[], byte> ComputeNewRgbComponentValue { get; set; }
+        #region [Convolution]
 
-        public Func<byte[], int[], double, byte> ConvolutionFunction { get; set; }
-        public int[] Kernel { get; set; }
-        public double Factor { get; set; }
+        public class ConvolutionAdapterParameters
+        {
+            public Func<byte[], int[], double, byte> Function { get; set; }
+            public int[] Kernel { get; set; }
+            public double Factor { get; set; }
+        }
 
-        public Func<byte[], int, byte> SquareFunction { get; set; }
-        public int Size { get; set; }
+        public ConvolutionAdapterParameters ConvolutionAdapterArgs { get; set; }
 
         public byte ConvolutionAdapter(byte[] neighborhood)
         {
-            return ConvolutionFunction(neighborhood, Kernel, Factor);
+            return ConvolutionAdapterArgs.Function(neighborhood, ConvolutionAdapterArgs.Kernel, ConvolutionAdapterArgs.Factor);
         }
+
+        #endregion
+
+        #region [Square]
+
+        public class SquareAdapterParameters
+        {
+            public Func<byte[], int, byte> Function { get; set; }
+            public int Size { get; set; }
+        }
+     
+        public SquareAdapterParameters SquareAdapterArgs { get; set; }
 
         public byte SquareAdapter(byte[] neighborhood)
         {
-            return SquareFunction(neighborhood, Size);
+            return SquareAdapterArgs.Function(neighborhood, SquareAdapterArgs.Size);
         }
+
+        #endregion
+
+        public Func<byte[], byte> ComputeRgbComponentValue { get; set; }
 
         protected int size = 0;
         protected int gap;
@@ -71,7 +89,7 @@ namespace ImageProcessing.Base
                 BytesPerPixel = bytesPerPixel
             };
 
-            ImageProcessingBase.ApplyFilterToBitmap(lockedIntermediate, lockedBitmap, filter, ComputeNewRgbComponentValue, onProgress);
+            ImageProcessingBase.ApplyFilterToBitmap(lockedIntermediate, lockedBitmap, filter, ComputeRgbComponentValue, onProgress);
 
             lockedBitmap.Unlock(output);
             lockedIntermediate.Unlock(intermediate.OutputImage);
