@@ -10,6 +10,7 @@ using System.Resources;
 using ImageEditor.Constants;
 using System.Collections.Generic;
 using System.Linq;
+using ImageEditor.Interfaces;
 
 namespace ImageEditor.Forms
 {
@@ -64,16 +65,45 @@ namespace ImageEditor.Forms
         FileOperation fileOperations;
         Filter filter;
 
-        BrightnessContrastForm brightnessContrastForm;
+        /*BrightnessContrastForm brightnessContrastForm;
         ExposureForm exposureForm;
         CustomFilterForm customFilterForm;
         ColorBalanceForm colorBalanceForm;
-        ThresholdForm thresholdForm;
+        ThresholdForm thresholdForm;*/
         
+        private Dictionary<string, IImageProcessingDialogForm> ImageProcessingDialogForms { get; set; }
+
+        private void CreateImageProcessingDialogForms()
+        {
+            ImageProcessingDialogForms = new Dictionary<string, IImageProcessingDialogForm>
+            {
+                { ControlConstants.BrightnessContrastFormName, new BrightnessContrastForm() },
+                { ControlConstants.ColorBalanceFilterFormName, new ColorBalanceForm() },
+                { ControlConstants.CustomFilterFormName, new CustomFilterForm() },
+                { ControlConstants.ExposureFormName, new ExposureForm() },
+                { ControlConstants.ThresholdFormName, new ThresholdForm() }
+            };
+        }
+
+        private void SetImageProcessingDialogFormsEventHandlers()
+        {
+            foreach (var keyValuePair in ImageProcessingDialogForms)
+            {
+                var form = keyValuePair.Value;
+
+                AdjustmentCall += form.SetInputImage;
+
+                form.ProcessingApproved += ApproveProcessing;
+                form.ProcessingCanceled += CancelProcessing;
+                form.ProcessingCompleted += ViewProcessedImage;
+            }
+        }
 
         public MainForm()
         {
             InitializeComponent();
+            CreateImageProcessingDialogForms();
+            SetImageProcessingDialogFormsEventHandlers();
 
            
             ReloadTextFormExtension.ReloadText(this, GetType());
@@ -89,7 +119,7 @@ namespace ImageEditor.Forms
             filter.ProcessingCompleted += ViewProcessedImage;
             filter.ProcessingCompleted += ApproveProcessing;
             filter.Middle += React;
-            brightnessContrastForm = new BrightnessContrastForm();
+            /*brightnessContrastForm = new BrightnessContrastForm();
 
             this.AdjustmentCall += brightnessContrastForm.SetInputImage;
 
@@ -123,7 +153,7 @@ namespace ImageEditor.Forms
 
             exposureForm.ProcessingApproved += ApproveProcessing;
             exposureForm.ProcessingCanceled += CancelProcessing;
-            exposureForm.ProcessingCompleted += ViewProcessedImage;
+            exposureForm.ProcessingCompleted += ViewProcessedImage;*/
         }
 
         private void toolStripDropDownButton1_Click(object sender, EventArgs e)
@@ -234,14 +264,14 @@ namespace ImageEditor.Forms
         {
             BackUpWorkingCopy();
             OnAdjustmentCall();
-            thresholdForm.ShowDialog();
+            ImageProcessingDialogForms[ControlConstants.ThresholdFormName].ShowDialog();
         }
 
         private void exposureToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
             OnAdjustmentCall();
-            exposureForm.ShowDialog();
+            ImageProcessingDialogForms[ControlConstants.ExposureFormName].ShowDialog();
         }
 
         private void sharpenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -301,7 +331,7 @@ namespace ImageEditor.Forms
 
             OnCustomFilterCall(customFilter, adjustment);
 
-            customFilterForm.ShowDialog();
+            ImageProcessingDialogForms[ControlConstants.CustomFilterFormName].ShowDialog();
         }
 
         private void dilutionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -313,7 +343,7 @@ namespace ImageEditor.Forms
 
             OnCustomFilterCall(customFilter, adjustment);
 
-            customFilterForm.ShowDialog();
+            ImageProcessingDialogForms[ControlConstants.CustomFilterFormName].ShowDialog();
         }
 
         private void invertToolStripMenuItem_Click(object sender, EventArgs e)
@@ -329,14 +359,14 @@ namespace ImageEditor.Forms
         {
             BackUpWorkingCopy();
             OnAdjustmentCall();
-            brightnessContrastForm.ShowDialog();
+            ImageProcessingDialogForms[ControlConstants.BrightnessContrastFormName].ShowDialog();
         }
 
         private void colorBalanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
             OnAdjustmentCall();
-            colorBalanceForm.ShowDialog();
+            ImageProcessingDialogForms[ControlConstants.ColorBalanceFilterFormName].ShowDialog();
 
         }
 
@@ -379,7 +409,7 @@ namespace ImageEditor.Forms
 
             OnCustomFilterCall(customFilter, adjustment);
 
-            customFilterForm.ShowDialog();
+            ImageProcessingDialogForms[ControlConstants.CustomFilterFormName].ShowDialog();
         }
 
         private void MainForm_Load(object sender, EventArgs e)

@@ -76,6 +76,7 @@
     <Compile Include="Forms\ExposureForm.Designer.cs">
       <DependentUpon>ExposureForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Interfaces\IImageProcessingDialogForm.cs" />
     <Compile Include="Operations\ConfigurationOperation.cs" />
     <Compile Include="Operations\FileOperation.cs" />
     <Compile Include="Forms\MainForm.cs">
@@ -179,5 +180,6 @@
   <ItemGroup>
     <None Include="Resources\adjustmentsStripDropDownButton.Image.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

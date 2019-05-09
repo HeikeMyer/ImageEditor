@@ -5,10 +5,11 @@ using ImageProcessing;
 using ImageEditor.Constants;
 using System.Configuration;
 using System.Resources;
+using ImageEditor.Interfaces;
 
 namespace ImageEditor.Forms
 {
-    public partial class BrightnessContrastForm : Form
+    public partial class BrightnessContrastForm : Form, IImageProcessingDialogForm
     {
         public event ImageProcessingEventHandler ProcessingCompleted;
 

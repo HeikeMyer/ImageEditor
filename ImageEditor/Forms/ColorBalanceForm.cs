@@ -4,11 +4,12 @@ using System.Drawing;
 using System.Resources;
 using System.Windows.Forms;
 using ImageEditor.Constants;
+using ImageEditor.Interfaces;
 using ImageProcessing;
 
 namespace ImageEditor.Forms
 {
-    public partial class ColorBalanceForm : Form
+    public partial class ColorBalanceForm : Form, IImageProcessingDialogForm
     {
         public event ImageProcessingEventHandler ProcessingCompleted;
 

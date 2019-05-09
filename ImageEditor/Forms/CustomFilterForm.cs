@@ -4,11 +4,12 @@ using System.Drawing;
 using System.Resources;
 using System.Windows.Forms;
 using ImageEditor.Constants;
+using ImageEditor.Interfaces;
 using ImageProcessing;
 
 namespace ImageEditor.Forms
 {
-    public partial class CustomFilterForm : Form
+    public partial class CustomFilterForm : Form, IImageProcessingDialogForm
     {
         public event ImageProcessingEventHandler ProcessingCompleted;
 
@@ -102,6 +103,12 @@ namespace ImageEditor.Forms
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        public void SetInputImage(object sender, ImageProcessingEventArgs e)
+        {
+            var i = 10;
+            //throw new NotImplementedException();
         }
     }
 }
