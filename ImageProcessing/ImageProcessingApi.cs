@@ -6,8 +6,6 @@ using ImageProcessing.Base;
 
 namespace ImageProcessing
 {
-    
-
     public class ImageProcessingApi
     {
         public event ImageProcessingEventHandler ProcessingCompleted;

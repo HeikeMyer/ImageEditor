@@ -9,7 +9,7 @@ using ImageProcessing.Models;
 
 namespace ImageProcessing
 {
-    public class FilterAdapter
+    internal class FilterAdapter
     {
         public Func<byte[], byte> ComputeNewRgbComponentValue { get; set; }
 

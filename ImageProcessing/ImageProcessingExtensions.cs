@@ -1,6 +1,6 @@
 ﻿namespace ImageProcessing
 {
-    public static class ImageProcessingExtensions
+    internal static class ImageProcessingExtensions
     {
         public static int[] Straighten(this int[][] matrix, int size)
         {

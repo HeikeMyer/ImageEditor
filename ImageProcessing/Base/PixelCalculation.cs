@@ -2,7 +2,7 @@
 
 namespace ImageProcessing.Base
 {
-    public static class PixelCalculation
+    internal static class PixelCalculation
     {
         public static unsafe void Brightness(byte* blue, double factor)
         {

@@ -2,7 +2,7 @@
 
 namespace ImageProcessing.Base
 {
-    public static class RgbComponentCalculation
+    internal static class RgbComponentCalculation
     {
         #region [Linear]
 
