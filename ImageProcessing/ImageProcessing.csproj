@@ -51,6 +51,7 @@
     <Compile Include="Filter.cs" />
     <Compile Include="ImageFilter.cs" />
     <Compile Include="ImageProcessingApi.cs" />
+    <Compile Include="ImageProcessingExtensions.cs" />
     <Compile Include="Models\Adjustment.cs" />
     <Compile Include="Models\ConvolutionMatrix.cs" />
     <Compile Include="Models\FilterInfo.cs" />

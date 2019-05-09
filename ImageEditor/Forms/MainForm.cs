@@ -558,6 +558,16 @@ namespace ImageEditor.Forms
 
         }
 
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStripButton1_Click_1(object sender, EventArgs e)
+        {
+            progressBar1.Value += 1;
+        }
+
         /*private void ReloadChildFormsText()
         {
             ReloadTextFormExtension.ReloadText(brightnessContrastForm, GetType());

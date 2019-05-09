@@ -103,5 +103,21 @@ namespace ImageProcessing.Base
         }
 
         #endregion
+
+        #region [Kernel]
+
+        public static byte ComputeNewRgbComponentValue(byte[] neighborhood, byte[] kernel, int factor)
+        {
+            double sum = 0;
+
+            for (int i = 0; i < neighborhood.Length; ++i)
+                sum += neighborhood[i] * kernel[i];
+
+            sum *= factor;
+
+            return ControlOverflow(sum);
+        }
+
+        #endregion
     }
 }
