@@ -9,8 +9,16 @@ namespace ImageProcessing
 {
     public class FilterAdapter
     {
-        //protected abstract byte ComputeNewRgbComponentValue(byte[] neighborhood);
         public Func<byte[], byte> ComputeNewRgbComponentValue { get; set; }
+
+        public Func<byte[], int[], double, byte> ConvolutionFunction { get; set; }
+        public int[] Kernel { get; set; }
+        public double Factor { get; set; }
+
+        public byte ConvolutionAdapter(byte[] neighborhood)
+        {
+            return ConvolutionFunction(neighborhood, Kernel, Factor);
+        }
 
         protected int size = 0;
         protected int gap;

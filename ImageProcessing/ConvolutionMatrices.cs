@@ -13,69 +13,69 @@
 
         public static ConvolutionMatrix LightSharpenMatrix()
         {
-            ConvolutionMatrix sharpenMatrix = new ConvolutionMatrix { size = 3, convolutionFactor = 1 };
+            ConvolutionMatrix sharpenMatrix = new ConvolutionMatrix { Size = 3, Factor = 1 };
 
-            int[][] matrix = InitializeMatrix(sharpenMatrix.size);
+            int[][] matrix = InitializeMatrix(sharpenMatrix.Size);
 
             matrix[0][0] = matrix[0][2] = matrix[2][2] = matrix[2][0] = 0;
             matrix[1][0] = matrix[0][1] = matrix[1][2] = matrix[2][1] = -1;
             matrix[1][1] = 5;
 
-            sharpenMatrix.matrix = matrix;
+            sharpenMatrix.Matrix = matrix;
 
             return sharpenMatrix;
         }
 
         public static ConvolutionMatrix SharpenMatrix()
         {
-            ConvolutionMatrix sharpenMatrix = new ConvolutionMatrix { size = 3, convolutionFactor = 1 };
+            ConvolutionMatrix sharpenMatrix = new ConvolutionMatrix { Size = 3, Factor = 1 };
 
-            int[][] matrix = InitializeMatrix(sharpenMatrix.size);
+            int[][] matrix = InitializeMatrix(sharpenMatrix.Size);
 
             matrix[0][0] = matrix[0][2] = matrix[2][2] = matrix[2][0] =
             matrix[1][0] = matrix[0][1] = matrix[1][2] = matrix[2][1] = -1;
             matrix[1][1] = 9;
 
-            sharpenMatrix.matrix = matrix;
+            sharpenMatrix.Matrix = matrix;
 
             return sharpenMatrix;
         }
 
         public static ConvolutionMatrix BoxBlur()
         {
-            ConvolutionMatrix boxBlur = new ConvolutionMatrix { size = 3, convolutionFactor = 1.0 / 9 };
+            ConvolutionMatrix boxBlur = new ConvolutionMatrix { Size = 3, Factor = 1.0 / 9 };
 
-            int[][] matrix = InitializeMatrix(boxBlur.size);
+            int[][] matrix = InitializeMatrix(boxBlur.Size);
 
             matrix[0][0] = matrix[0][2] = matrix[2][2] = matrix[2][0] =
             matrix[1][0] = matrix[0][1] = matrix[1][2] = matrix[2][1] =
             matrix[1][1] = 1;
 
-            boxBlur.matrix = matrix;
+            boxBlur.Matrix = matrix;
 
             return boxBlur;
         }
 
         public static ConvolutionMatrix EdgeDetection()
         {
-            ConvolutionMatrix edgeDetection = new ConvolutionMatrix { size = 3, convolutionFactor = 1 };
+            ConvolutionMatrix edgeDetection = new ConvolutionMatrix { Size = 3, Factor = 1 };
 
-            int[][] matrix = InitializeMatrix(edgeDetection.size);
+            int[][] matrix = InitializeMatrix(edgeDetection.Size);
 
             matrix[0][0] = matrix[0][2] = matrix[2][2] = matrix[2][0] =
             matrix[1][0] = matrix[0][1] = matrix[1][2] = matrix[2][1] = -1;
             matrix[1][1] = 8;
 
-            edgeDetection.matrix = matrix;
+            edgeDetection.Matrix = matrix;
 
             return edgeDetection;
         }
 
         public static ConvolutionMatrix GaussianBlur()
         {
-            ConvolutionMatrix gaussianBlur = new ConvolutionMatrix { size = 5, convolutionFactor = 0.00390625 };
+            ConvolutionMatrix gaussianBlur = new ConvolutionMatrix { Size = 5, Factor = 0.00390625 };
             
-            int[][] matrix = InitializeMatrix(gaussianBlur.size);
+            int[][] matrix = InitializeMatrix(gaussianBlur.Size);
 
             matrix[0][0] = matrix[0][4] = matrix[4][4] = matrix[4][0] = 1;
             matrix[0][1] = matrix[0][3] = matrix[1][4] = matrix[3][4] =
@@ -85,16 +85,16 @@
             matrix[1][2] = matrix[2][3] = matrix[3][2] = matrix[2][1] = 24;
             matrix[2][2] = 36;
 
-            gaussianBlur.matrix = matrix;
+            gaussianBlur.Matrix = matrix;
 
             return gaussianBlur;
         }
 
         public static ConvolutionMatrix UnsharpMasking()
         {
-            ConvolutionMatrix unsharpMasking = new ConvolutionMatrix { size = 5, convolutionFactor = -0.00390625 };
+            ConvolutionMatrix unsharpMasking = new ConvolutionMatrix { Size = 5, Factor = -0.00390625 };
             
-            int[][] matrix = InitializeMatrix(unsharpMasking.size);
+            int[][] matrix = InitializeMatrix(unsharpMasking.Size);
 
             matrix[0][0] = matrix[0][4] = matrix[4][4] = matrix[4][0] = 1;
             matrix[0][1] = matrix[0][3] = matrix[1][4] = matrix[3][4] =
@@ -104,7 +104,7 @@
             matrix[1][2] = matrix[2][3] = matrix[3][2] = matrix[2][1] = 24;
             matrix[2][2] = -476;
 
-            unsharpMasking.matrix = matrix;
+            unsharpMasking.Matrix = matrix;
 
             return unsharpMasking;
         }

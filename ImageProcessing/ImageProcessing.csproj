@@ -51,6 +51,7 @@
     <Compile Include="ImageFilter.cs" />
     <Compile Include="ImageProcessingBase.cs" />
     <Compile Include="ImageProcessingEventArgs.cs" />
+    <Compile Include="ImageProcessingExtensions.cs" />
     <Compile Include="IntermediateImage.cs" />
     <Compile Include="Kernel.cs" />
     <Compile Include="LockedBitmap.cs" />

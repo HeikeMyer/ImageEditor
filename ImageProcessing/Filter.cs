@@ -5,9 +5,10 @@ namespace ImageProcessing
 {
     public struct ConvolutionMatrix
     {
-        public int[][] matrix;
-        public double convolutionFactor;
-        public int size;
+        public int[][] Matrix;
+        public double Factor;
+        public int Size;
+        public int[] Kernel;
     }
 
     public class Filter
@@ -29,7 +30,7 @@ namespace ImageProcessing
         public void ApplyFilter(object sender, FilterEventArgs e)
         {
             KernelFilter kernel = new KernelFilter(e.Filter);
-            OnProcessingCompleted(kernel.ApplyKernelFilter(e.Input));
+            OnProcessingCompleted(kernel.ApplyKernelFilter(e.Input, e.Filter));
         }   
     }
 }
