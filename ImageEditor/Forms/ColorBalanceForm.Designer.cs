@@ -105,7 +105,6 @@
             // 
             resources.ApplyResources(this.cyanLabel, "cyanLabel");
             this.cyanLabel.Name = "cyanLabel";
-            this.cyanLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // magentaLabel
             // 
@@ -121,7 +120,6 @@
             // 
             resources.ApplyResources(this.greenLabel, "greenLabel");
             this.greenLabel.Name = "greenLabel";
-            this.greenLabel.Click += new System.EventHandler(this.label4_Click);
             // 
             // redLabel
             // 

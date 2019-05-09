@@ -43,7 +43,6 @@ namespace ImageProcessing
             };
 
             var filter = new FilterAdapter { ConvolutionAdapterArgs = parameters };
-
             filter.ComputeRgbComponentValue = filter.ConvolutionAdapter;
             filter.Apply(source, output, matrix.Size, OnProgress);
 
@@ -57,15 +56,14 @@ namespace ImageProcessing
         protected Bitmap ApplySquareFilter(Bitmap source, int size, Func<byte[], int, byte> function)
         {
             Bitmap output = new Bitmap(source.Width, source.Height);
-            FilterAdapter filter = new FilterAdapter();
-            FilterAdapter.SquareAdapterParameters parameters = new FilterAdapter.SquareAdapterParameters
+        
+            var parameters = new FilterAdapter.SquareAdapterParameters
             {
                 Size = size,
                 Function = function
             };
 
-            filter.SquareAdapterArgs = parameters;
-
+            var filter = new FilterAdapter { SquareAdapterArgs = parameters };
             filter.ComputeRgbComponentValue = filter.SquareAdapter;
             filter.Apply(source, output, size, OnProgress);
 

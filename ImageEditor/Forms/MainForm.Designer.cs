@@ -79,7 +79,6 @@
             this.settingsToolStripDropDownButton});
             resources.ApplyResources(this.topToolStrip, "topToolStrip");
             this.topToolStrip.Name = "topToolStrip";
-            this.topToolStrip.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.topToolStrip_ItemClicked);
             // 
             // fileToolStripDropDownButton
             // 
@@ -92,7 +91,6 @@
             this.exitToolStripMenuItem});
             resources.ApplyResources(this.fileToolStripDropDownButton, "fileToolStripDropDownButton");
             this.fileToolStripDropDownButton.Name = "fileToolStripDropDownButton";
-            this.fileToolStripDropDownButton.Click += new System.EventHandler(this.toolStripDropDownButton1_Click);
             // 
             // openToolStripMenuItem
             // 
@@ -130,7 +128,6 @@
             this.adjustmentsToolStripMenuItem});
             resources.ApplyResources(this.imageToolStripDropDownButton, "imageToolStripDropDownButton");
             this.imageToolStripDropDownButton.Name = "imageToolStripDropDownButton";
-            this.imageToolStripDropDownButton.Click += new System.EventHandler(this.imageToolStripDropDownButton_Click);
             // 
             // adjustmentsToolStripMenuItem
             // 
@@ -203,7 +200,6 @@
             this.stylizeToolStripMenuItem});
             resources.ApplyResources(this.filterToolStripDropDownButton, "filterToolStripDropDownButton");
             this.filterToolStripDropDownButton.Name = "filterToolStripDropDownButton";
-            this.filterToolStripDropDownButton.Click += new System.EventHandler(this.filterToolStripDropDownButton_Click);
             // 
             // blurToolStripMenuItem
             // 
@@ -312,13 +308,11 @@
             resources.ApplyResources(this.pictureBox, "pictureBox");
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.TabStop = false;
-            this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
             // 
             // progressBar1
             // 
             resources.ApplyResources(this.progressBar, "progressBar1");
             this.progressBar.Name = "progressBar1";
-            this.progressBar.Click += new System.EventHandler(this.progressBar1_Click);
             // 
             // MainForm
             // 

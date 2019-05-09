@@ -90,7 +90,6 @@
             // 
             resources.ApplyResources(this.brightnessLabel, "brightnessLabel");
             this.brightnessLabel.Name = "brightnessLabel";
-            this.brightnessLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // BrightnessContrastForm
             // 

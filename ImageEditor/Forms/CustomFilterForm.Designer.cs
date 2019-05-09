@@ -59,7 +59,6 @@
             // 
             resources.ApplyResources(this.intensityLabel, "intensityLabel");
             this.intensityLabel.Name = "intensityLabel";
-            this.intensityLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // CustomFilterForm
             // 

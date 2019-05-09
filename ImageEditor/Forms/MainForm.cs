@@ -17,40 +17,16 @@ namespace ImageEditor.Forms
 {
     public partial class MainForm : Form
     {
-        public event ImageProcessingEventHandler AdjustmentCall;
+        private Bitmap OriginalImage { get; set; }
 
-        protected virtual void OnAdjustmentCall(ImageProcessingApi filter = null, Func<Bitmap, int, Bitmap> adjustment = null)
-        {
-            var imageProcessingEventArgs = new ImageProcessingEventArgs
-            {
-                Image = workingCopy,
-                Filter = filter,
-                Adjustment = adjustment
-            };
+        private Bitmap WorkingImage { get; set; }
 
-            AdjustmentCall?.Invoke(this, imageProcessingEventArgs);
-        }
+        private Bitmap BackupImage { get; set; }
 
-        public delegate void FilterEventHandler(object sender, FilterEventArgs e);
+        private ImageProcessingApi ImageProcessingApi { get; set; }
 
-        public event FilterEventHandler FilterCall;
+        private FileOperation FileOperation { get; set; }
 
-        protected virtual void OnFilterCall(ConvolutionMatrix filterKernel)
-        {
-            FilterCall?.Invoke(this, new FilterEventArgs(workingCopy, filterKernel));
-        }
-
-        private void Meth(object filterKernel)
-        {
-
-            FilterCall?.Invoke(this, new FilterEventArgs(workingCopy, (ConvolutionMatrix)filterKernel));
-        }
-
-
-        FileOperation fileOperations;
-        ImageProcessingApi filter;
-
-        
         private Dictionary<string, IImageProcessingDialogForm> ImageProcessingDialogForms { get; set; }
 
         private void CreateImageProcessingDialogForms()
@@ -84,41 +60,63 @@ namespace ImageEditor.Forms
             InitializeComponent();
             CreateImageProcessingDialogForms();
             SetImageProcessingDialogFormsEventHandlers();
-
-           
-            ReloadTextFormExtension.ReloadText(this, GetType());
-    
-            fileOperations = new FileOperation();
-
-            fileOperations.FileOpened += ReceiveImage;
-
-            filter = new ImageProcessingApi();
-            this.FilterCall += filter.ApplyFilter;
-
-            filter.ProcessingCompleted += ViewProcessedImage;
-            filter.ProcessingCompleted += ApproveProcessing;
-            filter.Progress += React;
             
+            ReloadTextFormExtension.ReloadText(this, GetType());
+
+            FileOperation = new FileOperation();
+
+            FileOperation.FileOpened += ReceiveImage;
+
+            ImageProcessingApi = new ImageProcessingApi();
+            this.FilterCall += ImageProcessingApi.ApplyFilter;
+
+            ImageProcessingApi.ProcessingCompleted += ViewProcessedImage;
+            ImageProcessingApi.ProcessingCompleted += ApproveProcessing;
+            ImageProcessingApi.Progress += React;
         }
 
-        private void toolStripDropDownButton1_Click(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
-          
+            DisableButtons();
         }
 
+        public event ImageProcessingEventHandler AdjustmentCall;
 
-        private Bitmap original;
-        private Bitmap workingCopy;
-        private Bitmap backup;
+        protected virtual void OnAdjustmentCall(ImageProcessingApi filter = null, Func<Bitmap, int, Bitmap> adjustment = null)
+        {
+            var imageProcessingEventArgs = new ImageProcessingEventArgs
+            {
+                Image = WorkingImage,
+                Filter = filter,
+                Adjustment = adjustment
+            };
 
+            AdjustmentCall?.Invoke(this, imageProcessingEventArgs);
+        }
+
+        public delegate void FilterEventHandler(object sender, FilterEventArgs e);
+
+        public event FilterEventHandler FilterCall;
+
+        protected virtual void OnFilterCall(ConvolutionMatrix filterKernel)
+        {
+            FilterCall?.Invoke(this, new FilterEventArgs(WorkingImage, filterKernel));
+        }
+
+        private void Meth(object filterKernel)
+        {
+
+            FilterCall?.Invoke(this, new FilterEventArgs(WorkingImage, (ConvolutionMatrix)filterKernel));
+        }
+        
         private void BackUpWorkingCopy()
         {
-            backup = (Bitmap)workingCopy?.Clone();
+            BackupImage = (Bitmap)WorkingImage?.Clone();
         }
 
         private void RestoreBackupWorkingCopy()
         {
-            workingCopy = (Bitmap)backup?.Clone();
+            WorkingImage = (Bitmap)BackupImage?.Clone();
         }
 
         private void ReceiveImage(object sender, FileOperation.OpenEventArgs e)
@@ -126,9 +124,9 @@ namespace ImageEditor.Forms
             if (e.Input == null)
                 return;
 
-            original = e.Input;
-            workingCopy = new Bitmap(original);
-            backup = new Bitmap(original);
+            OriginalImage = e.Input;
+            WorkingImage = new Bitmap(OriginalImage);
+            BackupImage = new Bitmap(OriginalImage);
             EnableButtons();
         }
 
@@ -154,7 +152,7 @@ namespace ImageEditor.Forms
 
         private void ViewOriginalImage()
         {
-            pictureBox.Image = original;
+            pictureBox.Image = OriginalImage;
         }
 
         private void ViewProcessedImage(object sender, ImageProcessingEventArgs e)
@@ -171,31 +169,25 @@ namespace ImageEditor.Forms
 
         private void ViewWorkingCopy()
         {
-            pictureBox.Image = workingCopy;
+            pictureBox.Image = WorkingImage;
         }
 
         private void ApproveProcessing(object sender, ImageProcessingEventArgs e)
         {
-            workingCopy = (Bitmap)pictureBox.Image;
+            WorkingImage = (Bitmap)pictureBox.Image;
         }
 
         private void CancelProcessing(object sender, ImageProcessingEventArgs e)
         {
-            pictureBox.Image = workingCopy;
+            pictureBox.Image = WorkingImage;
         }
-
-
-        private void imageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void sepiaToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
             BackUpWorkingCopy();
             ImageProcessingApi adjustment = new ImageProcessingApi();
-            adjustment.Sepia(workingCopy, 0);
+            adjustment.Sepia(WorkingImage, 0);
             ViewWorkingCopy();
         }
 
@@ -203,7 +195,7 @@ namespace ImageEditor.Forms
         {
             BackUpWorkingCopy();
             ImageProcessingApi adjustment = new ImageProcessingApi();
-            adjustment.BnW(workingCopy, 0);
+            adjustment.BnW(WorkingImage, 0);
             ViewWorkingCopy();
         }
 
@@ -223,7 +215,7 @@ namespace ImageEditor.Forms
 
         private void sharpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            backup = workingCopy;
+            BackupImage = WorkingImage;
             OnFilterCall(ConvolutionMatrices.LightSharpenMatrix());
         }
 
@@ -300,7 +292,7 @@ namespace ImageEditor.Forms
 
             BackUpWorkingCopy();
             ImageProcessingApi adjustment = new ImageProcessingApi();
-            adjustment.Invert(workingCopy, 0);
+            adjustment.Invert(WorkingImage, 0);
             ViewWorkingCopy();
         }
 
@@ -328,7 +320,7 @@ namespace ImageEditor.Forms
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            fileOperations.OpenImageFile();
+            FileOperation.OpenImageFile();
             ViewOriginalImage();
         }
 
@@ -340,7 +332,7 @@ namespace ImageEditor.Forms
 
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            fileOperations.SaveImageFileAs(workingCopy);
+            FileOperation.SaveImageFileAs(WorkingImage);
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -361,64 +353,17 @@ namespace ImageEditor.Forms
 
             ImageProcessingDialogForms[ControlConstants.CustomFilterFormName].ShowDialog();
         }
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            DisableButtons();
-        }
-
-        private void imageToolStripDropDownButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void adjustmentsStripDropDownButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void photoFilterToolStripDropDownButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void filterToolStripDropDownButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void topToolStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+                
         private void englishToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurationOperation.UpdateAppSettings(ConfigurationConstants.CultureCodeKey, ConfigurationConstants.EnglishCultureCode);
             ReloadTextFormExtension.ReloadText(this, GetType());
-           // ReloadChildFormsText();
         }
 
         private void russianToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurationOperation.UpdateAppSettings(ConfigurationConstants.CultureCodeKey, ConfigurationConstants.RussianCultureCode);
             ReloadTextFormExtension.ReloadText(this, GetType());
-           // ReloadChildFormsText();
-        }
-
-        private void progressBar1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

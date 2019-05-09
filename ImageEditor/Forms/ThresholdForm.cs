@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Configuration;
 using System.Drawing;
-using System.Resources;
 using System.Windows.Forms;
 using ImageEditor.Constants;
 using ImageEditor.Interfaces;
@@ -11,27 +9,51 @@ namespace ImageEditor.Forms
 {
     public partial class ThresholdForm : Form, IImageProcessingDialogForm
     {
-        public event ImageProcessingEventHandler ProcessingCompleted;
+        private Bitmap InputImage { get; set; }
 
+        private ImageProcessingApi ImageProcessingApi { get; set; }
+
+        private void InitializeTrackbars()
+        {
+            thresholdTrackBar.Minimum = ControlConstants.MinThresholdLevel;
+            thresholdTrackBar.Maximum = ControlConstants.MaxThresholdLevel;
+        }
+
+        public ThresholdForm()
+        {
+            InitializeComponent();
+            InitializeTrackbars();
+        }
+
+        private void ReloadTrackbars()
+        {
+            thresholdTrackBar.Value = ControlConstants.DefaultThresholdLevel;
+            thresholdValue.Text = ControlConstants.DefaultThresholdLevel.ToString();
+        }
+
+        private void ThresholdForm_Load(object sender, EventArgs e)
+        {
+            ImageProcessingApi = new ImageProcessingApi();
+            ReloadTextFormExtension.ReloadText(this, GetType());
+            ReloadTrackbars();
+        }
+
+        public event ImageProcessingEventHandler ProcessingCompleted;
 
         protected virtual void OnProcessingCompleted(Bitmap processedImage)
         {
             ProcessingCompleted?.Invoke(this, new ImageProcessingEventArgs() { Image = processedImage });
         }
-
-
+        
         public event ImageProcessingEventHandler ProcessingApproved;
-
-
+        
         protected virtual void OnProcessingApproved()
         {
             ProcessingApproved?.Invoke(this, new ImageProcessingEventArgs());
         }
-
-
+        
         public event ImageProcessingEventHandler ProcessingCanceled;
-
-
+        
         protected virtual void OnProcessingCanceled()
         {
             ProcessingCanceled?.Invoke(this, new ImageProcessingEventArgs());
@@ -39,33 +61,19 @@ namespace ImageEditor.Forms
 
         public void SetInputImage(object sender, ImageProcessingEventArgs e)
         {
-            input = e.Image;
+            InputImage = e.Image;
         }
-
-        private ImageProcessingApi threshold;
-        private Bitmap input;
-
-
-        public ThresholdForm()
-        {
-            InitializeComponent();
-
-            thresholdTrackBar.Minimum = ControlConstants.MinThresholdLevel;
-            thresholdTrackBar.Maximum = ControlConstants.MaxThresholdLevel;
-        }
-
+        
         private void okButton_Click(object sender, EventArgs e)
         {
             OnProcessingApproved();
             Close();
-
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
             OnProcessingCanceled();
             Close();
-
         }
 
         private void thresholdValue_TextChanged(object sender, EventArgs e)
@@ -80,26 +88,9 @@ namespace ImageEditor.Forms
 
         private void thresholdTrackBar_ValueChanged(object sender, EventArgs e)
         {
-            Bitmap preview = new Bitmap(input);
-            threshold.Threshold(preview, thresholdTrackBar.Value);
+            Bitmap preview = new Bitmap(InputImage);
+            ImageProcessingApi.Threshold(preview, thresholdTrackBar.Value);
             OnProcessingCompleted(preview);
-        }
-
-        private void ThresholdForm_Load(object sender, EventArgs e)
-        {
-            threshold = new ImageProcessingApi();
-
-            thresholdTrackBar.Value = ControlConstants.DefaultThresholdLevel;
-            thresholdValue.Text = ControlConstants.DefaultThresholdLevel.ToString();
-            
-            ReloadTextFormExtension.ReloadText(this, GetType());
-            // ReloadTextFormExtension.ReloadText(this, GetType(), ReloadControlText, cultureCode);
-        }
-
-        public void ReloadControlText(ResourceManager resourceManager)
-        {
-            labelThresholdLevel.Text = resourceManager.GetString(nameof(labelThresholdLevel) + ControlConstants.TextPropertyName);
-            cancelButton.Text = resourceManager.GetString(nameof(cancelButton) + ControlConstants.TextPropertyName);
         }
     }
 }
