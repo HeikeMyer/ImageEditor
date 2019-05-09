@@ -18,11 +18,40 @@ namespace ImageProcessing
             return computeRgbComponentValue(neighborhood, size);
         }
 
+        /* public Bitmap Erosion(Bitmap input)
+         {
+             computeRgbComponentValue = new ComputeRgbComponentValue(RgbComponentCalculation.Erosion);
+             Bitmap output = new Bitmap(input.Width, input.Height);
+             Apply(input, output);
+             return output;
+         }
+
+         public Bitmap Dilution(Bitmap input)
+         {
+             computeRgbComponentValue = new ComputeRgbComponentValue(RgbComponentCalculation.Dilution);
+             Bitmap output = new Bitmap(input.Width, input.Height);
+             Apply(input, output);
+             return output;
+         }
+
+         public Bitmap Blur(Bitmap input)
+         {
+             computeRgbComponentValue = new ComputeRgbComponentValue(RgbComponentCalculation.Blur);
+             Bitmap output = new Bitmap(input.Width, input.Height);
+             Apply(input, output);
+             return output;
+         }*/
+
         public Bitmap Erosion(Bitmap input)
         {
             computeRgbComponentValue = new ComputeRgbComponentValue(RgbComponentCalculation.Erosion);
             Bitmap output = new Bitmap(input.Width, input.Height);
-            Apply(input, output);
+           // Apply(input, output);
+            FilterAdapter filter = new FilterAdapter();
+            filter.ComputeNewRgbComponentValue = ComputeNewRgbComponentValue;
+            filter.SetUp(size);
+            filter.Apply(input, output);
+
             return output;
         }
 
@@ -30,7 +59,13 @@ namespace ImageProcessing
         {
             computeRgbComponentValue = new ComputeRgbComponentValue(RgbComponentCalculation.Dilution);
             Bitmap output = new Bitmap(input.Width, input.Height);
-            Apply(input, output);
+            //Apply(input, output);
+            FilterAdapter filter = new FilterAdapter();
+            filter.ComputeNewRgbComponentValue = ComputeNewRgbComponentValue;
+            filter.SetUp(size);
+            filter.Apply(input, output);
+
+
             return output;
         }
 
@@ -38,7 +73,13 @@ namespace ImageProcessing
         {
             computeRgbComponentValue = new ComputeRgbComponentValue(RgbComponentCalculation.Blur);
             Bitmap output = new Bitmap(input.Width, input.Height);
-            Apply(input, output);
+            //Apply(input, output);
+
+            FilterAdapter filter = new FilterAdapter();
+            filter.ComputeNewRgbComponentValue = ComputeNewRgbComponentValue;
+            filter.SetUp(size);
+            filter.Apply(input, output);
+
             return output;
         }
     }
