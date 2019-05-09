@@ -148,31 +148,37 @@
             // 
             resources.ApplyResources(this.brightnessContrastToolStripMenuItem, "brightnessContrastToolStripMenuItem");
             this.brightnessContrastToolStripMenuItem.Name = "brightnessContrastToolStripMenuItem";
+            this.brightnessContrastToolStripMenuItem.Click += new System.EventHandler(this.brightnessContrastToolStripMenuItem_Click);
             // 
             // exposureToolStripMenuItem
             // 
             resources.ApplyResources(this.exposureToolStripMenuItem, "exposureToolStripMenuItem");
             this.exposureToolStripMenuItem.Name = "exposureToolStripMenuItem";
+            this.exposureToolStripMenuItem.Click += new System.EventHandler(this.exposureToolStripMenuItem_Click);
             // 
             // colorBalanceToolStripMenuItem
             // 
             resources.ApplyResources(this.colorBalanceToolStripMenuItem, "colorBalanceToolStripMenuItem");
             this.colorBalanceToolStripMenuItem.Name = "colorBalanceToolStripMenuItem";
+            this.colorBalanceToolStripMenuItem.Click += new System.EventHandler(this.colorBalanceToolStripMenuItem_Click);
             // 
             // thresholdToolStripMenuItem
             // 
             resources.ApplyResources(this.thresholdToolStripMenuItem, "thresholdToolStripMenuItem");
             this.thresholdToolStripMenuItem.Name = "thresholdToolStripMenuItem";
+            this.thresholdToolStripMenuItem.Click += new System.EventHandler(this.thresholdToolStripMenuItem_Click);
             // 
             // blackAndWhiteToolStripMenuItem
             // 
             resources.ApplyResources(this.blackAndWhiteToolStripMenuItem, "blackAndWhiteToolStripMenuItem");
             this.blackAndWhiteToolStripMenuItem.Name = "blackAndWhiteToolStripMenuItem";
+            this.blackAndWhiteToolStripMenuItem.Click += new System.EventHandler(this.blackAndWhiteToolStripMenuItem_Click);
             // 
             // invertToolStripMenuItem
             // 
             resources.ApplyResources(this.invertToolStripMenuItem, "invertToolStripMenuItem");
             this.invertToolStripMenuItem.Name = "invertToolStripMenuItem";
+            this.invertToolStripMenuItem.Click += new System.EventHandler(this.invertToolStripMenuItem_Click);
             // 
             // photoFilterToolStripMenuItem
             // 
@@ -185,6 +191,7 @@
             // 
             resources.ApplyResources(this.sepiaToolStripMenuItem, "sepiaToolStripMenuItem");
             this.sepiaToolStripMenuItem.Name = "sepiaToolStripMenuItem";
+            this.sepiaToolStripMenuItem.Click += new System.EventHandler(this.sepiaToolStripMenuItem_Click);
             // 
             // filterToolStripDropDownButton
             // 
@@ -210,16 +217,19 @@
             // 
             resources.ApplyResources(this.boxBlurToolStripMenuItem, "boxBlurToolStripMenuItem");
             this.boxBlurToolStripMenuItem.Name = "boxBlurToolStripMenuItem";
+            this.boxBlurToolStripMenuItem.Click += new System.EventHandler(this.boxBlurToolStripMenuItem_Click);
             // 
             // dilutionToolStripMenuItem
             // 
             resources.ApplyResources(this.dilutionToolStripMenuItem, "dilutionToolStripMenuItem");
             this.dilutionToolStripMenuItem.Name = "dilutionToolStripMenuItem";
+            this.dilutionToolStripMenuItem.Click += new System.EventHandler(this.dilutionToolStripMenuItem_Click);
             // 
             // gaussianBlurToolStripMenuItem
             // 
             resources.ApplyResources(this.gaussianBlurToolStripMenuItem, "gaussianBlurToolStripMenuItem");
             this.gaussianBlurToolStripMenuItem.Name = "gaussianBlurToolStripMenuItem";
+            this.gaussianBlurToolStripMenuItem.Click += new System.EventHandler(this.gaussianBlurToolStripMenuItem_Click);
             // 
             // sharpenToolStripMenuItem1
             // 
@@ -235,21 +245,25 @@
             // 
             resources.ApplyResources(this.erosionToolStripMenuItem, "erosionToolStripMenuItem");
             this.erosionToolStripMenuItem.Name = "erosionToolStripMenuItem";
+            this.erosionToolStripMenuItem.Click += new System.EventHandler(this.erosionToolStripMenuItem_Click);
             // 
             // sharpenToolStripMenuItem
             // 
             resources.ApplyResources(this.sharpenToolStripMenuItem, "sharpenToolStripMenuItem");
             this.sharpenToolStripMenuItem.Name = "sharpenToolStripMenuItem";
+            this.sharpenToolStripMenuItem.Click += new System.EventHandler(this.sharpenToolStripMenuItem_Click);
             // 
             // sharpenMoreToolStripMenuItem
             // 
             resources.ApplyResources(this.sharpenMoreToolStripMenuItem, "sharpenMoreToolStripMenuItem");
             this.sharpenMoreToolStripMenuItem.Name = "sharpenMoreToolStripMenuItem";
+            this.sharpenMoreToolStripMenuItem.Click += new System.EventHandler(this.sharpenMoreToolStripMenuItem_Click);
             // 
             // unsharpMaskToolStripMenuItem
             // 
             resources.ApplyResources(this.unsharpMaskToolStripMenuItem, "unsharpMaskToolStripMenuItem");
             this.unsharpMaskToolStripMenuItem.Name = "unsharpMaskToolStripMenuItem";
+            this.unsharpMaskToolStripMenuItem.Click += new System.EventHandler(this.unsharpMaskToolStripMenuItem_Click);
             // 
             // stylizeToolStripMenuItem
             // 
@@ -262,6 +276,7 @@
             // 
             resources.ApplyResources(this.edgeDetectionToolStripMenuItem, "edgeDetectionToolStripMenuItem");
             this.edgeDetectionToolStripMenuItem.Name = "edgeDetectionToolStripMenuItem";
+            this.edgeDetectionToolStripMenuItem.Click += new System.EventHandler(this.edgeDetectionToolStripMenuItem_Click);
             // 
             // settingsToolStripDropDownButton
             // 

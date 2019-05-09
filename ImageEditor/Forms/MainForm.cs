@@ -469,7 +469,5 @@ namespace ImageEditor.Forms
             erosionToolStripMenuItem.Text = resourceManager.GetString(nameof(erosionToolStripMenuItem) + ControlConstants.TextPropertyName);
     */   
     }
-
-        
     }
 }
