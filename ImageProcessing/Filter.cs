@@ -44,5 +44,7 @@ namespace ImageProcessing
             //KernelFilter kernel = new KernelFilter();
             OnProcessingCompleted(output);//kernel.ApplyKernelFilter(e.Input, e.Filter));
         }   
+
+
     }
 }

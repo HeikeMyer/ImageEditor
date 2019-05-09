@@ -15,9 +15,17 @@ namespace ImageProcessing
         public int[] Kernel { get; set; }
         public double Factor { get; set; }
 
+        public Func<byte[], int, byte> SquareFunction { get; set; }
+        public int Size { get; set; }
+
         public byte ConvolutionAdapter(byte[] neighborhood)
         {
             return ConvolutionFunction(neighborhood, Kernel, Factor);
+        }
+
+        public byte SquareAdapter(byte[] neighborhood)
+        {
+            return SquareFunction(neighborhood, Size);
         }
 
         protected int size = 0;

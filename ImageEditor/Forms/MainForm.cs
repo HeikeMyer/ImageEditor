@@ -18,7 +18,7 @@ namespace ImageEditor.Forms
     {
         public event ImageProcessingEventHandler AdjustmentCall;
 
-        protected virtual void OnAdjustmentCall(CustomFilter filter = null, Func<Bitmap, Bitmap> adjustment = null)
+        protected virtual void OnAdjustmentCall(CustomFilter filter = null, Func<Bitmap, int, Bitmap> adjustment = null)
         {
             var imageProcessingEventArgs = new ImageProcessingEventArgs
             {

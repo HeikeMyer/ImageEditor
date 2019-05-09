@@ -8,8 +8,9 @@ namespace ImageProcessing
     public class ImageProcessingEventArgs
     {
         public Bitmap Image { get; set; }
-        public Func<Bitmap, Bitmap> Adjustment { get; set; }
+        public Func<Bitmap, int, Bitmap> Adjustment { get; set; }
         public CustomFilter Filter { get; set; }
+        public int Intensity { get; set; }
 
         public int Val { get; set; }
     }

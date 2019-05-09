@@ -40,7 +40,7 @@ namespace ImageEditor.Forms
 
         private CustomFilter customFilter;
         private Bitmap input;
-        private Func<Bitmap, Bitmap> adjustment;
+        private Func<Bitmap, int, Bitmap> adjustment;
        // private CustomFilterAdjustment adjustment;
         private int maximalIntensity;
 
@@ -97,7 +97,7 @@ namespace ImageEditor.Forms
 
             customFilter.SetUp(value);
             Bitmap preview = new Bitmap(input);
-            preview = adjustment(preview);
+            preview = adjustment(preview, value);
             OnProcessingCompleted(preview);
         }
 
