@@ -97,7 +97,7 @@ namespace ImageEditor.Forms
 
             filter.ProcessingCompleted += ViewProcessedImage;
             filter.ProcessingCompleted += ApproveProcessing;
-            filter.Middle += React;
+            filter.Progress += React;
             
         }
 
@@ -203,7 +203,7 @@ namespace ImageEditor.Forms
         {
             BackUpWorkingCopy();
             ImageProcessingApi adjustment = new ImageProcessingApi();
-            adjustment.BlackAndWhite(workingCopy, 0);
+            adjustment.BnW(workingCopy, 0);
             ViewWorkingCopy();
         }
 

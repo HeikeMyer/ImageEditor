@@ -74,7 +74,6 @@ namespace ImageProcessing.Base
         }
 
         private static unsafe byte[] GetRgbComponentNeighborhood(LockedBitmap lockedBitmapData, byte* rgbComponent, Filter filter)
-            //int neighborhoodSize, int gap, int gapInBytes, int size, int bytesPerPixel)
         {
             byte[] neighborhood = InitializePixelNeighborhood(filter.NeighborhoodSize);
             byte* neighbor = rgbComponent - filter.Gap * lockedBitmapData.Stride - filter.GapInBytes;
@@ -94,11 +93,8 @@ namespace ImageProcessing.Base
             return neighborhood;
         }
 
-        public static unsafe void ApplyFilterToBitmap(LockedBitmap intermediate, LockedBitmap bitmap,
-            Filter filter,
-           // int neighborhoodSize, int gap, int gapInBytes, int size, int bytesPerPixel,
-            Func<byte[], byte> ComputeNewRgbComponentValue, Action<int> onProgress
-            )
+        public static unsafe void ApplyFilter(LockedBitmap intermediate, LockedBitmap bitmap, Filter filter, 
+                                                      Func<byte[], byte> ComputeNewRgbComponentValue, Action<int> onProgress)
         {
             Parallel.For(0, bitmap.HeightInPixels, iY =>
             {
@@ -110,7 +106,6 @@ namespace ImageProcessing.Base
                     for (Argb j = Argb.Blue; j <= Argb.Red; ++j)
                         *(outputCurrentByte + (byte)j) =
                         ComputeNewRgbComponentValue(GetRgbComponentNeighborhood(intermediate, intermediateCurrentByte + (byte)j, filter));
-                        //neighborhoodSize, gap, gapInBytes, size, bytesPerPixel));
 
                     *(outputCurrentByte + (byte)Argb.Alfa) = *(intermediateCurrentByte + (byte)Argb.Alfa);
 

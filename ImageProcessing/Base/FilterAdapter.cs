@@ -74,7 +74,7 @@ namespace ImageProcessing.Base
                 BytesPerPixel = bytesPerPixel
             };
 
-            ImageProcessingBase.ApplyFilterToBitmap(lockedIntermediate, lockedBitmap, filter, ComputeRgbComponentValue, onProgress);
+            ImageProcessingBase.ApplyFilter(lockedIntermediate, lockedBitmap, filter, ComputeRgbComponentValue, onProgress);
 
             lockedBitmap.Unlock(output);
             lockedIntermediate.Unlock(intermediate.OutputImage);

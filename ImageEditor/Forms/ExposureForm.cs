@@ -67,7 +67,7 @@ namespace ImageEditor.Forms
         private void exposureTrackBar_ValueChanged(object sender, EventArgs e)
         {
             Bitmap preview = new Bitmap(input);
-            exposure.AdjustExposure(preview, ComputeExposureValue(), ComputeGammaValue());
+            exposure.Exposure(preview, ComputeExposureValue(), ComputeGammaValue());
             OnProcessingCompleted(preview);
         }
 
@@ -81,7 +81,7 @@ namespace ImageEditor.Forms
         private void gammaTrackBar_ValueChanged(object sender, EventArgs e)
         {
             Bitmap preview = new Bitmap(input);
-            exposure.AdjustExposure(preview, ComputeExposureValue(), ComputeGammaValue());
+            exposure.Exposure(preview, ComputeExposureValue(), ComputeGammaValue());
             OnProcessingCompleted(preview);
         }
 

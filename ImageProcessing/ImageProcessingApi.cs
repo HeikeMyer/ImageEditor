@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using ImageProcessing.Base;
 
@@ -8,111 +9,89 @@ namespace ImageProcessing
     {
         public event ImageProcessingEventHandler ProcessingCompleted;
 
-        public event ImageProcessingEventHandler Middle;
+        public event ImageProcessingEventHandler Progress;
 
         protected virtual void OnProcessingCompleted(Bitmap processedImage)
         {
             ProcessingCompleted?.Invoke(this, new ImageProcessingEventArgs() { Image = processedImage });
         }
 
-        protected virtual void OnMiddle(int val)
+        protected virtual void OnProgress(int val)
         {
-            Middle?.Invoke(this, new ImageProcessingEventArgs() { Val = val  });
+            Progress?.Invoke(this, new ImageProcessingEventArgs() { Val = val  });
         }
-  
+
+        #region [Convolution]
+
         public void ApplyFilter(object sender, FilterEventArgs e)
         {
             var source = e.Input;
             var m = e.Filter;
+            var output = ApplyConvolutionFilter(source, m, RgbComponentCalculation.ComputeRgbComponentValue);
+            OnProcessingCompleted(output);
+        }
+
+        protected Bitmap ApplyConvolutionFilter(Bitmap source, ConvolutionMatrix matrix, Func<byte[], int[], double, byte> function)
+        {
+            Bitmap output = new Bitmap(source.Width, source.Height);
+
+            var parameters = new FilterAdapter.ConvolutionAdapterParameters
+            {
+                Factor = matrix.Factor,
+                Kernel = matrix.Matrix.Straighten(matrix.Size),
+                Function = function
+            };
+
+            var filter = new FilterAdapter { ConvolutionAdapterArgs = parameters };
+
+            filter.ComputeRgbComponentValue = filter.ConvolutionAdapter;
+            filter.Apply(source, output, matrix.Size, OnProgress);
+
+            return output;
+        }
+
+        #endregion
+
+        #region [Square]
+
+        protected Bitmap ApplySquareFilter(Bitmap source, int size, Func<byte[], int, byte> function)
+        {
             Bitmap output = new Bitmap(source.Width, source.Height);
             FilterAdapter filter = new FilterAdapter();
-            FilterAdapter.ConvolutionAdapterParameters parameters = new FilterAdapter.ConvolutionAdapterParameters
+            FilterAdapter.SquareAdapterParameters parameters = new FilterAdapter.SquareAdapterParameters
             {
-                Factor = m.Factor,
-                Kernel = m.Matrix.Straighten(m.Size),
-                Function = RgbComponentCalculation.ComputeRgbComponentValue
+                Size = size,
+                Function = function
             };
-            filter.ConvolutionAdapterArgs = parameters;
-            filter.ComputeRgbComponentValue = filter.ConvolutionAdapter;//ComputeNewRgbComponentValue;
-            //filter.SetUp(m.Size);
-            filter.Apply(source, output, m.Size, OnMiddle);
-            //Apply(source, output);
-            //return output;
-            //KernelFilter kernel = new KernelFilter();
-            OnProcessingCompleted(output);//kernel.ApplyKernelFilter(e.Input, e.Filter));
+
+            filter.SquareAdapterArgs = parameters;
+
+            filter.ComputeRgbComponentValue = filter.SquareAdapter;
+            filter.Apply(source, output, size, OnProgress);
+
+            return output;
         }
 
         public Bitmap Erosion(Bitmap source, int size)
         {
-            //computeRgbComponentValue = new ComputeRgbComponentValue(RgbComponentCalculation.Erosion);
-            Bitmap output = new Bitmap(source.Width, source.Height);
-            FilterAdapter filter = new FilterAdapter();
-            FilterAdapter.SquareAdapterParameters parameters = new FilterAdapter.SquareAdapterParameters
-            {
-                Size = size,
-                Function = RgbComponentCalculation.Erosion
-            };
-            filter.SquareAdapterArgs = parameters;
-            
-            filter.ComputeRgbComponentValue = filter.SquareAdapter;//ComputeNewRgbComponentValue;
-            //filter.SetUp(size);
-            filter.Apply(source, output, size, OnMiddle);
-
-            return output;
+            return ApplySquareFilter(source, size, RgbComponentCalculation.Erosion);
         }
 
         public Bitmap Dilution(Bitmap source, int size)
         {
-            //computeRgbComponentValue = new ComputeRgbComponentValue(RgbComponentCalculation.Dilution);
-            /*Bitmap output = new Bitmap(input.Width, input.Height);
-            //Apply(input, output);
-            FilterAdapter filter = new FilterAdapter();
-            filter.ComputeNewRgbComponentValue = ComputeNewRgbComponentValue;
-            filter.SetUp(size);
-            filter.Apply(input, output);
-            var source = e.Input;
-            var m = e.Filter;*/
-            Bitmap output = new Bitmap(source.Width, source.Height);
-            FilterAdapter filter = new FilterAdapter();
-            FilterAdapter.SquareAdapterParameters parameters = new FilterAdapter.SquareAdapterParameters
-            {
-                Size = size,
-                Function = RgbComponentCalculation.Dilution
-            };
-            filter.SquareAdapterArgs = parameters;
-            filter.ComputeRgbComponentValue = filter.SquareAdapter;//ComputeNewRgbComponentValue;
-          //  filter.SetUp(size);
-            filter.Apply(source, output, size, OnMiddle);
-            //Apply(source, output);
-            //return output;
-
-
-            return output;
+            return ApplySquareFilter(source, size, RgbComponentCalculation.Dilution);
         }
 
         public Bitmap Blur(Bitmap source, int size)
         {
-            Bitmap output = new Bitmap(source.Width, source.Height);
-            FilterAdapter filter = new FilterAdapter();
-
-            FilterAdapter.SquareAdapterParameters parameters = new FilterAdapter.SquareAdapterParameters
-            {
-                Size = size,
-                Function = RgbComponentCalculation.Blur
-            };
-            filter.SquareAdapterArgs = parameters;
-
-            filter.ComputeRgbComponentValue = filter.SquareAdapter;//ComputeNewRgbComponentValue;
-           // filter.SetUp(size);
-            filter.Apply(source, output, size, OnMiddle);
-
-            return output;
+            return ApplySquareFilter(source, size, RgbComponentCalculation.Blur);
         }
 
+        #endregion
 
+        #region [Adjustments]
 
-
-        public unsafe void AdjustBrightnessAndContrast(Bitmap source, int brightnessFactor, int contrastFactor)
+        public unsafe void BrightnessContrast(Bitmap source, int brightnessFactor, int contrastFactor)
         {
             List<Adjustment> AdjustmentsPack = new List<Adjustment>();
 
@@ -126,7 +105,7 @@ namespace ImageProcessing
                 ImageProcessingBase.Adjust(source, AdjustmentsPack);
         }
 
-        public unsafe void AdjustExposure(Bitmap source, double exposure, double gamma)
+        public unsafe void Exposure(Bitmap source, double exposure, double gamma)
         {
             List<Adjustment> AdjustmentsPack = new List<Adjustment>();
 
@@ -140,9 +119,8 @@ namespace ImageProcessing
                 ImageProcessingBase.Adjust(source, AdjustmentsPack);
         }
 
-        public unsafe void AdjustColorBalance(Bitmap source, int redFactor, int greenFactor, int blueFactor)
+        public unsafe void ColorBalance(Bitmap source, int redFactor, int greenFactor, int blueFactor)
         {
-
             List<Adjustment> adjustmentsPack = new List<Adjustment>();
 
             if (redFactor != 0)
@@ -160,26 +138,24 @@ namespace ImageProcessing
 
         public unsafe void Sepia(Bitmap source, int factor)
         {
-            AdjustPixel adjustment = new AdjustPixel(PixelCalculation.Sepia);
-            ImageProcessingBase.Adjust(source, factor, adjustment);
+            ImageProcessingBase.Adjust(source, factor, PixelCalculation.Sepia);
         }
 
         public unsafe void Invert(Bitmap source, int factor)
         {
-            AdjustPixel adjustment = new AdjustPixel(PixelCalculation.Invert);
-            ImageProcessingBase.Adjust(source, factor, adjustment);
+            ImageProcessingBase.Adjust(source, factor, PixelCalculation.Invert);
         }
 
-        public unsafe void BlackAndWhite(Bitmap source, int factor)
+        public unsafe void BnW(Bitmap source, int factor)
         {
-            AdjustPixel adjustment = new AdjustPixel(PixelCalculation.BnW);
-            ImageProcessingBase.Adjust(source, factor, adjustment);
+            ImageProcessingBase.Adjust(source, factor, PixelCalculation.BnW);
         }
 
         public unsafe void Threshold(Bitmap source, int factor)
         {
-            AdjustPixel adjustment = new AdjustPixel(PixelCalculation.Threshold);
-            ImageProcessingBase.Adjust(source, factor, adjustment);
+            ImageProcessingBase.Adjust(source, factor, PixelCalculation.Threshold);
         }
+
+        #endregion
     }
 }

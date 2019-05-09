@@ -101,14 +101,14 @@ namespace ImageEditor.Forms
         private void redTrackBar_ValueChanged(object sender, EventArgs e)
         {
             Bitmap preview = new Bitmap(input);
-            colorBalance.AdjustColorBalance(preview, redTrackBar.Value, greenTrackBar.Value, blueTrackBar.Value);
+            colorBalance.ColorBalance(preview, redTrackBar.Value, greenTrackBar.Value, blueTrackBar.Value);
             OnProcessingCompleted(preview);
         }
 
         private void greenTrackBar_ValueChanged(object sender, EventArgs e)
         {
             Bitmap preview = new Bitmap(input);
-            colorBalance.AdjustColorBalance(preview, redTrackBar.Value, greenTrackBar.Value, blueTrackBar.Value);
+            colorBalance.ColorBalance(preview, redTrackBar.Value, greenTrackBar.Value, blueTrackBar.Value);
             OnProcessingCompleted(preview);
 
         }
@@ -116,7 +116,7 @@ namespace ImageEditor.Forms
         private void blueTrackBar_ValueChanged(object sender, EventArgs e)
         {
             Bitmap preview = new Bitmap(input);
-            colorBalance.AdjustColorBalance(preview, redTrackBar.Value, greenTrackBar.Value, blueTrackBar.Value);
+            colorBalance.ColorBalance(preview, redTrackBar.Value, greenTrackBar.Value, blueTrackBar.Value);
             OnProcessingCompleted(preview);
 
         }

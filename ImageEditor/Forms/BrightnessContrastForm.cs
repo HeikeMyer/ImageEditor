@@ -98,14 +98,14 @@ namespace ImageEditor.Forms
         private void brightnessTrackbar_ValueChanged(object sender, EventArgs e)
         {
             Bitmap preview = new Bitmap(input);
-            brightnessContrast.AdjustBrightnessAndContrast(preview, brightnessTrackBar.Value, contrastTrackBar.Value);
+            brightnessContrast.BrightnessContrast(preview, brightnessTrackBar.Value, contrastTrackBar.Value);
             OnProcessingCompleted(preview);
         }
 
         private void contrastTrackbar_ValueChanged(object sender, EventArgs e)
         {
             Bitmap preview = new Bitmap(input);
-            brightnessContrast.AdjustBrightnessAndContrast(preview, brightnessTrackBar.Value, contrastTrackBar.Value);
+            brightnessContrast.BrightnessContrast(preview, brightnessTrackBar.Value, contrastTrackBar.Value);
             OnProcessingCompleted(preview);
 
         }
