@@ -25,7 +25,7 @@ namespace ImageProcessing.Base
             return kernel;
         }*/
 
-        private static void SetupKernel(ConvolutionMatrix matrix)
+        private static ConvolutionMatrix SetupKernel(ConvolutionMatrix matrix)
         {
             var size = matrix.Size;
             var kernelSize = size * size;
@@ -37,6 +37,8 @@ namespace ImageProcessing.Base
 
             matrix.Kernel = kernel;
             matrix.KernelSize = kernelSize;
+
+            return matrix;
         }
 
         public static ConvolutionMatrix LightSharpenMatrix()
@@ -50,9 +52,8 @@ namespace ImageProcessing.Base
             matrix[1][1] = 5;
 
             lightSharpenMatrix.Matrix = matrix;
-            SetupKernel(lightSharpenMatrix); 
 
-            return lightSharpenMatrix;
+            return SetupKernel(lightSharpenMatrix); 
         }
 
         public static ConvolutionMatrix SharpenMatrix()
@@ -66,9 +67,8 @@ namespace ImageProcessing.Base
             matrix[1][1] = 9;
 
             sharpenMatrix.Matrix = matrix;
-            SetupKernel(sharpenMatrix);
 
-            return sharpenMatrix;
+            return SetupKernel(sharpenMatrix);
         }
 
         public static ConvolutionMatrix BoxBlur()
@@ -82,9 +82,8 @@ namespace ImageProcessing.Base
             matrix[1][1] = 1;
 
             boxBlur.Matrix = matrix;
-            SetupKernel(boxBlur);
 
-            return boxBlur;
+            return SetupKernel(boxBlur); 
         }
 
         public static ConvolutionMatrix EdgeDetection()
@@ -98,9 +97,8 @@ namespace ImageProcessing.Base
             matrix[1][1] = 8;
 
             edgeDetection.Matrix = matrix;
-            SetupKernel(edgeDetection);
 
-            return edgeDetection;
+            return SetupKernel(edgeDetection);
         }
 
         public static ConvolutionMatrix GaussianBlur()
@@ -118,9 +116,8 @@ namespace ImageProcessing.Base
             matrix[2][2] = 36;
 
             gaussianBlur.Matrix = matrix;
-            SetupKernel(gaussianBlur);
 
-            return gaussianBlur;
+            return SetupKernel(gaussianBlur);
         }
 
         public static ConvolutionMatrix UnsharpMasking()
@@ -138,9 +135,8 @@ namespace ImageProcessing.Base
             matrix[2][2] = -476;
 
             unsharpMasking.Matrix = matrix;
-            SetupKernel(unsharpMasking);
 
-            return unsharpMasking;
+            return SetupKernel(unsharpMasking);
         }
     }
 }

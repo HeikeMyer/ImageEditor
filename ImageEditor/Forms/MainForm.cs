@@ -12,12 +12,14 @@ using System.Collections.Generic;
 using System.Linq;
 using ImageEditor.Interfaces;
 using ImageProcessing.Base;
+using ImageProcessing.Models;
 
 namespace ImageEditor.Forms
 {
     public partial class MainForm : Form
     {
         public event ImageProcessingEventHandler AdjustmentCall;
+        public event ImageProcessingEventHandler FilterCall;
 
         ImageProcessingApi ImageProcessingApi { get; set; }
 
@@ -33,22 +35,6 @@ namespace ImageEditor.Forms
             AdjustmentCall?.Invoke(this, imageProcessingEventArgs);
         }
 
-        
-
-       // public delegate void CustomFilterEventHandler(object sender, CustomFilterEventArgs e);
-
-       // public event CustomFilterEventHandler CustomFilterCall;
-
-      /*  protected virtual void OnCustomFilterCall(CustomFilter filter, Func<Bitmap, Bitmap> adjustment)
-        {
-            CustomFilterCall?.Invoke(this, new CustomFilterEventArgs(workingCopy, adjustment, filter));
-        }*/
-
-
-        /*public delegate void FilterEventHandler(object sender, FilterEventArgs e);
-
-        public event FilterEventHandler FilterCall;
-
         protected virtual void OnFilterCall(ConvolutionMatrix filterKernel)
         {
             //Task task = new Task(() => Meth(filterKernel));
@@ -57,7 +43,7 @@ namespace ImageEditor.Forms
             //task.Start();
             //task.Wait();
             //EnableButtons();
-            FilterCall?.Invoke(this, new FilterEventArgs(workingCopy, filterKernel));
+            FilterCall?.Invoke(this, new ImageProcessingEventArgs(){ Image = workingCopy, ConvolutionMatrix= filterKernel });
             //var res = FilterCall?.BeginInvoke(this, new FilterEventArgs(workingCopy, filterKernel), null, null);
             //FilterCall?.EndInvoke(res);
             //var i = 10;
@@ -65,7 +51,23 @@ namespace ImageEditor.Forms
 
             //Thread t = new Thread()
 
-        }*/
+        }
+
+        // public delegate void CustomFilterEventHandler(object sender, CustomFilterEventArgs e);
+
+        // public event CustomFilterEventHandler CustomFilterCall;
+
+        /*  protected virtual void OnCustomFilterCall(CustomFilter filter, Func<Bitmap, Bitmap> adjustment)
+          {
+              CustomFilterCall?.Invoke(this, new CustomFilterEventArgs(workingCopy, adjustment, filter));
+          }*/
+
+
+        /*public delegate void FilterEventHandler(object sender, FilterEventArgs e);
+
+        public event FilterEventHandler FilterCall;
+
+        */
 
         /*private void Meth(object filterKernel)
         {
@@ -75,7 +77,7 @@ namespace ImageEditor.Forms
 
 
         FileOperation fileOperations;
-        Filter filter;
+        FilterAdapter filter;
 
         /*BrightnessContrastForm brightnessContrastForm;
         ExposureForm exposureForm;
@@ -126,12 +128,12 @@ namespace ImageEditor.Forms
 
             fileOperations.FileOpened += ReceiveImage;
 
-            filter = new Filter();
-            this.AdjustmentCall += filter.ApplyFilter;
+           // filter = new FilterAdapter();
+            this.FilterCall += ImageProcessingApi.ApplyFilter;
 
-            filter.ProcessingCompleted += ViewProcessedImage;
-            filter.ProcessingCompleted += ApproveProcessing;
-            filter.Middle += React;
+            ImageProcessingApi.ProcessingCompleted += ViewProcessedImage;
+            ImageProcessingApi.ProcessingCompleted += ApproveProcessing;
+            ImageProcessingApi.Progress += React;
             /*brightnessContrastForm = new BrightnessContrastForm();
 
             this.AdjustmentCall += brightnessContrastForm.SetInputImage;
@@ -296,7 +298,8 @@ namespace ImageEditor.Forms
                 ConvolutionMatrix = ConvolutionMatrices.LightSharpenMatrix()
             };
 
-            OnAdjustmentCall(imageProcessingEventArgs);
+            OnFilterCall(ConvolutionMatrices.LightSharpenMatrix());
+            //OnAdjustmentCall(imageProcessingEventArgs);
         }
 
         private void sharpenMoreToolStripMenuItem_Click(object sender, EventArgs e)
@@ -308,9 +311,9 @@ namespace ImageEditor.Forms
                 ConvolutionMatrix = ConvolutionMatrices.SharpenMatrix()
             };
 
-            OnAdjustmentCall(imageProcessingEventArgs);
+            //OnAdjustmentCall(imageProcessingEventArgs);
 
-            //OnFilterCall(ConvolutionMatrices.SharpenMatrix());
+            OnFilterCall(ConvolutionMatrices.SharpenMatrix());
         }
 
         private void unsharpMaskToolStripMenuItem_Click(object sender, EventArgs e)
@@ -323,9 +326,9 @@ namespace ImageEditor.Forms
                 ConvolutionMatrix = ConvolutionMatrices.UnsharpMasking()
             };
 
-            OnAdjustmentCall(imageProcessingEventArgs);
+            //OnAdjustmentCall(imageProcessingEventArgs);
 
-            // OnFilterCall(ConvolutionMatrices.UnsharpMasking());
+            OnFilterCall(ConvolutionMatrices.UnsharpMasking());
         }
 
         private void boxBlurToolStripMenuItem_Click(object sender, EventArgs e)
@@ -351,9 +354,9 @@ namespace ImageEditor.Forms
                 ConvolutionMatrix = ConvolutionMatrices.GaussianBlur()
             };
 
-            OnAdjustmentCall(imageProcessingEventArgs);
+           // OnAdjustmentCall(imageProcessingEventArgs);
 
-            //OnFilterCall(ConvolutionMatrices.GaussianBlur());
+            OnFilterCall(ConvolutionMatrices.GaussianBlur());
         }
 
         private void edgeDetectionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -367,7 +370,7 @@ namespace ImageEditor.Forms
 
         private void A()
         {
-           // OnFilterCall(ConvolutionMatrices.EdgeDetection());
+            OnFilterCall(ConvolutionMatrices.EdgeDetection());
 
         }
 

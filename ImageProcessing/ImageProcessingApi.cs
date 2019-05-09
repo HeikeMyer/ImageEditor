@@ -96,6 +96,7 @@ namespace ImageProcessing
 
         #endregion
 
+        
 
         public void ApplyFilter(object sender, ImageProcessingEventArgs e)
         {
@@ -105,8 +106,22 @@ namespace ImageProcessing
             OnMiddle(2);
             Thread.Sleep(5000);
             OnMiddle(3);*/
-            KernelFilter kernel = new KernelFilter(e.ConvolutionMatrix);
-            OnProcessingCompleted(kernel.ApplyKernelFilter(e.Image));
+            //KernelFilter kernel = new KernelFilter(e.ConvolutionMatrix);
+            var res = ApplyConvolutionFilter(e.Image, e.ConvolutionMatrix);
+            OnProcessingCompleted(res);
+        }
+
+        public Bitmap ApplyConvolutionFilter(Bitmap source, ConvolutionMatrix convolutionMatrix)
+        {
+            Bitmap output = new Bitmap(source.Width, source.Height);
+            var filter = new FilterAdapter
+            {
+                ConvolutionMatrix = convolutionMatrix,
+                ConvolutionFunction = RgbComponentCalculation.ComputeNewRgbComponentValue
+            };
+            //Apply(source, output);
+            ImageProcessingBase.Apply(source, output, filter.ConvolutionFilter, convolutionMatrix.Size);
+            return output;
         }
     }
 }

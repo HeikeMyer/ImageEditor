@@ -48,7 +48,7 @@
     <Compile Include="Base\PixelCalculation.cs" />
     <Compile Include="Base\Rgba.cs" />
     <Compile Include="CustomFilter.cs" />
-    <Compile Include="Filter.cs" />
+    <Compile Include="FilterAdapter.cs" />
     <Compile Include="ImageFilter.cs" />
     <Compile Include="ImageProcessingApi.cs" />
     <Compile Include="ImageProcessingExtensions.cs" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ImageProcessing.Models;
+using System;
 
 namespace ImageProcessing.Base
 {
@@ -68,7 +69,7 @@ namespace ImageProcessing.Base
 
         #endregion
 
-        #region [Convolution]
+        #region [Square]
 
         public static byte Dilution(byte[] neighborhood, int neighborhoodSize)
         {
@@ -104,16 +105,17 @@ namespace ImageProcessing.Base
 
         #endregion
 
-        #region [Kernel]
+        #region [Convolution]
 
-        public static byte ComputeNewRgbComponentValue(byte[] neighborhood, byte[] kernel, int factor)
+        public static byte ComputeNewRgbComponentValue(byte[] neighborhood, ConvolutionMatrix convolutionMatrix)
         {
-            double sum = 0;
+            var kernel = convolutionMatrix.Kernel;
+            var sum = 0.0;
 
             for (int i = 0; i < neighborhood.Length; ++i)
                 sum += neighborhood[i] * kernel[i];
 
-            sum *= factor;
+            sum *= convolutionMatrix.Factor;
 
             return ControlOverflow(sum);
         }
