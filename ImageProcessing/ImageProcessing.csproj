@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Adjustments.cs" />
+    <Compile Include="ConvolutionMatrices.cs" />
     <Compile Include="CustomFilter.cs" />
     <Compile Include="Filter.cs" />
     <Compile Include="ImageFilter.cs" />

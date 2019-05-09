@@ -247,32 +247,32 @@ namespace ImageEditor.Forms
         private void sharpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             backup = workingCopy;
-            OnFilterCall(Filter.LightSharpenMatrix());
+            OnFilterCall(ConvolutionMatrices.LightSharpenMatrix());
         }
 
         private void sharpenMoreToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            OnFilterCall(Filter.SharpenMatrix());
+            OnFilterCall(ConvolutionMatrices.SharpenMatrix());
         }
 
         private void unsharpMaskToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
             BackUpWorkingCopy();
-            OnFilterCall(Filter.UnsharpMasking());
+            OnFilterCall(ConvolutionMatrices.UnsharpMasking());
         }
 
         private void boxBlurToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            OnFilterCall(Filter.BoxBlur());
+            OnFilterCall(ConvolutionMatrices.BoxBlur());
         }
 
         private void gaussianBlurToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            OnFilterCall(Filter.GaussianBlur());
+            OnFilterCall(ConvolutionMatrices.GaussianBlur());
         }
 
         private void edgeDetectionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -286,7 +286,7 @@ namespace ImageEditor.Forms
 
         private void A()
         {
-            OnFilterCall(Filter.EdgeDetection());
+            OnFilterCall(ConvolutionMatrices.EdgeDetection());
 
         }
 
