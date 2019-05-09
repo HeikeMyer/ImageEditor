@@ -1,48 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ImageProcessing.Models;
+﻿using ImageProcessing.Models;
 
 namespace ImageProcessing.Base
 {
     public static class PixelCalculation
     {
-
-        public static unsafe void ApplyBrightnessToPixel(byte* blue, double factor)
+        public static unsafe void Brightness(byte* blue, double factor)
         {
             for (Argb i = Argb.Blue; i <= Argb.Red; ++i)
             {
                 byte componentValue = *(blue + (byte)i);
-                *(blue + (byte)i) = RgbComponentCalculation.ChangeBrightness(componentValue, factor);
+                *(blue + (byte)i) = RgbComponentCalculation.Brightness(componentValue, factor);
             }
         }
 
-
-        public static unsafe void ApplyContrastToPixel(byte* blue, double factor)
+        public static unsafe void Contrast(byte* blue, double factor)
         {
             for (Argb i = Argb.Blue; i <= Argb.Red; ++i)
             {
                 byte componentValue = *(blue + (byte)i);
-                *(blue + (byte)i) = RgbComponentCalculation.ChangeContrast(componentValue, (int)factor);
+                *(blue + (byte)i) = RgbComponentCalculation.Contrast(componentValue, (int)factor);
             }
         }
 
-
-        public static unsafe void ApplyThresholdToPixel(byte* blue, double factor)
+        public static unsafe void Threshold(byte* blue, double factor)
         {
             *blue = *(blue + (byte)Argb.Green) = *(blue + (byte)Argb.Red) =
             RgbComponentCalculation.Threshold(*blue, *(blue + (byte)Argb.Green), *(blue + (byte)Argb.Red), (byte)factor);
         }
 
-        public static unsafe void ApplyBlackAndWhiteToPixel(byte* blue, double factor)
+        public static unsafe void BnW(byte* blue, double factor)
         {
             *blue = *(blue + (byte)Argb.Green) = *(blue + (byte)Argb.Red) =
             RgbComponentCalculation.BnW(*blue, *(blue + (byte)Argb.Green), *(blue + (byte)Argb.Red));
         }
 
-        public static unsafe void ApplyExposureCompensationToPixel(byte* blue, double factor)
+        public static unsafe void ExposureCompensation(byte* blue, double factor)
         {
             for (Argb i = Argb.Blue; i <= Argb.Red; ++i)
             {
@@ -51,7 +43,7 @@ namespace ImageProcessing.Base
             }
         }
 
-        public static unsafe void ApplyGammaCorrectionToPixel(byte* blue, double factor)
+        public static unsafe void GammaCorrection(byte* blue, double factor)
         {
             for (Argb i = Argb.Blue; i <= Argb.Red; ++i)
             {
@@ -60,33 +52,33 @@ namespace ImageProcessing.Base
             }
         }
 
-        public static unsafe void ApplyBrightnessToPixelRed(byte* blue, double factor)
+        public static unsafe void BrightnessR(byte* blue, double factor)
         {
             byte componentValue = *(blue + (byte)Argb.Red);
-            *(blue + (byte)Argb.Red) = RgbComponentCalculation.ChangeBrightness(componentValue, factor);
+            *(blue + (byte)Argb.Red) = RgbComponentCalculation.Brightness(componentValue, factor);
         }
 
-        public static unsafe void ApplyBrightnessToPixelGreen(byte* blue, double factor)
+        public static unsafe void BrightnessG(byte* blue, double factor)
         {
             byte componentValue = *(blue + (byte)Argb.Green);
-            *(blue + (byte)Argb.Green) = RgbComponentCalculation.ChangeBrightness(componentValue, factor);
+            *(blue + (byte)Argb.Green) = RgbComponentCalculation.Brightness(componentValue, factor);
         }
 
-        public static unsafe void ApplyBrightnessToPixelBlue(byte* blue, double factor)
+        public static unsafe void BrighhtnessB(byte* blue, double factor)
         {
             byte componentValue = *blue;
-            *blue = RgbComponentCalculation.ChangeBrightness(componentValue, factor);
+            *blue = RgbComponentCalculation.Brightness(componentValue, factor);
         }
 
-        public static unsafe void ApplySepiaToPixel(byte* blue, double factor)
+        public static unsafe void Sepia(byte* blue, double factor)
         {
-            int tone = RgbComponentCalculation.ComputeSepiaTone(*blue, *(blue + (byte)Argb.Green), *(blue + (byte)Argb.Red));
-            *blue = RgbComponentCalculation.ComputeSepiaBlue(tone);
-            *(blue + (byte)Argb.Green) = RgbComponentCalculation.ComputeSepiaGreen(tone);
-            *(blue + (byte)Argb.Red) = RgbComponentCalculation.ComputeSepiaRed(tone);
+            int tone = RgbComponentCalculation.Sepia(*blue, *(blue + (byte)Argb.Green), *(blue + (byte)Argb.Red));
+            *blue = RgbComponentCalculation.SepiaB(tone);
+            *(blue + (byte)Argb.Green) = RgbComponentCalculation.SepiaG(tone);
+            *(blue + (byte)Argb.Red) = RgbComponentCalculation.SepiaR(tone);
         }
 
-        public static unsafe void ApplyInversionToPixel(byte* blue, double factor)
+        public static unsafe void Invert(byte* blue, double factor)
         {
             for (Argb i = Argb.Blue; i <= Argb.Red; ++i)
             {

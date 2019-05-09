@@ -32,7 +32,7 @@ namespace ImageProcessing
             FilterAdapter filter = new FilterAdapter();
             filter.Factor = m.Factor;
             filter.Kernel = m.Matrix.Straighten(m.Size);
-            filter.ConvolutionFunction = RgbComponentCalculation.ComputeNewRgbComponentValue;
+            filter.ConvolutionFunction = RgbComponentCalculation.ComputeRgbComponentValue;
             filter.ComputeNewRgbComponentValue = filter.ConvolutionAdapter;//ComputeNewRgbComponentValue;
             filter.SetUp(m.Size);
             filter.Apply(source, output, OnMiddle);
@@ -102,10 +102,10 @@ namespace ImageProcessing
             List<Adjustment> AdjustmentsPack = new List<Adjustment>();
 
             if (brightnessFactor != 0)
-                AdjustmentsPack.Add(new Adjustment(PixelCalculation.ApplyBrightnessToPixel, brightnessFactor));
+                AdjustmentsPack.Add(new Adjustment(PixelCalculation.Brightness, brightnessFactor));
 
             if (contrastFactor != 0)
-                AdjustmentsPack.Add(new Adjustment(PixelCalculation.ApplyContrastToPixel, contrastFactor));
+                AdjustmentsPack.Add(new Adjustment(PixelCalculation.Contrast, contrastFactor));
 
             if (AdjustmentsPack.Count != 0)
                 ImageProcessingBase.Adjust(source, AdjustmentsPack);
@@ -116,10 +116,10 @@ namespace ImageProcessing
             List<Adjustment> AdjustmentsPack = new List<Adjustment>();
 
             if (exposure != 0)
-                AdjustmentsPack.Add(new Adjustment(PixelCalculation.ApplyExposureCompensationToPixel, exposure));
+                AdjustmentsPack.Add(new Adjustment(PixelCalculation.ExposureCompensation, exposure));
 
             if (gamma != 0)
-                AdjustmentsPack.Add(new Adjustment(PixelCalculation.ApplyGammaCorrectionToPixel, gamma));
+                AdjustmentsPack.Add(new Adjustment(PixelCalculation.GammaCorrection, gamma));
 
             if (AdjustmentsPack.Count != 0)
                 ImageProcessingBase.Adjust(source, AdjustmentsPack);
@@ -131,13 +131,13 @@ namespace ImageProcessing
             List<Adjustment> adjustmentsPack = new List<Adjustment>();
 
             if (redFactor != 0)
-                adjustmentsPack.Add(new Adjustment(PixelCalculation.ApplyBrightnessToPixelRed, redFactor));
+                adjustmentsPack.Add(new Adjustment(PixelCalculation.BrightnessR, redFactor));
 
             if (greenFactor != 0)
-                adjustmentsPack.Add(new Adjustment(PixelCalculation.ApplyBrightnessToPixelGreen, greenFactor));
+                adjustmentsPack.Add(new Adjustment(PixelCalculation.BrightnessG, greenFactor));
 
             if (blueFactor != 0)
-                adjustmentsPack.Add(new Adjustment(PixelCalculation.ApplyBrightnessToPixelBlue, blueFactor));
+                adjustmentsPack.Add(new Adjustment(PixelCalculation.BrighhtnessB, blueFactor));
 
             if (adjustmentsPack.Count != 0)
                 ImageProcessingBase.Adjust(source, adjustmentsPack);
@@ -145,25 +145,25 @@ namespace ImageProcessing
 
         public unsafe void Sepia(Bitmap source, int factor)
         {
-            AdjustPixel adjustment = new AdjustPixel(PixelCalculation.ApplySepiaToPixel);
+            AdjustPixel adjustment = new AdjustPixel(PixelCalculation.Sepia);
             ImageProcessingBase.Adjust(source, factor, adjustment);
         }
 
         public unsafe void Invert(Bitmap source, int factor)
         {
-            AdjustPixel adjustment = new AdjustPixel(PixelCalculation.ApplyInversionToPixel);
+            AdjustPixel adjustment = new AdjustPixel(PixelCalculation.Invert);
             ImageProcessingBase.Adjust(source, factor, adjustment);
         }
 
         public unsafe void BlackAndWhite(Bitmap source, int factor)
         {
-            AdjustPixel adjustment = new AdjustPixel(PixelCalculation.ApplyBlackAndWhiteToPixel);
+            AdjustPixel adjustment = new AdjustPixel(PixelCalculation.BnW);
             ImageProcessingBase.Adjust(source, factor, adjustment);
         }
 
         public unsafe void Threshold(Bitmap source, int factor)
         {
-            AdjustPixel adjustment = new AdjustPixel(PixelCalculation.ApplyThresholdToPixel);
+            AdjustPixel adjustment = new AdjustPixel(PixelCalculation.Threshold);
             ImageProcessingBase.Adjust(source, factor, adjustment);
         }
     }

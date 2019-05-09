@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using ImageProcessing.Models;
-//using static ImageProcessing.Adjustments;
 
 namespace ImageProcessing.Base
 {
@@ -28,7 +25,6 @@ namespace ImageProcessing.Base
             lockedBitmap.Unlock(bitmap);
         }
 
-
         public static unsafe void Adjust(Bitmap bitmap, List<Adjustment> adjustmentsPack)
         {
             LockedBitmap lockedBitmap = new LockedBitmap(bitmap);
@@ -48,7 +44,6 @@ namespace ImageProcessing.Base
             lockedBitmap.Unlock(bitmap);
         }
 
-
         private static byte[] InitializePixelNeighborhood(int neighborhoodSize)
         {
             byte[] neighborhood = new byte[neighborhoodSize];
@@ -56,7 +51,7 @@ namespace ImageProcessing.Base
             return neighborhood;
         }
 
-        public static unsafe byte[] GetRgbComponentNeighborhood(LockedBitmap lockedBitmapData, byte* rgbComponent,
+        private static unsafe byte[] GetRgbComponentNeighborhood(LockedBitmap lockedBitmapData, byte* rgbComponent,
             int neighborhoodSize, int gap, int gapInBytes, int size, int bytesPerPixel)
         {
             byte[] neighborhood = InitializePixelNeighborhood(neighborhoodSize);
@@ -104,7 +99,5 @@ namespace ImageProcessing.Base
                     onProgress(1);
             });
         }
-
-
     }
 }

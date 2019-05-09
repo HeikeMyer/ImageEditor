@@ -11,7 +11,7 @@ namespace ImageProcessing.Base
             return (byte)(componentValue < 0 ? 0 : (componentValue > 255 ? 255 : componentValue));
         }
 
-        public static byte ChangeBrightness(byte componentValue, double factor)
+        public static byte Brightness(byte componentValue, double factor)
         {
             return ControlOverflow(componentValue + factor);
         }
@@ -31,27 +31,27 @@ namespace ImageProcessing.Base
             return ControlOverflow(255 - componentValue);
         }
 
-        public static byte ChangeContrast(byte componentValue, int factor)
+        public static byte Contrast(byte componentValue, int factor)
         {
             return ControlOverflow(259.0 * (factor + 255) / (255 * (259 - factor)) * (componentValue - 128) + 128);
         }
 
-        public static int ComputeSepiaTone(byte red, byte green, byte blue)
+        public static int Sepia(byte red, byte green, byte blue)
         {
             return (int)(0.299 * red + 0.587 * green + 0.114 * blue);
         }
 
-        public static byte ComputeSepiaBlue(int tone)
+        public static byte SepiaB(int tone)
         {
             return (byte)(tone < 56 ? 0 : tone - 56);
         }
 
-        public static byte ComputeSepiaGreen(int tone)
+        public static byte SepiaG(int tone)
         {
             return (byte)(tone < 14 ? 0 : tone - 14);
         }
 
-        public static byte ComputeSepiaRed(int tone)
+        public static byte SepiaR(int tone)
         {
             return (byte)(tone > 206 ? 255 : tone + 49);
         }
@@ -102,7 +102,7 @@ namespace ImageProcessing.Base
             return ControlOverflow(sum / neighborhoodSize);
         }
 
-        public static byte ComputeNewRgbComponentValue(byte[] neighborhood, int[] kernel, double factor)
+        public static byte ComputeRgbComponentValue(byte[] neighborhood, int[] kernel, double factor)
         {
             double sum = 0;
 
@@ -111,7 +111,7 @@ namespace ImageProcessing.Base
 
             sum *= factor;
 
-            return RgbComponentCalculation.ControlOverflow(sum);
+            return ControlOverflow(sum);
         }
 
         #endregion
