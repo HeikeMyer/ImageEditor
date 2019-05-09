@@ -65,7 +65,7 @@ namespace ImageProcessing
 
             var filter = new FilterAdapter { SquareAdapterArgs = parameters };
             filter.ComputeRgbComponentValue = filter.SquareAdapter;
-            filter.Apply(source, output, size, OnProgress);
+            filter.Apply(source, output, size, null);
 
             return output;
         }

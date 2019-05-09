@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Configuration;
 using System.Drawing;
-using System.Threading;
-using System.Threading.Tasks;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using ImageProcessing;
-using ImageEditor.Operations;
-using System.Resources;
-using ImageEditor.Constants;
-using System.Collections.Generic;
-using System.Linq;
-using ImageEditor.Interfaces;
 using ImageProcessing.Base;
+using ImageEditor.Constants;
+using ImageEditor.Interfaces;
+using ImageEditor.Operations;
 
 namespace ImageEditor.Forms
 {
@@ -70,16 +65,18 @@ namespace ImageEditor.Forms
 
             FileOperation.FileOpened += ReceiveImage;
 
-            this.FilterCall += ImageProcessingApi.ApplyFilter;
+            FilterCall += ImageProcessingApi.ApplyFilter;
 
             ImageProcessingApi.ProcessingCompleted += ViewProcessedImage;
             ImageProcessingApi.ProcessingCompleted += ApproveProcessing;
-            ImageProcessingApi.Progress += React;
+            ImageProcessingApi.ProcessingCompleted += ReloadProgresBar;
+            ImageProcessingApi.Progress += OnProgress;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
             DisableButtons();
+            progressBar.Visible = false;
         }
 
         public event ImageProcessingEventHandler AdjustmentCall;
@@ -162,11 +159,24 @@ namespace ImageEditor.Forms
             pictureBox.Image = e.Image;
         }
 
-        private void React(object sender, ImageProcessingEventArgs e)
+        private void ReloadProgresBar(object sender, ImageProcessingEventArgs e)
         {
-            // MessageBox.Show("aa  " + e.Val);
-            Invoke(new Action(() => progressBar.Value++ ));
-            //progressBar.Value++;
+            Invoke(new Action(() =>
+            {
+                progressBar.Value = progressBar.Maximum;
+                progressBar.Visible = false;
+                progressBar.Value = progressBar.Minimum;
+            }));
+        }
+
+        private void OnProgress(object sender, ImageProcessingEventArgs e)
+        {
+            Invoke(new Action(() => 
+            {
+                progressBar.Visible = true;
+                if (progressBar.Value < progressBar.Maximum)
+                    progressBar.Value += 5;
+            }));
         }
 
         private void ViewWorkingCopy()
@@ -183,12 +193,12 @@ namespace ImageEditor.Forms
         {
             pictureBox.Image = WorkingImage;
         }
-        
+
+        #region [Adjustments (no dialog)]
+
         private void sepiaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             BackUpWorkingCopy();
-            //ImageProcessingApi adjustment = new ImageProcessingApi();
             ImageProcessingApi.Sepia(WorkingImage, 0);
             ViewWorkingCopy();
         }
@@ -196,24 +206,18 @@ namespace ImageEditor.Forms
         private void blackAndWhiteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            //ImageProcessingApi adjustment = new ImageProcessingApi();
             ImageProcessingApi.BnW(WorkingImage, 0);
             ViewWorkingCopy();
         }
 
-        private void thresholdToolStripMenuItem_Click(object sender, EventArgs e)
+        private void invertToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            OnAdjustmentCall();
-            ImageProcessingDialogForms[ControlConstants.ThresholdFormName].ShowDialog();
+            ImageProcessingApi.Invert(WorkingImage, 0);
+            ViewWorkingCopy();
         }
 
-        private void exposureToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            BackUpWorkingCopy();
-            OnAdjustmentCall();
-            ImageProcessingDialogForms[ControlConstants.ExposureFormName].ShowDialog();
-        }
+        #endregion
 
         #region [Filters (no dialog)]
 
@@ -254,6 +258,9 @@ namespace ImageEditor.Forms
         }
 
         #endregion
+
+        #region [CustomFilter]
+
         private void erosionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
@@ -268,11 +275,22 @@ namespace ImageEditor.Forms
             ImageProcessingDialogForms[ControlConstants.CustomFilterFormName].ShowDialog();
         }
 
-        private void invertToolStripMenuItem_Click(object sender, EventArgs e)
+        #endregion
+
+        #region [Adjustments]
+
+        private void thresholdToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            ImageProcessingApi.Invert(WorkingImage, 0);
-            ViewWorkingCopy();
+            OnAdjustmentCall();
+            ImageProcessingDialogForms[ControlConstants.ThresholdFormName].ShowDialog();
+        }
+
+        private void exposureToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            BackUpWorkingCopy();
+            OnAdjustmentCall();
+            ImageProcessingDialogForms[ControlConstants.ExposureFormName].ShowDialog();
         }
 
         private void brightnessContrastToolStripMenuItem_Click(object sender, EventArgs e)
@@ -288,6 +306,10 @@ namespace ImageEditor.Forms
             OnAdjustmentCall();
             ImageProcessingDialogForms[ControlConstants.ColorBalanceFilterFormName].ShowDialog();
         }
+
+        #endregion
+
+        #region [Management]
 
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -316,21 +338,7 @@ namespace ImageEditor.Forms
         {
             Close();
         }
-
-        // unknwn
-        private void averageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            BackUpWorkingCopy();
-
-            //ImageProcessingApi customFilter = new ImageProcessingApi();
-            OnAdjustmentCall(ImageProcessingApi, ImageProcessingApi.Blur);
-            //CustomFilterAdjustment adjustment = new CustomFilterAdjustment(customFilter.Blur);
-
-            //OnCustomFilterCall(customFilter, adjustment);
-
-            ImageProcessingDialogForms[ControlConstants.CustomFilterFormName].ShowDialog();
-        }
-                
+                        
         private void englishToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ConfigurationOperation.UpdateAppSettings(ConfigurationConstants.CultureCodeKey, ConfigurationConstants.EnglishCultureCode);
@@ -342,5 +350,7 @@ namespace ImageEditor.Forms
             ConfigurationOperation.UpdateAppSettings(ConfigurationConstants.CultureCodeKey, ConfigurationConstants.RussianCultureCode);
             ReloadTextFormExtension.ReloadText(this, GetType());
         }
+
+        #endregion
     }
 }

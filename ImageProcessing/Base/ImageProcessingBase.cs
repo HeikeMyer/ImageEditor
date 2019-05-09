@@ -113,8 +113,8 @@ namespace ImageProcessing.Base
                     intermediateCurrentByte += filter.BytesPerPixel;
                 }
 
-                if (iY % 100 == 0)
-                    onProgress(1);
+                if (onProgress != null && iY % 100 == 0)
+                    onProgress(iY);
             });
         }
     }

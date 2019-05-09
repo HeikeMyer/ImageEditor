@@ -309,10 +309,10 @@
             this.pictureBox.Name = "pictureBox";
             this.pictureBox.TabStop = false;
             // 
-            // progressBar1
+            // progressBar
             // 
-            resources.ApplyResources(this.progressBar, "progressBar1");
-            this.progressBar.Name = "progressBar1";
+            resources.ApplyResources(this.progressBar, "progressBar");
+            this.progressBar.Name = "progressBar";
             // 
             // MainForm
             // 
