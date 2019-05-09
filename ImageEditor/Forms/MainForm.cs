@@ -18,7 +18,7 @@ namespace ImageEditor.Forms
     {
         public event ImageProcessingEventHandler AdjustmentCall;
 
-        protected virtual void OnAdjustmentCall(Filter filter = null, Func<Bitmap, int, Bitmap> adjustment = null)
+        protected virtual void OnAdjustmentCall(ImageProcessingApi filter = null, Func<Bitmap, int, Bitmap> adjustment = null)
         {
             var imageProcessingEventArgs = new ImageProcessingEventArgs
             {
@@ -47,7 +47,7 @@ namespace ImageEditor.Forms
 
 
         FileOperation fileOperations;
-        Filter filter;
+        ImageProcessingApi filter;
 
         
         private Dictionary<string, IImageProcessingDialogForm> ImageProcessingDialogForms { get; set; }
@@ -91,7 +91,7 @@ namespace ImageEditor.Forms
 
             fileOperations.FileOpened += ReceiveImage;
 
-            filter = new Filter();
+            filter = new ImageProcessingApi();
             this.FilterCall += filter.ApplyFilter;
 
             filter.ProcessingCompleted += ViewProcessedImage;
@@ -191,7 +191,7 @@ namespace ImageEditor.Forms
         {
 
             BackUpWorkingCopy();
-            Adjustments adjustment = new Adjustments();
+            ImageProcessingApi adjustment = new ImageProcessingApi();
             adjustment.Sepia(workingCopy, 0);
             ViewWorkingCopy();
         }
@@ -199,7 +199,7 @@ namespace ImageEditor.Forms
         private void blackAndWhiteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            Adjustments adjustment = new Adjustments();
+            ImageProcessingApi adjustment = new ImageProcessingApi();
             adjustment.BlackAndWhite(workingCopy, 0);
             ViewWorkingCopy();
         }
@@ -270,7 +270,7 @@ namespace ImageEditor.Forms
         {
             BackUpWorkingCopy();
 
-            Filter customFilter = new Filter();
+            ImageProcessingApi customFilter = new ImageProcessingApi();
             //CustomFilterAdjustment adjustment = new CustomFilterAdjustment(customFilter.Erosion);
 
             // OnCustomFilterCall(customFilter, adjustment);
@@ -283,7 +283,7 @@ namespace ImageEditor.Forms
         {
             BackUpWorkingCopy();
 
-            Filter customFilter = new Filter();
+            ImageProcessingApi customFilter = new ImageProcessingApi();
             //CustomFilterAdjustment adjustment = new CustomFilterAdjustment(customFilter.Dilution);
 
             //OnCustomFilterCall(customFilter, adjustment);
@@ -296,7 +296,7 @@ namespace ImageEditor.Forms
         {
 
             BackUpWorkingCopy();
-            Adjustments adjustment = new Adjustments();
+            ImageProcessingApi adjustment = new ImageProcessingApi();
             adjustment.Invert(workingCopy, 0);
             ViewWorkingCopy();
         }
@@ -350,7 +350,7 @@ namespace ImageEditor.Forms
         {
             BackUpWorkingCopy();
 
-            Filter customFilter = new Filter();
+            ImageProcessingApi customFilter = new ImageProcessingApi();
             OnAdjustmentCall(customFilter, customFilter.Blur);
             //CustomFilterAdjustment adjustment = new CustomFilterAdjustment(customFilter.Blur);
 

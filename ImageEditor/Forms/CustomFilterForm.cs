@@ -38,7 +38,7 @@ namespace ImageEditor.Forms
         }
 
 
-        private Filter customFilter;
+        private ImageProcessingApi customFilter;
         private Bitmap input;
         private Func<Bitmap, int, Bitmap> adjustment;
        // private CustomFilterAdjustment adjustment;

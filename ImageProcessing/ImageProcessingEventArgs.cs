@@ -9,7 +9,7 @@ namespace ImageProcessing
     {
         public Bitmap Image { get; set; }
         public Func<Bitmap, int, Bitmap> Adjustment { get; set; }
-        public Filter Filter { get; set; }
+        public ImageProcessingApi Filter { get; set; }
         public int Intensity { get; set; }
 
         public int Val { get; set; }

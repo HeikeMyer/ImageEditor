@@ -38,7 +38,7 @@ namespace ImageEditor.Forms
         }
 
 
-        private Adjustments brightnessContrast;
+        private ImageProcessingApi brightnessContrast;
         private Bitmap input;
 
         public void SetInputImage(object sender, ImageProcessingEventArgs e)
@@ -73,7 +73,7 @@ namespace ImageEditor.Forms
 
         private void BrightnessContrastForm_Load(object sender, EventArgs e)
         {
-            brightnessContrast = new Adjustments();
+            brightnessContrast = new ImageProcessingApi();
 
             brightnessTrackBar.Value = ControlConstants.DefaultBrightness;
             brightnessValue.Text = ControlConstants.DefaultBrightness.ToString();
