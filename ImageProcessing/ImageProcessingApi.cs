@@ -36,8 +36,8 @@ namespace ImageProcessing
             };
             filter.ConvolutionAdapterArgs = parameters;
             filter.ComputeRgbComponentValue = filter.ConvolutionAdapter;//ComputeNewRgbComponentValue;
-            filter.SetUp(m.Size);
-            filter.Apply(source, output, OnMiddle);
+            //filter.SetUp(m.Size);
+            filter.Apply(source, output, m.Size, OnMiddle);
             //Apply(source, output);
             //return output;
             //KernelFilter kernel = new KernelFilter();
@@ -57,8 +57,8 @@ namespace ImageProcessing
             filter.SquareAdapterArgs = parameters;
             
             filter.ComputeRgbComponentValue = filter.SquareAdapter;//ComputeNewRgbComponentValue;
-            filter.SetUp(size);
-            filter.Apply(source, output, OnMiddle);
+            //filter.SetUp(size);
+            filter.Apply(source, output, size, OnMiddle);
 
             return output;
         }
@@ -83,8 +83,8 @@ namespace ImageProcessing
             };
             filter.SquareAdapterArgs = parameters;
             filter.ComputeRgbComponentValue = filter.SquareAdapter;//ComputeNewRgbComponentValue;
-            filter.SetUp(size);
-            filter.Apply(source, output, OnMiddle);
+          //  filter.SetUp(size);
+            filter.Apply(source, output, size, OnMiddle);
             //Apply(source, output);
             //return output;
 
@@ -105,8 +105,8 @@ namespace ImageProcessing
             filter.SquareAdapterArgs = parameters;
 
             filter.ComputeRgbComponentValue = filter.SquareAdapter;//ComputeNewRgbComponentValue;
-            filter.SetUp(size);
-            filter.Apply(source, output, OnMiddle);
+           // filter.SetUp(size);
+            filter.Apply(source, output, size, OnMiddle);
 
             return output;
         }

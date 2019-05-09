@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ImageProcessing.Base;
 using ImageProcessing.Models;
 
 namespace ImageProcessing.Base
@@ -48,33 +43,15 @@ namespace ImageProcessing.Base
 
         public Func<byte[], byte> ComputeRgbComponentValue { get; set; }
 
-        protected int size = 0;
-        protected int gap;
-        protected int bytesPerPixel;
-        protected int gapInBytes;
-        protected int neighborhoodSize;
-
-        protected bool IsValid()
+        public void Apply(Bitmap input, Bitmap output, int size, Action<int> onProgress)
         {
-            return size > 1 ? true : false;
-        }
-
-        public void SetUp(int s)
-        {
-            size = s;
-            gap = size / 2;
-            neighborhoodSize = size * size;
-        }
-
-        public void Apply(Bitmap input, Bitmap output, Action<int> onProgress)
-        {
-            if (!IsValid())
+            if (size <= 1)
                 return;
 
-            bytesPerPixel = Bitmap.GetPixelFormatSize(input.PixelFormat) / (int)Bits.BitsInByte;
-            gapInBytes = gap * bytesPerPixel;
-
+            int gap = size / 2;
+            int bytesPerPixel = Image.GetPixelFormatSize(input.PixelFormat) / (int)Bits.BitsInByte;
             var intermediate = new IntermediateImage(input, gap);
+
             intermediate.FillIn();
 
             var lockedBitmap = new LockedBitmap(output);
@@ -83,9 +60,9 @@ namespace ImageProcessing.Base
             var filter = new Filter
             {
                 Size = size,
-                NeighborhoodSize = neighborhoodSize,
+                NeighborhoodSize = size * size,
                 Gap = gap,
-                GapInBytes = gapInBytes, 
+                GapInBytes = gap * bytesPerPixel, 
                 BytesPerPixel = bytesPerPixel
             };
 
