@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
+using ImageProcessing.Models;
 
 namespace ImageProcessing
 {
@@ -149,25 +150,25 @@ namespace ImageProcessing
 
         public unsafe void Sepia(Bitmap source, int factor)
         {
-            ApplyToPixel adjustment = new ApplyToPixel(PixelCalculation.ApplySepiaToPixel);
+            AdjustPixel adjustment = new AdjustPixel(PixelCalculation.ApplySepiaToPixel);
             ImageProcessingBase.Adjust(source, factor, adjustment);
         }
 
         public unsafe void Invert(Bitmap source, int factor)
         {
-            ApplyToPixel adjustment = new ApplyToPixel(PixelCalculation.ApplyInversionToPixel);
+            AdjustPixel adjustment = new AdjustPixel(PixelCalculation.ApplyInversionToPixel);
             ImageProcessingBase.Adjust(source, factor, adjustment);
         }
 
         public unsafe void BlackAndWhite(Bitmap source, int factor)
         {
-            ApplyToPixel adjustment = new ApplyToPixel(PixelCalculation.ApplyBlackAndWhiteToPixel);
+            AdjustPixel adjustment = new AdjustPixel(PixelCalculation.ApplyBlackAndWhiteToPixel);
             ImageProcessingBase.Adjust(source, factor, adjustment);
         }
 
         public unsafe void Threshold(Bitmap source, int factor)
         {
-            ApplyToPixel adjustment = new ApplyToPixel(PixelCalculation.ApplyThresholdToPixel);
+            AdjustPixel adjustment = new AdjustPixel(PixelCalculation.ApplyThresholdToPixel);
             ImageProcessingBase.Adjust(source, factor, adjustment);
         }
     }

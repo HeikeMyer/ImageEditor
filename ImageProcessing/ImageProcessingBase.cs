@@ -4,13 +4,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ImageProcessing.Models;
 //using static ImageProcessing.Adjustments;
 
 namespace ImageProcessing
 {
-    public static class ImageProcessingBase
+    internal static class ImageProcessingBase
     {
-        public static unsafe void Adjust(System.Drawing.Bitmap bitmap, double factor, ApplyToPixel applyToPixel)
+        public static unsafe void Adjust(System.Drawing.Bitmap bitmap, double factor, AdjustPixel applyToPixel)
         {
             LockedBitmap lockedBitmap = new LockedBitmap(bitmap);
 
@@ -38,7 +39,7 @@ namespace ImageProcessing
                 for (int iX = 0; iX < lockedBitmap.WidthInBytes; iX += lockedBitmap.BytesPerPixel)
                 {
                     foreach (Adjustment adjustment in adjustmentsPack)
-                        adjustment.adjustment(pixel, adjustment.factor);
+                        adjustment.AdjustPixel(pixel, adjustment.Factor);
 
                     pixel += lockedBitmap.BytesPerPixel;
                 }
@@ -88,12 +89,12 @@ namespace ImageProcessing
 
                 for (int i = 0; i < bitmap.WidthInBytes; i += bytesPerPixel)
                 {
-                    for (Argb j = Argb.blue; j <= Argb.red; ++j)
+                    for (Argb j = Argb.Blue; j <= Argb.Red; ++j)
                         *(outputCurrentByte + (byte)j) =
                         ComputeNewRgbComponentValue(GetRgbComponentNeighborhood(intermediate, intermediateCurrentByte + (byte)j,
                         neighborhoodSize, gap, gapInBytes, size, bytesPerPixel));
 
-                    *(outputCurrentByte + (byte)Argb.alfa) = *(intermediateCurrentByte + (byte)Argb.alfa);
+                    *(outputCurrentByte + (byte)Argb.Alfa) = *(intermediateCurrentByte + (byte)Argb.Alfa);
 
                     outputCurrentByte += bytesPerPixel;
                     intermediateCurrentByte += bytesPerPixel;
