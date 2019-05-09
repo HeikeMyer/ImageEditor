@@ -9,9 +9,9 @@ namespace ImageEditor.Forms
 {
     public partial class ColorBalanceForm : Form, IImageProcessingDialogForm
     {
-        Bitmap InputImage { get; set; }
+        private Bitmap InputImage { get; set; }
 
-        ImageProcessingApi ImageProcessingApi { get; set; }
+        public ImageProcessingApi ImageProcessingApi { get; set; }
 
         private void InitializeTrackbars()
         {
@@ -33,7 +33,7 @@ namespace ImageEditor.Forms
 
         private void ColorBalanceForm_Load(object sender, EventArgs e)
         {
-            ImageProcessingApi = new ImageProcessingApi();
+            //ImageProcessingApi = new ImageProcessingApi();
             ReloadTextFormExtension.ReloadText(this, GetType());
             ReloadTrackbars();
         }

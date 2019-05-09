@@ -50,7 +50,8 @@
   <ItemGroup>
     <Compile Include="Constants\ConfigurationConstants.cs" />
     <Compile Include="CultureCode.cs" />
-    <Compile Include="FormExtensions.cs" />
+    <Compile Include="FormExtension.cs" />
+    <Compile Include="ReloadTextFormExtension.cs" />
     <Compile Include="Forms\BrightnessContrastForm.cs">
       <SubType>Form</SubType>
     </Compile>

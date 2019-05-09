@@ -10,7 +10,7 @@ namespace ImageEditor.Forms
     {
         private Bitmap InputImage { get; set; }
 
-        private ImageProcessingApi ImageProcessingApi { get; set; }
+        public ImageProcessingApi ImageProcessingApi { get; set; }
 
         private Func<Bitmap, int, Bitmap> Adjustment { get; set; }
 

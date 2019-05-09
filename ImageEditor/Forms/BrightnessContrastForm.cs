@@ -11,7 +11,7 @@ namespace ImageEditor.Forms
     {
         private Bitmap InputImage { get; set; }
 
-        private ImageProcessingApi ImageProcessingApi { get; set; }
+        public ImageProcessingApi ImageProcessingApi { get; set; }
 
         public void InitializeTrackbars()
         {
@@ -39,7 +39,7 @@ namespace ImageEditor.Forms
 
         private void BrightnessContrastForm_Load(object sender, EventArgs e)
         {
-            ImageProcessingApi = new ImageProcessingApi();         
+            //ImageProcessingApi = new ImageProcessingApi();         
             ReloadTextFormExtension.ReloadText(this, GetType());
             ReloadTrackbars();
         }

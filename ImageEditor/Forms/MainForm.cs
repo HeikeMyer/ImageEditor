@@ -33,11 +33,11 @@ namespace ImageEditor.Forms
         {
             ImageProcessingDialogForms = new Dictionary<string, IImageProcessingDialogForm>
             {
-                { ControlConstants.BrightnessContrastFormName, new BrightnessContrastForm() },
-                { ControlConstants.ColorBalanceFilterFormName, new ColorBalanceForm() },
-                { ControlConstants.CustomFilterFormName, new CustomFilterForm() },
-                { ControlConstants.ExposureFormName, new ExposureForm() },
-                { ControlConstants.ThresholdFormName, new ThresholdForm() }
+                { ControlConstants.BrightnessContrastFormName, new BrightnessContrastForm{ ImageProcessingApi = ImageProcessingApi }},
+                { ControlConstants.ColorBalanceFilterFormName, new ColorBalanceForm{ ImageProcessingApi = ImageProcessingApi }},
+                { ControlConstants.CustomFilterFormName, new CustomFilterForm{ ImageProcessingApi = ImageProcessingApi }},
+                { ControlConstants.ExposureFormName, new ExposureForm{ ImageProcessingApi = ImageProcessingApi }},
+                { ControlConstants.ThresholdFormName, new ThresholdForm{ ImageProcessingApi = ImageProcessingApi }}
             };
         }
 
@@ -58,6 +58,9 @@ namespace ImageEditor.Forms
         public MainForm()
         {
             InitializeComponent();
+
+            ImageProcessingApi = new ImageProcessingApi();
+
             CreateImageProcessingDialogForms();
             SetImageProcessingDialogFormsEventHandlers();
             
@@ -67,7 +70,6 @@ namespace ImageEditor.Forms
 
             FileOperation.FileOpened += ReceiveImage;
 
-            ImageProcessingApi = new ImageProcessingApi();
             this.FilterCall += ImageProcessingApi.ApplyFilter;
 
             ImageProcessingApi.ProcessingCompleted += ViewProcessedImage;
@@ -186,16 +188,16 @@ namespace ImageEditor.Forms
         {
 
             BackUpWorkingCopy();
-            ImageProcessingApi adjustment = new ImageProcessingApi();
-            adjustment.Sepia(WorkingImage, 0);
+            //ImageProcessingApi adjustment = new ImageProcessingApi();
+            ImageProcessingApi.Sepia(WorkingImage, 0);
             ViewWorkingCopy();
         }
 
         private void blackAndWhiteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            ImageProcessingApi adjustment = new ImageProcessingApi();
-            adjustment.BnW(WorkingImage, 0);
+            //ImageProcessingApi adjustment = new ImageProcessingApi();
+            ImageProcessingApi.BnW(WorkingImage, 0);
             ViewWorkingCopy();
         }
 
@@ -213,86 +215,63 @@ namespace ImageEditor.Forms
             ImageProcessingDialogForms[ControlConstants.ExposureFormName].ShowDialog();
         }
 
+        #region [Filters (no dialog)]
+
         private void sharpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            BackupImage = WorkingImage;
-            OnFilterCall(ConvolutionMatrices.LightSharpenMatrix());
+            BackUpWorkingCopy();
+            this.LaunchBackgroundThread(() => OnFilterCall(ConvolutionMatrices.LightSharpenMatrix()));
         }
 
         private void sharpenMoreToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            OnFilterCall(ConvolutionMatrices.SharpenMatrix());
+            this.LaunchBackgroundThread(() => OnFilterCall(ConvolutionMatrices.SharpenMatrix()));
         }
 
         private void unsharpMaskToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             BackUpWorkingCopy();
-            OnFilterCall(ConvolutionMatrices.UnsharpMasking());
+            this.LaunchBackgroundThread(() => OnFilterCall(ConvolutionMatrices.UnsharpMasking()));
         }
 
         private void boxBlurToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            OnFilterCall(ConvolutionMatrices.BoxBlur());
+            this.LaunchBackgroundThread(() => OnFilterCall(ConvolutionMatrices.BoxBlur()));
         }
 
         private void gaussianBlurToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            OnFilterCall(ConvolutionMatrices.GaussianBlur());
+            this.LaunchBackgroundThread(() => OnFilterCall(ConvolutionMatrices.GaussianBlur()));
         }
 
         private void edgeDetectionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //BackUpWorkingCopy();
-            //OnFilterCall(Filter.EdgeDetection());
-            Thread t = new Thread(A);
-            t.IsBackground = true;
-            t.Start();
+            BackUpWorkingCopy();
+            this.LaunchBackgroundThread(() => OnFilterCall(ConvolutionMatrices.EdgeDetection()));
         }
 
-        private void A()
-        {
-            OnFilterCall(ConvolutionMatrices.EdgeDetection());
-
-        }
-
-        //private void DoWork(object sender, )
-
+        #endregion
         private void erosionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-
-            ImageProcessingApi customFilter = new ImageProcessingApi();
-            //CustomFilterAdjustment adjustment = new CustomFilterAdjustment(customFilter.Erosion);
-
-            // OnCustomFilterCall(customFilter, adjustment);
-            OnAdjustmentCall(customFilter, customFilter.Erosion);
-
+            OnAdjustmentCall(ImageProcessingApi, ImageProcessingApi.Erosion);
             ImageProcessingDialogForms[ControlConstants.CustomFilterFormName].ShowDialog();
         }
 
         private void dilutionToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-
-            ImageProcessingApi customFilter = new ImageProcessingApi();
-            //CustomFilterAdjustment adjustment = new CustomFilterAdjustment(customFilter.Dilution);
-
-            //OnCustomFilterCall(customFilter, adjustment);
-            OnAdjustmentCall(customFilter, customFilter.Dilution);
-
+            OnAdjustmentCall(ImageProcessingApi, ImageProcessingApi.Dilution);
             ImageProcessingDialogForms[ControlConstants.CustomFilterFormName].ShowDialog();
         }
 
         private void invertToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             BackUpWorkingCopy();
-            ImageProcessingApi adjustment = new ImageProcessingApi();
-            adjustment.Invert(WorkingImage, 0);
+            ImageProcessingApi.Invert(WorkingImage, 0);
             ViewWorkingCopy();
         }
 
@@ -308,7 +287,6 @@ namespace ImageEditor.Forms
             BackUpWorkingCopy();
             OnAdjustmentCall();
             ImageProcessingDialogForms[ControlConstants.ColorBalanceFilterFormName].ShowDialog();
-
         }
 
         private void undoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -319,7 +297,6 @@ namespace ImageEditor.Forms
 
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
             FileOperation.OpenImageFile();
             ViewOriginalImage();
         }
@@ -345,8 +322,8 @@ namespace ImageEditor.Forms
         {
             BackUpWorkingCopy();
 
-            ImageProcessingApi customFilter = new ImageProcessingApi();
-            OnAdjustmentCall(customFilter, customFilter.Blur);
+            //ImageProcessingApi customFilter = new ImageProcessingApi();
+            OnAdjustmentCall(ImageProcessingApi, ImageProcessingApi.Blur);
             //CustomFilterAdjustment adjustment = new CustomFilterAdjustment(customFilter.Blur);
 
             //OnCustomFilterCall(customFilter, adjustment);
