@@ -12,18 +12,8 @@ namespace ImageProcessing
         public CustomFilter Filter { get; set; }
 
         public int Val { get; set; }
-        /*public ImageProcessingEventArgs(Bitmap bitmap)
-        {
-            Image = bitmap;
-        }
-
-        public Ima
-
-        public ImageProcessingEventArgs() { }*/
     }
-
-    //public delegate Bitmap CustomFilterAdjustment(Bitmap original);
-
+    
     public class FilterEventArgs
     {
         public FilterEventArgs(Bitmap input, ConvolutionMatrix filter)
@@ -34,22 +24,5 @@ namespace ImageProcessing
 
         public Bitmap Input { get; }
         public ConvolutionMatrix Filter { get; }
-
     }
-    /*
-    public class CustomFilterEventArgs
-    {
-        public CustomFilterEventArgs(Bitmap input, CustomFilterAdjustment adjustment, CustomFilter filter)
-        {
-            Input = input;
-            Adjustment = adjustment;
-            Filter = filter;
-        }
-
-        public Bitmap Input { get; }
-
-        public CustomFilterAdjustment Adjustment { get; }
-
-        public CustomFilter Filter { get; }
-    }*/
 }

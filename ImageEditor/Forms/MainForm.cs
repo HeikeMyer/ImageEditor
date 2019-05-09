@@ -30,38 +30,13 @@ namespace ImageEditor.Forms
             AdjustmentCall?.Invoke(this, imageProcessingEventArgs);
         }
 
-        
-
-       // public delegate void CustomFilterEventHandler(object sender, CustomFilterEventArgs e);
-
-       // public event CustomFilterEventHandler CustomFilterCall;
-
-      /*  protected virtual void OnCustomFilterCall(CustomFilter filter, Func<Bitmap, Bitmap> adjustment)
-        {
-            CustomFilterCall?.Invoke(this, new CustomFilterEventArgs(workingCopy, adjustment, filter));
-        }*/
-
-
         public delegate void FilterEventHandler(object sender, FilterEventArgs e);
 
         public event FilterEventHandler FilterCall;
 
         protected virtual void OnFilterCall(ConvolutionMatrix filterKernel)
         {
-            //Task task = new Task(() => Meth(filterKernel));
-            //Thread thread = new Thread(Meth)
-            //DisableButtons();
-            //task.Start();
-            //task.Wait();
-            //EnableButtons();
             FilterCall?.Invoke(this, new FilterEventArgs(workingCopy, filterKernel));
-            //var res = FilterCall?.BeginInvoke(this, new FilterEventArgs(workingCopy, filterKernel), null, null);
-            //FilterCall?.EndInvoke(res);
-            //var i = 10;
-            //Thread t = new Thread(new ParameterizedThreadStart(Meth));
-
-            //Thread t = new Thread()
-
         }
 
         private void Meth(object filterKernel)
@@ -74,11 +49,6 @@ namespace ImageEditor.Forms
         FileOperation fileOperations;
         Filter filter;
 
-        /*BrightnessContrastForm brightnessContrastForm;
-        ExposureForm exposureForm;
-        CustomFilterForm customFilterForm;
-        ColorBalanceForm colorBalanceForm;
-        ThresholdForm thresholdForm;*/
         
         private Dictionary<string, IImageProcessingDialogForm> ImageProcessingDialogForms { get; set; }
 
@@ -116,8 +86,7 @@ namespace ImageEditor.Forms
 
            
             ReloadTextFormExtension.ReloadText(this, GetType());
-            //ReloadTextFormExtension.ReloadText(this, GetType(), ReloadControlText, cultureCode);
-
+    
             fileOperations = new FileOperation();
 
             fileOperations.FileOpened += ReceiveImage;
@@ -128,41 +97,7 @@ namespace ImageEditor.Forms
             filter.ProcessingCompleted += ViewProcessedImage;
             filter.ProcessingCompleted += ApproveProcessing;
             filter.Middle += React;
-            /*brightnessContrastForm = new BrightnessContrastForm();
-
-            this.AdjustmentCall += brightnessContrastForm.SetInputImage;
-
-            brightnessContrastForm.ProcessingApproved += ApproveProcessing;
-            brightnessContrastForm.ProcessingCanceled += CancelProcessing;
-            brightnessContrastForm.ProcessingCompleted += ViewProcessedImage;
-
-            colorBalanceForm = new ColorBalanceForm();
-            this.AdjustmentCall += colorBalanceForm.SetInputImage;
-
-            colorBalanceForm.ProcessingApproved += ApproveProcessing;
-            colorBalanceForm.ProcessingCanceled += CancelProcessing;
-            colorBalanceForm.ProcessingCompleted += ViewProcessedImage;
-
-            thresholdForm = new ThresholdForm();
-            this.AdjustmentCall += thresholdForm.SetInputImage;
-
-            thresholdForm.ProcessingApproved += ApproveProcessing;
-            thresholdForm.ProcessingCanceled += CancelProcessing;
-            thresholdForm.ProcessingCompleted += ViewProcessedImage;
-
-            customFilterForm = new CustomFilterForm();
-            this.CustomFilterCall += customFilterForm.SetInputImage;
-
-            customFilterForm.ProcessingApproved += ApproveProcessing;
-            customFilterForm.ProcessingCanceled += CancelProcessing;
-            customFilterForm.ProcessingCompleted += ViewProcessedImage;
-
-            exposureForm = new ExposureForm();
-            this.AdjustmentCall += exposureForm.SetInputImage;
-
-            exposureForm.ProcessingApproved += ApproveProcessing;
-            exposureForm.ProcessingCanceled += CancelProcessing;
-            exposureForm.ProcessingCompleted += ViewProcessedImage;*/
+            
         }
 
         private void toolStripDropDownButton1_Click(object sender, EventArgs e)
@@ -478,14 +413,6 @@ namespace ImageEditor.Forms
            // ReloadChildFormsText();
         }
 
-        /*private void ReloadChildFormsText()
-        {
-            ReloadTextFormExtension.ReloadText(brightnessContrastForm, GetType());
-            ReloadTextFormExtension.ReloadText(colorBalanceForm, GetType());
-            ReloadTextFormExtension.ReloadText(exposureForm, GetType());
-            ReloadTextFormExtension.ReloadText(customFilterForm, GetType());
-            ReloadTextFormExtension.ReloadText(thresholdForm, GetType());
-        }*/
         
     }
 }

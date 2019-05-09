@@ -25,18 +25,9 @@ namespace ImageProcessing
         {
             Middle?.Invoke(this, new ImageProcessingEventArgs() { Val = val  });
         }
-
-        
-
-        
+  
         public void ApplyFilter(object sender, FilterEventArgs e)
         {
-            /*Thread.Sleep(5000);
-            OnMiddle(1);
-            Thread.Sleep(5000);
-            OnMiddle(2);
-            Thread.Sleep(5000);
-            OnMiddle(3);*/
             KernelFilter kernel = new KernelFilter(e.Filter);
             OnProcessingCompleted(kernel.ApplyKernelFilter(e.Input));
         }   
