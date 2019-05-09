@@ -49,9 +49,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constants\ConfigurationConstants.cs" />
-    <Compile Include="CultureCode.cs" />
-    <Compile Include="FormExtension.cs" />
-    <Compile Include="ReloadTextFormExtension.cs" />
+    <Compile Include="Extensions\FormExtension.cs" />
+    <Compile Include="Extensions\ReloadTextFormExtension.cs" />
     <Compile Include="Forms\BrightnessContrastForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,7 +87,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Synchronization.cs" />
+    <Compile Include="Extensions\Synchronization.cs" />
     <Compile Include="Forms\ThresholdForm.cs">
       <SubType>Form</SubType>
     </Compile>

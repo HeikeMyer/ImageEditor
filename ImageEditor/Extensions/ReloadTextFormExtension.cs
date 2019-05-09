@@ -74,7 +74,7 @@ namespace ImageEditor
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(cultureCode);
             ResourceManager resourceManager = new ResourceManager(type);
 
-            form.Text = resourceManager.GetString(nameof(ControlConstants.FormTextResourceString));
+            form.Text = resourceManager.GetString(form.Name + ControlConstants.TextPropertyName);
             ReloadText(form, resourceManager);
         }
     }

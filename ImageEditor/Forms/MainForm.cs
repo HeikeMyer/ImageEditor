@@ -59,8 +59,6 @@ namespace ImageEditor.Forms
             CreateImageProcessingDialogForms();
             SetImageProcessingDialogFormsEventHandlers();
             
-            ReloadTextFormExtension.ReloadText(this, GetType());
-
             FileOperation = new FileOperation();
 
             FileOperation.FileOpened += ReceiveImage;
@@ -75,6 +73,7 @@ namespace ImageEditor.Forms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            ReloadTextFormExtension.ReloadText(this, GetType());
             DisableButtons();
             progressBar.Visible = false;
         }
@@ -310,13 +309,7 @@ namespace ImageEditor.Forms
         #endregion
 
         #region [Management]
-
-        private void undoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            RestoreBackupWorkingCopy();
-            ViewWorkingCopy();
-        }
-
+        
         private void openToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FileOperation.OpenImageFile();
@@ -352,5 +345,11 @@ namespace ImageEditor.Forms
         }
 
         #endregion
+
+        private void undoToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            RestoreBackupWorkingCopy();
+            ViewWorkingCopy();
+        }
     }
 }
