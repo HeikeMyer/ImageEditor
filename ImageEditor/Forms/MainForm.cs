@@ -18,19 +18,28 @@ namespace ImageEditor.Forms
     {
         public event ImageProcessingEventHandler AdjustmentCall;
 
-        protected virtual void OnAdjustmentCall()
+        protected virtual void OnAdjustmentCall(CustomFilter filter = null, Func<Bitmap, Bitmap> adjustment = null)
         {
-            AdjustmentCall?.Invoke(this, new ImageProcessingEventArgs(workingCopy));
+            var imageProcessingEventArgs = new ImageProcessingEventArgs
+            {
+                Image = workingCopy,
+                Filter = filter,
+                Adjustment = adjustment
+            };
+
+            AdjustmentCall?.Invoke(this, imageProcessingEventArgs);
         }
 
-        public delegate void CustomFilterEventHandler(object sender, CustomFilterEventArgs e);
+        
 
-        public event CustomFilterEventHandler CustomFilterCall;
+       // public delegate void CustomFilterEventHandler(object sender, CustomFilterEventArgs e);
 
-        protected virtual void OnCustomFilterCall(CustomFilter filter, CustomFilterAdjustment adjustment)
+       // public event CustomFilterEventHandler CustomFilterCall;
+
+      /*  protected virtual void OnCustomFilterCall(CustomFilter filter, Func<Bitmap, Bitmap> adjustment)
         {
             CustomFilterCall?.Invoke(this, new CustomFilterEventArgs(workingCopy, adjustment, filter));
-        }
+        }*/
 
 
         public delegate void FilterEventHandler(object sender, FilterEventArgs e);
@@ -327,9 +336,10 @@ namespace ImageEditor.Forms
             BackUpWorkingCopy();
 
             CustomFilter customFilter = new CustomFilter();
-            CustomFilterAdjustment adjustment = new CustomFilterAdjustment(customFilter.Erosion);
+            //CustomFilterAdjustment adjustment = new CustomFilterAdjustment(customFilter.Erosion);
 
-            OnCustomFilterCall(customFilter, adjustment);
+            // OnCustomFilterCall(customFilter, adjustment);
+            OnAdjustmentCall(customFilter, customFilter.Erosion);
 
             ImageProcessingDialogForms[ControlConstants.CustomFilterFormName].ShowDialog();
         }
@@ -339,9 +349,10 @@ namespace ImageEditor.Forms
             BackUpWorkingCopy();
 
             CustomFilter customFilter = new CustomFilter();
-            CustomFilterAdjustment adjustment = new CustomFilterAdjustment(customFilter.Dilution);
+            //CustomFilterAdjustment adjustment = new CustomFilterAdjustment(customFilter.Dilution);
 
-            OnCustomFilterCall(customFilter, adjustment);
+            //OnCustomFilterCall(customFilter, adjustment);
+            OnAdjustmentCall(customFilter, customFilter.Dilution);
 
             ImageProcessingDialogForms[ControlConstants.CustomFilterFormName].ShowDialog();
         }
@@ -405,9 +416,10 @@ namespace ImageEditor.Forms
             BackUpWorkingCopy();
 
             CustomFilter customFilter = new CustomFilter();
-            CustomFilterAdjustment adjustment = new CustomFilterAdjustment(customFilter.Blur);
+            OnAdjustmentCall(customFilter, customFilter.Blur);
+            //CustomFilterAdjustment adjustment = new CustomFilterAdjustment(customFilter.Blur);
 
-            OnCustomFilterCall(customFilter, adjustment);
+            //OnCustomFilterCall(customFilter, adjustment);
 
             ImageProcessingDialogForms[ControlConstants.CustomFilterFormName].ShowDialog();
         }

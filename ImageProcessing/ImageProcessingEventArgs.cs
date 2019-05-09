@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace ImageProcessing
 {
@@ -7,16 +8,21 @@ namespace ImageProcessing
     public class ImageProcessingEventArgs
     {
         public Bitmap Image { get; set; }
+        public Func<Bitmap, Bitmap> Adjustment { get; set; }
+        public CustomFilter Filter { get; set; }
+
         public int Val { get; set; }
-        public ImageProcessingEventArgs(Bitmap bitmap)
+        /*public ImageProcessingEventArgs(Bitmap bitmap)
         {
             Image = bitmap;
         }
 
-        public ImageProcessingEventArgs() { }
+        public Ima
+
+        public ImageProcessingEventArgs() { }*/
     }
 
-    public delegate Bitmap CustomFilterAdjustment(Bitmap original);
+    //public delegate Bitmap CustomFilterAdjustment(Bitmap original);
 
     public class FilterEventArgs
     {
@@ -30,7 +36,7 @@ namespace ImageProcessing
         public ConvolutionMatrix Filter { get; }
 
     }
-
+    /*
     public class CustomFilterEventArgs
     {
         public CustomFilterEventArgs(Bitmap input, CustomFilterAdjustment adjustment, CustomFilter filter)
@@ -45,5 +51,5 @@ namespace ImageProcessing
         public CustomFilterAdjustment Adjustment { get; }
 
         public CustomFilter Filter { get; }
-    }
+    }*/
 }

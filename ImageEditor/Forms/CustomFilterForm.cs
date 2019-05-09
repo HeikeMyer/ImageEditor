@@ -40,17 +40,18 @@ namespace ImageEditor.Forms
 
         private CustomFilter customFilter;
         private Bitmap input;
-        private CustomFilterAdjustment adjustment;
+        private Func<Bitmap, Bitmap> adjustment;
+       // private CustomFilterAdjustment adjustment;
         private int maximalIntensity;
 
 
-        public void SetInputImage(object sender, CustomFilterEventArgs e)
+       /* public void SetInputImage(object sender, CustomFilterEventArgs e)
         {
             input = new Bitmap(e.Input);
             customFilter = e.Filter;
             adjustment = e.Adjustment;
             maximalIntensity = 2 * Synchronization.GetLessValue(input.Height, input.Width) + 1;
-        }
+        }*/
 
         public void ReloadControlText(ResourceManager resourceManager)
         {
@@ -108,6 +109,10 @@ namespace ImageEditor.Forms
         public void SetInputImage(object sender, ImageProcessingEventArgs e)
         {
             var i = 10;
+            input = new Bitmap(e.Image);
+            customFilter = e.Filter;
+            adjustment = e.Adjustment;
+            maximalIntensity = 2 * Synchronization.GetLessValue(input.Height, input.Width) + 1;
             //throw new NotImplementedException();
         }
     }
