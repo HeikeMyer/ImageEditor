@@ -42,7 +42,8 @@ namespace ImageProcessing
         public Bitmap ApplyKernelFilter(Bitmap source)
         {
             Bitmap output = new Bitmap(source.Width, source.Height);
-            Apply(source, output);
+            //Apply(source, output);
+            ImageProcessingBase.Apply(source, output, ComputeNewRgbComponentValue, size);
             return output;
         }
     }

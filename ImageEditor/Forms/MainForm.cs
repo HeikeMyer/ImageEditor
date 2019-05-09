@@ -273,14 +273,14 @@ namespace ImageEditor.Forms
         private void thresholdToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            OnAdjustmentCall(new ImageProcessingEventArgs());
+            OnAdjustmentCall(new ImageProcessingEventArgs { Image = workingCopy });
             ImageProcessingDialogForms[ControlConstants.ThresholdFormName].ShowDialog();
         }
 
         private void exposureToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            OnAdjustmentCall(new ImageProcessingEventArgs());
+            OnAdjustmentCall(new ImageProcessingEventArgs { Image = workingCopy });
             ImageProcessingDialogForms[ControlConstants.ExposureFormName].ShowDialog();
         }
 
@@ -427,14 +427,14 @@ namespace ImageEditor.Forms
         private void brightnessContrastToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            OnAdjustmentCall(new ImageProcessingEventArgs());
+            OnAdjustmentCall(new ImageProcessingEventArgs { Image = workingCopy });
             ImageProcessingDialogForms[ControlConstants.BrightnessContrastFormName].ShowDialog();
         }
 
         private void colorBalanceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             BackUpWorkingCopy();
-            OnAdjustmentCall(new ImageProcessingEventArgs());
+            OnAdjustmentCall(new ImageProcessingEventArgs { Image = workingCopy });
             ImageProcessingDialogForms[ControlConstants.ColorBalanceFilterFormName].ShowDialog();
 
         }

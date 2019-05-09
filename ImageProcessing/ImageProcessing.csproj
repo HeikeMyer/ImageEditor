@@ -45,12 +45,15 @@
   <ItemGroup>
     <Compile Include="Adjustments.cs" />
     <Compile Include="Base\ConvolutionMatrices.cs" />
+    <Compile Include="Base\ImageProcessingBase.cs" />
     <Compile Include="Base\PixelCalculation.cs" />
     <Compile Include="Base\Rgba.cs" />
     <Compile Include="CustomFilter.cs" />
     <Compile Include="Filter.cs" />
     <Compile Include="ImageFilter.cs" />
-    <Compile Include="ImageProcessingEventArgs.cs" />
+    <Compile Include="Models\Adjustment.cs" />
+    <Compile Include="Models\FilterInfo.cs" />
+    <Compile Include="Models\ImageProcessingEventArgs.cs" />
     <Compile Include="Models\IntermediateImage.cs" />
     <Compile Include="Kernel.cs" />
     <Compile Include="Models\LockedBitmap.cs" />

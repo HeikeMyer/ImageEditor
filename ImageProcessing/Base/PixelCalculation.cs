@@ -11,6 +11,15 @@
             }
         }
 
+        public static unsafe void Contrast(byte* blue, double factor)
+        {
+            for (Rgba i = Rgba.Blue; i <= Rgba.Red; ++i)
+            {
+                byte componentValue = *(blue + (byte)i);
+                *(blue + (byte)i) = RgbComponentCalculation.ChangeContrast(componentValue, (int)factor);
+            }
+        }
+
         public static unsafe void Threshold(byte* blue, double factor)
         {
             *blue = *(blue + (byte)Rgba.Green) = *(blue + (byte)Rgba.Red) =

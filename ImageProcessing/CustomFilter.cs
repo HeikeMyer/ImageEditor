@@ -23,7 +23,7 @@ namespace ImageProcessing
         {
             computeRgbComponentValue = new ComputeRgbComponentValue(RgbComponentCalculation.Erosion);
             Bitmap output = new Bitmap(input.Width, input.Height);
-            Apply(input, output);
+            ImageProcessingBase.Apply(input, output, ComputeNewRgbComponentValue, size);
             return output;
         }
 
@@ -31,7 +31,8 @@ namespace ImageProcessing
         {
             computeRgbComponentValue = new ComputeRgbComponentValue(RgbComponentCalculation.Dilution);
             Bitmap output = new Bitmap(input.Width, input.Height);
-            Apply(input, output);
+            //Apply(input, output);
+            ImageProcessingBase.Apply(input, output, ComputeNewRgbComponentValue, size);
             return output;
         }
 
@@ -39,7 +40,8 @@ namespace ImageProcessing
         {
             computeRgbComponentValue = new ComputeRgbComponentValue(RgbComponentCalculation.Blur);
             Bitmap output = new Bitmap(input.Width, input.Height);
-            Apply(input, output);
+            ImageProcessingBase.Apply(input, output, ComputeNewRgbComponentValue, size);
+            //Apply(input, output);
             return output;
         }
     }
