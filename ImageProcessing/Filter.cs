@@ -29,8 +29,20 @@ namespace ImageProcessing
   
         public void ApplyFilter(object sender, FilterEventArgs e)
         {
-            KernelFilter kernel = new KernelFilter();
-            OnProcessingCompleted(kernel.ApplyKernelFilter(e.Input, e.Filter));
+            var source = e.Input;
+            var m = e.Filter;
+            Bitmap output = new Bitmap(source.Width, source.Height);
+            FilterAdapter filter = new FilterAdapter();
+            filter.Factor = m.Factor;
+            filter.Kernel = m.Matrix.Straighten(m.Size);
+            filter.ConvolutionFunction = RgbComponentCalculation.ComputeNewRgbComponentValue;
+            filter.ComputeNewRgbComponentValue = filter.ConvolutionAdapter;//ComputeNewRgbComponentValue;
+            filter.SetUp(m.Size);
+            filter.Apply(source, output);
+            //Apply(source, output);
+            //return output;
+            //KernelFilter kernel = new KernelFilter();
+            OnProcessingCompleted(output);//kernel.ApplyKernelFilter(e.Input, e.Filter));
         }   
     }
 }
