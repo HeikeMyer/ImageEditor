@@ -34,17 +34,17 @@ namespace ImageProcessing.Base
 
         #region [Square]
 
-        public class SquareAdapterParameters
+        public class FactorAdapterParameters
         {
             public Func<byte[], int, byte> Function { get; set; }
             public int Size { get; set; }
         }
      
-        public SquareAdapterParameters SquareAdapterArgs { get; set; }
+        public FactorAdapterParameters FactorAdapterArgs { get; set; }
 
-        public byte SquareAdapter(byte[] neighborhood)
+        public byte FactorAdapter(byte[] neighborhood)
         {
-            return SquareAdapterArgs.Function(neighborhood, SquareAdapterArgs.Size);
+            return FactorAdapterArgs.Function(neighborhood, FactorAdapterArgs.Size);
         }
 
         #endregion

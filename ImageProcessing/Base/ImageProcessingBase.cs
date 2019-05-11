@@ -30,7 +30,7 @@ namespace ImageProcessing.Base
 
     internal static class ImageProcessingBase
     {
-        public static unsafe void Adjust(System.Drawing.Bitmap bitmap, double factor, AdjustPixel applyToPixel)
+        public static unsafe void Adjust(Bitmap bitmap, double factor, AdjustPixel applyToPixel)
         {
             var lockedBitmap = new LockedBitmap(bitmap);
 

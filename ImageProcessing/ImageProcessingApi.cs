@@ -57,14 +57,14 @@ namespace ImageProcessing
         {
             Bitmap output = new Bitmap(source.Width, source.Height);
         
-            var parameters = new FilterAdapter.SquareAdapterParameters
+            var parameters = new FilterAdapter.FactorAdapterParameters
             {
                 Size = size,
                 Function = function
             };
 
-            var filter = new FilterAdapter { SquareAdapterArgs = parameters };
-            filter.ComputeRgbComponentValue = filter.SquareAdapter;
+            var filter = new FilterAdapter { FactorAdapterArgs = parameters };
+            filter.ComputeRgbComponentValue = filter.FactorAdapter;
             filter.Apply(source, output, size, null);
 
             return output;
